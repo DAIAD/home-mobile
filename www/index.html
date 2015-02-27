@@ -1,0 +1,200 @@
+<html>
+    <head>
+        		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+                <link rel="stylesheet" href="css/jquery.mobile-1.4.4.css">
+                <link rel="stylesheet" href="css/index.css">
+                <link rel="stylesheet" href="css/jqm-datebox.css" />
+				<script src="libs/jquery-1.11.1.min.js"></script>
+				<script src="libs/jquery.mobile-1.4.4.js"></script>
+                <script type="text/javascript" src="libs/jquery.flot.js"></script>
+                <script type="text/javascript" src="libs/flot_time.js"></script>
+                <script type="text/javascript" src="libs/flot_resize.js"></script>
+                <script type="text/javascript" src="libs/jqm-datebox.core.js"></script>
+                <script type="text/javascript" src="libs/jqm-datebox.mode.calbox.js"></script>
+                <script>
+                    $(function() {
+                      $("body").fadeIn(2000);
+                      $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
+                      $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+                      });
+                </script>
+                
+    </head>
+    
+    <body style="display:none;">
+        
+        <div data-role="page" id="home" >
+            <div data-role="header">
+                    <h2>DAIAD</h2>
+                    <!--<a href="#" id="menupanel" data-role="button" class="panelbtn" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Menu</a> -->
+            </div>
+            
+            <div data-role="content">
+                <div id="tabs" >
+                    <ul data-role="listview" id="tabsmenu" data-inset="true" data-theme="e">
+                        <li data-icon="false"><a href="#tabs-1" id='ble'>HOME</a></li>
+                        <li data-icon="false"><a href="#tabs-2" id='whole'>ANALYSIS</a></li>
+                        <li data-icon="false"><a href="#tabs-3" id='realfeel'>REAL TIME</a></li>
+                        <li data-icon="false"><a href="#tabs-4" id='current'>CURRENT</a></li>
+                        <li data-icon="false"><a href="#tabs-5" id='compare'>COMPARE</a></li>
+                        <li data-icon="false"><a href="#tabs-6" id='share'>SHARE</a></li>
+                        <li data-icon="false"><a href="#tabs-7" id='community'>COMMUNITY</a></li>
+                        <li data-icon="false"><a href="#tabs-8" id='preferences'>SETTINGS</a></li>
+                    </ul>
+                    
+                    <!--
+                    <script>
+                    $('#menupanel').click(function(){$('#tabsmenu').show();var index = $("li.ui-tabs-active").index();//alert(index);
+                     //$('.ui-tabs-panel').show();var href = $('ul li a').eq(index).attr('href');//alert(href);$(href).hide(); });
+                     $('ul').click('li',function(){$('#tabsmenu').hide();var index = $("li.ui-tabs-active").index();//alert(index);
+                     //$('.ui-tabs-panel').show();var href = $('ul li a').eq(index).attr('href');//alert(href);$(href).show();});</script>
+                    -->
+                    
+                <div id="tabs-1" >
+                   	<div class='homeTab'>
+                       	<div id='row_one'>
+                            <div id="currentData" >
+                                <div class="boxCategory">Current Consumption</div>
+                                <div id='litres-box' class="boxOther">0 L</div>
+                                <div id='point-box' class="boxOther">A+</div>
+                                <div id='temp-box' class="boxOther">0 C</div>
+                                <div id='energy-box' class="boxOther">0 kWh</div>
+                            </div>
+                            <div id="apCon">
+                                <div class="boxCategory">Appliances</div>
+                                <div id='deviceList'></div>
+                            </div>
+                        </div>
+                        
+                        <div id ="row_two">
+                            <table id="news">
+                                <thead>
+                                    <tr><th>News-Alerts-Operations</th></tr>
+                                </thead>
+                                <tbody id='resultDiv'></tbody>
+                            </table>
+                            <button id="refreshButton">Refresh</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tabs-2">
+                    <div id="spinner" ></div>
+                    <div class="demo-container">
+                        <div data-role="navbar">
+                            <ul>
+                                <li><a href="#" id="today">Today</a></li>
+                                <li><a href="#" id="week">Week</a></li>
+                                <li><a href="#" id="month">Month</a></li>
+                                <li><a href="#" class="ui-btn-active" id="year">Year</a></li>
+                            </ul>
+                            <ul>
+                                <li><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li><input  type="submit" id="submitAnalysis" value='Set'/></li>
+                                <li></li>
+                            </ul>
+
+                        </div>
+                        <div id="placeholder" class="demo-placeholder"></div>
+                        <div data-role="fieldcontain" >
+                            <label for="budget">Consumption Budget:</label>
+                            <input type="range" name="budget" id="budget" value="" min="0" max="300" step='10' data-highlight="true"  />
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tabs-3">
+                    <div id="spinner1" ></div>
+                    <div class="demo-container">
+                        <div id="choices1">
+                            <div data-role="navbar" >
+                                <ul>
+                                    <li><input type='checkbox' name='litres' checked='checked' id='litres' disabled></input><label for='litres'>Litres</label></li>
+                                    <li><input type='checkbox' name='temp'  id='temp'></input><label for='temp'>Temp</label></li>
+                                    <li><input type='checkbox' name='energy'  id='energy'></input><label for='energy'>Energy</label></li>
+                                    <li><input type='checkbox' name='index'  id='index'></input><label for='index'>ShowerID</label></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div id="placeholder1" class="demo-placeholder" ></div>
+                    </div>
+                </div>
+                
+                <div id="tabs-4" >
+                    <p>Move to HOME or REAL TIME tabs</p>
+                </div>
+                
+                <div id="tabs-5">
+                    <div id="comp">
+                        <div id="dateSelection">
+                            <p>Select Dates : </p>
+                            <input placeholder="Date from.." name="mode1" id="mode1" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' />
+                            <input placeholder="Date to.." name="mode2" id="mode2" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' />
+                            <input type="submit" id="submitAvg" value="Submit" />
+                        </div>
+   
+                        <div id="averageBoxes">
+                            <p>Your average Consumption(Litres) : </p>
+                            <div id="average" class='boxOther'></div>
+                            <p>Similar Households consumption (Litres) : </p>
+                            <div id="households" class='boxOther'>76</div>
+                            <p>Status : </p>
+                            <div id="compStatus" class='boxOther'></div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div id="tabs-6">
+                    <div class="sharing">
+                        <p>Share your consumption : </p>
+                        <button id="shareViaMail">Share Via Email</button>
+                        <button id="shareViaFb">Share Via Facebook</button>
+                        <div id="resultSharing"></div>
+                    </div>
+                </div> <!-- tabs6 -->
+                
+                <div id="tabs-7">
+                    <p>Daiad@commons functionality</p>
+                </div>
+            
+                <div id="tabs-8">
+                    <div class='preferences' >
+                        <div data-role="fieldcontain" >
+                            <label for="slider2">Notifications:</label>
+                            <select name="slider2" id="slider2" data-role="slider">
+                                <option value="off">Off</option>
+                                <option value="on">On</option>
+                            </select>
+                        </div>
+                        <div data-role="fieldcontain" >
+                            <fieldset data-role="controlgroup">
+                                <legend>Notify me:</legend>
+                                <input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom" />
+                                <label for="checkbox-1a">Every day</label>
+                                <input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom" />
+                                <label for="checkbox-2a">Every week</label>
+                                <input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom" />
+                                <label for="checkbox-3a">Every month</label>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                
+            </div><!--tabs-->
+                
+        </div><!-- content -->
+            
+            
+    </div>
+    <!--End Home Page-->
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/EventBroker.js"></script>
+    <script type="text/javascript" src="js/storageManager.js"></script>
+    <script type="text/javascript" src="js/charts.js"></script>
+    
+    </body>
+</html>
