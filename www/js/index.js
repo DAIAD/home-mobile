@@ -81,6 +81,14 @@ var app = {
                     json.energy.data.push([k,l]);
                     json.index.data.push([k,e]);
                     }
+                    if (json.litres.data.length > 5)
+                         {
+                              json.litres.data.shift();
+                              json.temp.data.shift();
+                              json.energy.data.shift();
+                              json.index.data.shift();
+                          }
+                    
                         
                         sm.FeelData(a,b,e,c,d,f,g,k,l);
                          
