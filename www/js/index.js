@@ -46,10 +46,6 @@ var app = {
         
     onDiscoverDevice: function(device) {
   
-        //var listItem = document.createElement('li'),
-        //html = '<div class="box2">' + device.name + '   ' + '<img src="img/amphiro.png" width="40" height="40"/></div>';
-        //listItem.innerHTML = html;
-        //deviceList.appendChild(listItem);
         var deviceId = device.id;
         onConnect = function() {
             var blemanager = new BluetoothManager({flag: 'connected',name: device.name, id: device.id});
@@ -64,6 +60,7 @@ var app = {
             {
                 var blemanager = new BluetoothManager({flag: 'Disconnected',id:deviceId});
                 blemanager.response();
+                deviceList.innerHTML = '';
                 
             }
         },
