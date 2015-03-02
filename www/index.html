@@ -26,7 +26,7 @@
         <div data-role="page" id="home" >
             <div data-role="header">
                     <h2>DAIAD</h2>
-                    <!--<a href="#" id="menupanel" data-role="button" class="panelbtn" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Menu</a> -->
+                    <a href="#" id="menupanel" data-role="button" class="panelbtn" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Menu</a> 
             </div>
             
             <div data-role="content">
@@ -42,13 +42,34 @@
                         <li data-icon="false"><a href="#tabs-8" id='preferences'>SETTINGS</a></li>
                     </ul>
                     
-                    <!--
+                   
                     <script>
-                    $('#menupanel').click(function(){$('#tabsmenu').show();var index = $("li.ui-tabs-active").index();//alert(index);
-                     //$('.ui-tabs-panel').show();var href = $('ul li a').eq(index).attr('href');//alert(href);$(href).hide(); });
-                     $('ul').click('li',function(){$('#tabsmenu').hide();var index = $("li.ui-tabs-active").index();//alert(index);
-                     //$('.ui-tabs-panel').show();var href = $('ul li a').eq(index).attr('href');//alert(href);$(href).show();});</script>
-                    -->
+                    $('#menupanel').click(function(){
+                                              
+                                          $('#tabsmenu').show();
+                                              var index = $("li.ui-tabs-active").index();
+                                              //alert(index);
+                                              //$('.ui-tabs-panel').show();
+                                              var href = $('ul li a').eq(index).attr('href');
+                                              //alert(href);
+                                              $(href).hide();
+                                             
+                                              
+                                              });
+                        
+                        
+                     $('ul').click('li',function(){
+                                   
+                                       $('#tabsmenu').hide();
+                                       var index = $("li.ui-tabs-active").index();
+                                       //alert(index);
+                                       //$('.ui-tabs-panel').show();
+                                        var href = $('ul li a').eq(index).attr('href');
+                                        //alert(href);
+                                        $(href).show();
+                                       });
+                     	</script>
+                 
                     
                 <div id="tabs-1" >
                    	<div class='homeTab'>
@@ -61,12 +82,10 @@
                                 <div id='energy-box' class="boxOther">0 kWh</div>
                             </div>
                             <div id="apCon">
-                                <div class="boxCategory">Appliances</div>
+                                <div class="boxCategory">Connected Appliances</div>
                                 <div id='deviceList'></div>
                             </div>
-                        </div>
-                        
-                        <div id ="row_two">
+                       
                             <table id="news">
                                 <thead>
                                     <tr><th>News-Alerts-Operations</th></tr>
