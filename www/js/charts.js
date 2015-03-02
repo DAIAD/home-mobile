@@ -313,9 +313,20 @@ $(document).one('current', function(){
                     }
 
                 }
+                /*
                 if (confirm("Trasmission started!See??") == true) {
                 $.event.trigger({type:'realtime'});
                 } else {}
+                 */
+                $("#notification").fadeIn("slow").append('Real time...?');
+                
+                $(".accept").click(function(){
+                                   $.event.trigger({type:'realtime'});
+                                    $("#notification").fadeOut("slow");
+                                   });
+                $(".dismiss").click(function(){
+                                    $("#notification").fadeOut("slow");
+                                    });
 
                 
                 intern = setInterval(plotBoxes,2000);
