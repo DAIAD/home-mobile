@@ -28,10 +28,11 @@ var app = {
     },
     onDeviceReady: function() {
         app.refreshDeviceList();
+        sm.openDb();
         var bleconnection = new bleConnection();
         var uploading = new uploadTask();
         var sched = new scheduler();
-        sm.openDb();
+        
         
     },
     
@@ -61,6 +62,10 @@ var app = {
                 var blemanager = new BluetoothManager({flag: 'Disconnected',id:deviceId});
                 blemanager.response();
                 deviceList.innerHTML = '';
+                try {
+                    ble.connect(deviceId, onConnect, onError);
+                }
+                catch(ERROR) {}
                 
             }
         },

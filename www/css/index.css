@@ -46,9 +46,9 @@ and (max-device-width : 640px) {
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 
 .ui-tabs-vertical { width: 100%; }
-.ui-tabs-vertical .ui-tabs-nav {  position:fixed;float: left; width:20%;  border: 1px #267df2 groove;background-color: lightblue; }
+.ui-tabs-vertical .ui-tabs-nav {  position:fixed;float: left; width:95%;  border: 1px #267df2 groove;background-color: lightblue; }
 .ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-right-width: 0 !important; }
-.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
+.ui-tabs-vertical .ui-tabs-nav li a { display:block;font-size:250%; text-align:center; }
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
 .ui-tabs-vertical .ui-tabs-panel { position:fixed;left:5%; width:90%;height:80%;}
 
@@ -131,7 +131,7 @@ and (max-device-width : 640px) {
 #row_one {width:100%;height:100%;border:1px solid #ddd;}
 #row_two {width:100%;height:50%;}
 
-#resultDiv {height:90%;overflow-y: auto;overflow-x: hidden;}
+#resultDiv {height:85%;overflow-y: auto;overflow-x: hidden;}
 #deviceList {width:100%;height:50%;border: 1px #267df2 groove; margin: 1px auto;background-color: lightblue;text-align:center;font-weight: bold;font-size: 100%;}
 
 #currentData{width:100%;height:45%;float:left;}
@@ -144,24 +144,22 @@ and (max-device-width : 640px) {
 
 .sharing { width:50%;height:50%;border: 1px #267df2 groove;background-color: lightblue;}
 
-thead, tbody { display: block; }
+thead,tbody { display: block; }
 #news {
     float:left
     color: black;
     background: -webkit-linear-gradient(top, #fdfdfd, #eee);
     width: 100%;
-    height:40%;
+    height:35%;
     border: 1px #267df2 groove;
 }
 #news tr td {
     color: #666;
     font-size: 160% helvetica;
     padding: 0;
-    width:100%;
     background-image: -webkit-linear-gradient(top, #fdfdfd, #eee);
 }
-#news tr td:last-child {border-right: none;}
-#news tr:last-child td {border-bottom: none;}
+
 #spinner,#spinner1{
     display:none;position:fixed;z-index:500;top:0;left:0;height:100%;width:100%;
     background: rgba( 255, 255, 255, .8 )url('../img/ajax-loader.gif') 50% 50%

@@ -94,12 +94,12 @@ bleConnection.prototype = {
         
         if (param.flag == 'connected'){
             
-            $('#resultDiv').append('<tr><td>Device(Name-ID) :: '+ param.name + ' : ' + param.id + ' >> Status :: '+ param.flag +'</td></tr>');
+            $('#resultDiv').append('<tr><td>Device(Name-ID) :: '+ param.name + ' : ' + param.id + '  >>>  Device Status :: '+ param.flag +'</td></tr>');
             resultDiv.scrollTop = resultDiv.scrollHeight;
         }
         
         if (param.flag == 'Disconnected'){
-            $('#resultDiv').append('<tr><td> Sensor Data progress :: ' + param.id + ' -' + param.flag + '</td></tr>');
+            $('#resultDiv').append('<tr><td>Device(Name-ID) :: ' + param.id + ' >>>  Device Status :: ' + param.flag + '</td></tr>');
             $('#resultDiv').append('<tr><td> Transmitted packets :: ' + packets.length +  '</td></tr>');
             resultDiv.scrollTop = resultDiv.scrollHeight;
         }
