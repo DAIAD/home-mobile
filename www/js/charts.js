@@ -12,12 +12,10 @@ var successReal = function() {
     $('<a>').attr({'href':'#home','id':'conback','class' : 'ui-btn-left'}).html('Back').appendTo(mapHeader);
     var mapContent = $('<div>').attr({'data-role':'content'}).appendTo(mapPage);
     var inside = $('<div>').attr({'class':'demo-container'}).appendTo(mapContent);
-    $('<div>').attr({'id':'placeholder4', 'class':'demo-placeholder','style':'float:left;width:80%'}).appendTo(inside);
-    $('<div>').attr({'id':'choices4', 'style':'float:right;width:20%'}).appendTo(inside);
+    $('<div>').attr({'id':'choices4'}).appendTo(inside);
+    $('<div>').attr({'id':'placeholder4', 'class':'demo-placeholder'}).appendTo(inside);
     var choiceContainer = $("#choices4");
-    choiceContainer.append("<input type='checkbox' name='litres' checked='checked' id='litres1'></input><label for='litres1'>Litres </label>");
-    choiceContainer.append("<input type='checkbox' name='temp' checked='checked' id='temp1'></input><label for='temp1'>Temp</label>");
-    choiceContainer.append("<input type='checkbox' name='energy' checked='checked' id='energy1'></input><label for='energy1'>Energy</label>");
+    choiceContainer.append("<div data-role='navbar'><ul><li><input type='checkbox' name='litres' checked='checked' id='litres1' disabled></input><label for='litres1'>Litres</label></li><li><input type='checkbox' name='temp' checked='checked' id='temp1' ></input><label for='temp1'>Temperature</label></li></ul></div>");
     $.mobile.changePage( "#real", { transition: "slide"});
     $('#real').on('pageshow',function(){
                   
@@ -297,10 +295,10 @@ $('#deviceList').on('click', 'li', function() {
 $(document).one('current', function(){
                function plotBoxes() {
                 $('#temp-box').empty();$('#litres-box').empty();$('#point-box').empty();$('#energy-box').empty();
-                $('#temp-box').append('Temperature</br>').append(json.temp.data[json.temp.data.length - 1][1]).append('c');
-                $('#point-box').append('Energy Class</br>').append(EnergyClass(json.litres.data[json.litres.data.length - 1][1]));
-                $('#litres-box').append('Litres</br>').append(json.litres.data[json.litres.data.length - 1][1]).append('L');
-                $('#energy-box').append('Energy</br>').append((json.energy.data[json.energy.data.length - 1][1]/1000).toFixed(2)).append('kWh');
+                $('#temp-box').append(json.temp.data[json.temp.data.length - 1][1]).append('c');
+                $('#point-box').append(EnergyClass(json.litres.data[json.litres.data.length - 1][1]));
+                $('#litres-box').append(json.litres.data[json.litres.data.length - 1][1]).append('L');
+                $('#energy-box').append((json.energy.data[json.energy.data.length - 1][1]/1000).toFixed(2)).append('kWh');
                 
                             
                 function EnergyClass(a){
