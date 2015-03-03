@@ -1,10 +1,7 @@
-// Dynamically create real time Flot page.
-// Triggered onclick event ONLY!
+// Dynamically create real time graph.
 $(document).one('realtime',function(){ new successReal(); });
 
-
 var successReal = function() {
-    //$(document).on('click', '#graph', function(){
     
     var mapPage    =  $('<div>').attr({'id':'real','data-role':'page'}).appendTo('body');
     var mapHeader  = $('<div>').attr({'data-role':'header','id':'map-header'}).appendTo(mapPage);
@@ -19,7 +16,7 @@ var successReal = function() {
     $.mobile.changePage( "#real", { transition: "slide"});
     $('#real').on('pageshow',function(){
                   
-                  function plotAccordingToChoices1() {
+                function plotAccordingToChoices1() {
                   
                   var data1 = [];
                   var i = 0;
@@ -37,15 +34,15 @@ var successReal = function() {
                   
                   $.plot("#placeholder4", data1, {yaxis: {min: 0},xaxis: {mode: "time"}});
                   
-                  }
+                }
                   
-                  intern = setInterval(plotAccordingToChoices1,2000);
+                  internReal = setInterval(plotAccordingToChoices1,2000);
                   
                   }); // pageshow end
 } //end
 
 
-//$(document).one('realtime',function(){ new successR(); });
+//Real Time via Menu
 $('#realfeel').click(function(){ successR(); });
 
 var successR = function() {
@@ -75,24 +72,20 @@ var successR = function() {
     
 } //end
 
-// Show me Daily consumption.Stable Graph!!
+//Analysis  - Dates - Consumption
 $('#whole').click(function(){ successW();});
 
 var successW = function(){
     
     $('#spinner').show();
-
     $( "#tabs-2 li a" ).removeClass( "ui-btn-active" );
     $( "#year" ).addClass( "ui-btn-active" );
     var BudgetValue = window.localStorage.getItem('budget');
-    
-    $('#cbudget').text(BudgetValue);
     $('#budget').val(BudgetValue);
-    
     $('#budget').slider('refresh');
     
     var json1 = {
-        "litres" : {label: "Litres",data: [],xaxis: 1}
+        "litres" : {label: "Litres",data: []}
     };
     
     var dataset = [{
@@ -103,7 +96,6 @@ var successW = function(){
                    lines: { show: true }
                    }
                    ];
-    
     
     var options = {
                 xaxis: {
@@ -122,9 +114,6 @@ var successW = function(){
     
     var plot =  $.plot("#placeholder", dataset, options);
     
-    
-    $(function(){
-      
       $('#submitAnalysis').click(function(){
                         
                         var d1 = $('#mode1a').val();
@@ -143,8 +132,7 @@ var successW = function(){
                         plot.draw();
                         
                         });
-
-      
+    
       $('#today').click(function(){
                         
                         var start = new Date();
@@ -157,13 +145,12 @@ var successW = function(){
                         plot.draw();
                         
                         });
-      
-      
+    
       $('#week').click(function(){
                        
-                       var curr = new Date(); // get current date
-                       var first = curr.getDate() - curr.getDay(); // First day is the day of the month - the day of the week
-                       var last = first + 6; // last day is the first day + 6
+                       var curr = new Date();
+                       var first = curr.getDate() - curr.getDay();
+                       var last = first + 6;
                        var firstday = new Date(curr.setDate(first));
                        var lastday = new Date(curr.setDate(last));
                        plot.getOptions().xaxes[0].min = firstday;
@@ -181,8 +168,6 @@ var successW = function(){
                         var month = d.getMonth();
                         var firstOfMonth = new Date(year, month, 1);
                         var lastOfMonth = new Date(year, month+1, 0);
-                        //var used = firstOfMonth.getDay() + lastOfMonth.getDate();
-                        //var weeks = Math.ceil( used / 7);
                         plot.getOptions().xaxes[0].min = firstOfMonth;
                         plot.getOptions().xaxes[0].max = lastOfMonth;
                         plot.getOptions().xaxes[0].minTickSize = [3,"day" ];
@@ -210,15 +195,12 @@ var successW = function(){
       
       $('#budget').on('change', function () {
                       var bla = $('#budget').val();
-                      //$('#cbudget').text(bla);
                       window.localStorage.setItem('budget',bla);
                       plot.getOptions().grid.markings = [ { lineWidth: 2, yaxis: { from: bla, to: bla }, color: "#FF0000" }];
                       plot.setupGrid();
                       plot.draw();
                       
                       });
-      
-      });
     
     fetchData(function(jsn){
               dataset[0].data = jsn.litres.data;
@@ -235,7 +217,7 @@ var successW = function(){
         sm.db.transaction(function(tx) {
                           tx.executeSql('SELECT cdate,volume FROM feel WHERE his = 0 ',[], function(tx, results) {
                                         var len = results.rows.length;
-                                        //alert(len);
+                                        
                                         for (var i=0; i<len; i++){
                                             json1.litres.data.push([results.rows.item(i).cdate,results.rows.item(i).volume]);
                                         }
@@ -247,8 +229,8 @@ var successW = function(){
     }
     
 }
-//TESTING FOR VERTICAL
-//Current Consumption Page
+
+//Last Consumption
 $(document).on('last', function(){
 
                var values = JSON.parse(window.localStorage.getItem('jsonData'));
@@ -280,18 +262,7 @@ $(document).on('last', function(){
                
                });
 
-/*
-$('#deviceList').on('click', 'li', function() {
-                    //alert("Works"); // id of clicked li by directly accessing DOMElement property
-                    id = $(this).attr('data-name');
-                    //name = $(this).text();
-                    //alert(name);
-                    //var dev = {"id":id,"name":name};
-                    bleTransfer.connection(id);
-                    });
-
-*/
-
+//Current consumption.Boxes insted of graph
 $(document).one('current', function(){
                function plotBoxes() {
                 $('#temp-box').empty();$('#litres-box').empty();$('#point-box').empty();$('#energy-box').empty();
@@ -300,6 +271,19 @@ $(document).one('current', function(){
                 $('#litres-box').append(json.litres.data[json.litres.data.length - 1][1]).append('L');
                 $('#energy-box').append((json.energy.data[json.energy.data.length - 1][1]/1000).toFixed(2)).append('kWh');
                 
+                if (Bv == json.litres.data[json.litres.data.length - 1][1]){
+                
+                $('#resultDiv').append('<tr><td>ALERT!!! You reached the consumption budget!!!</td></tr>');
+                    resultDiv.scrollTop = resultDiv.scrollHeight;
+                
+                /*
+                    $("#notification").fadeIn("slow").append('You reached the budget limit!!!');
+                
+                    $(".dismiss").click(function(){
+                                    $("#notification").fadeOut("slow");
+                                    });
+                 */
+                }
                             
                 function EnergyClass(a){
                     if (a < 30){ return 'A+';}
@@ -328,18 +312,17 @@ $(document).one('current', function(){
                                     $("#notification").fadeOut("slow");
                                     });
 
-                
+                var Bv = window.localStorage.getItem('budget');
                 intern = setInterval(plotBoxes,2000);
             
                 
                               
                });
 
+//Simple Households compare(average consumption)
 $('#compare').click(function(){
                              
-                $(function(){
                   $('#submitAvg').click(function(){
-                                        // Get all the forms elements and their values in one step
                                         var d1 = $('#mode1').val();
                                         var d2 = $('#mode2').val();
                                         start = d1.split("-");
@@ -369,10 +352,10 @@ $('#compare').click(function(){
                                       }); //execute end
                                     }); //transaction end
                   }
-                  });
+                
                 });
 
-
+//Sharing functions
 $('#shareViaMail').click(function(){
                          
                          window.plugins.socialsharing.shareViaEmail (
@@ -411,7 +394,8 @@ $('#shareViaFb').click(function(){
 
 
 
-
+//Remove dynamically created page for real time
 $(document).on('pagehide', '#real', function(){
                $(this).remove();
+               clearInterval(internReal);
                });

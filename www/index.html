@@ -29,6 +29,7 @@
                     <a href="#" id="menupanel" data-role="button" class="panelbtn" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Menu</a> 
             </div>
             
+            <!-- Simple notification div -->
             <div id="notification" style="display: none;">
                 <span class="accept"><a title="accept this notification">OK</a></span>
                 <span class="dismiss"><a title="dismiss this notification">CLOSE</a></span>
@@ -46,11 +47,10 @@
                         <li data-icon="false"><a href="#tabs-7" id='community'>COMMUNITY</a></li>
                         <li data-icon="false"><a href="#tabs-8" id='preferences'>SETTINGS</a></li>
                     </ul>
-                    
-                   
+
+                    <!-- Show/Hide menu/panel script -->
                     <script>
-                    $('#menupanel').click(function(){
-                                              
+                        $('#menupanel').click(function(){
                                           $('#tabsmenu').show();
                                               var index = $("li.ui-tabs-active").index();
                                               //alert(index);
@@ -58,13 +58,10 @@
                                               var href = $('ul li a').eq(index).attr('href');
                                               //alert(href);
                                               $(href).hide();
-                                             
-                                              
+  
                                               });
                         
-                        
-                     $('ul').click('li',function(){
-                                   
+                        $('ul').click('li',function(){
                                        $('#tabsmenu').hide();
                                        var index = $("li.ui-tabs-active").index();
                                        //alert(index);
@@ -75,7 +72,6 @@
                                        });
                      	</script>
                  
-                    
                 <div id="tabs-1" >
                    	<div class='homeTab'>
                        	<div id='row_one'>
@@ -92,7 +88,6 @@
                                 <div id='energy-box' class="boxOther">0 kWh</div>
                             </div>
 
-                            
                             <table id="news">
                                 <thead>
                                     <tr><th>News-Alerts-Operations</th></tr>
@@ -108,18 +103,16 @@
                     <div class="demo-container">
                         <div data-role="navbar">
                             <ul>
+                                <li style="width:20%;"><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li style="width:20%;"><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#" id="submitAnalysis">Set Dates(From-To)</a></li>
                                 <li><a href="#" id="today">Today</a></li>
                                 <li><a href="#" id="week">Week</a></li>
                                 <li><a href="#" id="month">Month</a></li>
                                 <li><a href="#" class="ui-btn-active" id="year">Year</a></li>
                             </ul>
-                            <ul>
-                                <li><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
-                                <li><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
-                                <li><input  type="submit" id="submitAnalysis" value='Set'/></li>
-                                <li></li>
-                            </ul>
-
                         </div>
                         <div id="placeholder" class="demo-placeholder"></div>
                         <div data-role="fieldcontain" >
@@ -138,7 +131,6 @@
                                     <li><input type='checkbox' name='litres' checked='checked' id='litres' disabled></input><label for='litres'>Litres</label></li>
                                     <li><input type='checkbox' name='temp'  id='temp'></input><label for='temp'>Temp</label></li>
                                     <li><input type='checkbox' name='energy'  id='energy'></input><label for='energy'>Energy</label></li>
-                                    <li><input type='checkbox' name='index'  id='index'></input><label for='index'>ShowerID</label></li>
                                 </ul>
                             </div>
                         </div>
@@ -181,7 +173,7 @@
                 </div> <!-- tabs6 -->
                 
                 <div id="tabs-7">
-                    <p>Daiad@commons functionality</p>
+                    <p>TODO:Daiad@commons functionality</p>
                 </div>
             
                 <div id="tabs-8">
@@ -210,7 +202,6 @@
             </div><!--tabs-->
                 
         </div><!-- content -->
-            
             
     </div>
     <!--End Home Page-->

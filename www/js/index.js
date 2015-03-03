@@ -8,8 +8,7 @@ rxCharacteristic: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E" // receive is from the 
 var json = {
     "litres" : {label: "Litres",data: [],xaxis: 1},
     "temp" : {label: "Temperature",data: [],xaxis: 1},
-    "energy" : {label: "Energy",data: [],xaxis: 1},
-    "index" : {label: "Index",data: [],xaxis: 1}
+    "energy" : {label: "Energy",data: [],xaxis: 1}
 };
 
 /*push bluetooth packets*/
@@ -23,7 +22,6 @@ var app = {
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        //disconnectButton.addEventListener('touchstart', this.disconnect, false);
         refreshButton.addEventListener('touchstart', this.refreshDeviceList, false);
     },
     onDeviceReady: function() {
@@ -32,8 +30,6 @@ var app = {
         var bleconnection = new bleConnection();
         var uploading = new uploadTask();
         var sched = new scheduler();
-        
-        
     },
     
     refreshDeviceList: function() {
@@ -46,7 +42,6 @@ var app = {
     },
         
     onDiscoverDevice: function(device) {
-  
         var deviceId = device.id;
         onConnect = function() {
             var blemanager = new BluetoothManager({flag: 'connected',name: device.name, id: device.id});
@@ -66,7 +61,6 @@ var app = {
                     ble.connect(deviceId, onConnect, onError);
                 }
                 catch(ERROR) {}
-                
             }
         },
         
@@ -78,28 +72,24 @@ var app = {
         
             processData(data, function(a,b,c,d,e,f,g,k,l) {
                     if (c == 0) {
-                    json.litres.data.push([k,b]);
-                    json.temp.data.push([k,a]);
-                    json.energy.data.push([k,l]);
-                    json.index.data.push([k,e]);
+                        json.litres.data.push([k,b]);
+                        json.temp.data.push([k,a]);
+                        json.energy.data.push([k,l]);
                     }
+                        
                     if (json.litres.data.length > 5)
                          {
                               json.litres.data.shift();
                               json.temp.data.shift();
                               json.energy.data.shift();
-                              json.index.data.shift();
                           }
-                    
                         
                         sm.FeelData(a,b,e,c,d,f,g,k,l);
-                         
                     });
         
             function processData(arg1,callback) {
                 
                 var vw = new Uint8Array(arg1);
-            
                 t = vw[0];
                 v= (256*vw[1] + vw[2])/10;
                 i = (256*vw[3])+vw[4];
@@ -112,7 +102,6 @@ var app = {
                 var s = v*(t-15)*4.182;
                 var ee = s/3.6;
                 var e = Math.round(ee * 10) / 10;
-                
                 
                 packets.push({
                          "Temperature":t,
@@ -133,32 +122,7 @@ var app = {
         
     checkBluetooth : function() {
             ble.isEnabled(function(){alert("Bluetooth is enabled");},function(){alert("Bluetooth is *not* enabled");});
-    },
-        
-    //If device is Known connect without scan with the id!!
-    connectKnown : function() {
-        onConnectKnown = function() {
-            //clearInterval(connectionInterval);
-            var blemanager = new BluetoothManager({flag: 'connected'});
-            blemanager.response();
-            ble.startNotification(knownDevices.id, bluefruit.serviceUUID, bluefruit.rxCharacteristic,app.onData,app.onError);
-        };
-        ble.connect(knownDevices.id, onConnectKnown, app.onError);
-    },
-        
-    
-    onError: function(reason) {
-        //alert("ERROR: " + reason); // real apps should use notification.alert
-        if (reason == 'Disconnected')
-        {
-            //connectionInterval= setInterval(app.connectKnown,1000);
-            var blemanager = new BluetoothManager({flag: 'Disconnected'});
-            blemanager.response();
-            window.localStorage.setItem('jsonData',JSON.stringify(json));
-            $.event.trigger({type : 'last'});
-        }
     }
-    
 };
 
 app.initialize();
