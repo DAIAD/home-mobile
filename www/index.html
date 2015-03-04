@@ -15,7 +15,7 @@
                     $(function() {
                       $("body").fadeIn(2000);
                       $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-                      $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+                      $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );  
                       });
                 </script>
                 
@@ -41,7 +41,7 @@
                         <li data-icon="false"><a href="#tabs-1" id='ble'>HOME</a></li>
                         <li data-icon="false"><a href="#tabs-2" id='whole'>ANALYSIS</a></li>
                         <li data-icon="false"><a href="#tabs-3" id='realfeel'>REAL TIME</a></li>
-                        <li data-icon="false"><a href="#tabs-4" id='current'>QUIZ</a></li>
+                        <li data-icon="false"><a href="#tabs-4" id='history'>HISTORY(ShowerID)</a></li>
                         <li data-icon="false"><a href="#tabs-5" id='compare'>COMPARE</a></li>
                         <li data-icon="false"><a href="#tabs-6" id='share'>SHARE</a></li>
                         <li data-icon="false"><a href="#tabs-7" id='community'>COMMUNITY</a></li>
@@ -49,7 +49,9 @@
                     </ul>
 
                     <!-- Show/Hide menu/panel script -->
-                    <script>
+                <script>
+                    if($(window).width() < 768){
+                                             
                         $('#menupanel').click(function(){
                                           $('#tabsmenu').show();
                                               var index = $("li.ui-tabs-active").index();
@@ -70,27 +72,29 @@
                                         //alert(href);
                                         $(href).show();
                                        });
+                                            }
                      	</script>
                  
                 <div id="tabs-1" >
                    	<div class='homeTab'>
                        	<div id='row_one'>
                             <div id="apCon">
-                                <div class="boxCategory">Connected Appliances</div>
-                                <div id='deviceList'></div>
+                                <div class="boxCategory">CONNECTED APPLIANCES</div>
+                                <div id='deviceList' class="boxCategory"></div>
                             </div>
                             
                             <div id="currentData" >
-                                <div class="boxCategory">Current Consumption</div>
-                                <div id='litres-box' class="boxOther">0 L</div>
-                                <div id='point-box' class="boxOther">A+</div>
+                                <div class="boxCategory">CURRENT CONSUMPTION</div>
+                                <div id='litres-box' class="boxLitres">0 L</div>
+                                <div id='energy-box' class="boxEnergy">0 kWh</div>
                                 <div id='temp-box' class="boxOther">0 C</div>
-                                <div id='energy-box' class="boxOther">0 kWh</div>
+                                <div id='point-box' class="boxOther">A+</div>
+                                
                             </div>
 
                             <table id="news">
                                 <thead>
-                                    <tr><th>News-Alerts-Operations</th></tr>
+                                    <tr><th>NEWS-ALERTS-OPERATIONS</th></tr>
                                 </thead>
                                 <tbody id='resultDiv'></tbody>
                             </table>
@@ -101,10 +105,11 @@
                 <div id="tabs-2">
                     <div id="spinner" ></div>
                     <div class="demo-container">
+                       
                         <div data-role="navbar">
                             <ul>
-                                <li style="width:20%;"><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
-                                <li style="width:20%;"><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li ><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li ><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
                             </ul>
                             <ul>
                                 <li><a href="#" id="submitAnalysis">Set Dates(From-To)</a></li>
@@ -115,10 +120,6 @@
                             </ul>
                         </div>
                         <div id="placeholder" class="demo-placeholder"></div>
-                        <div data-role="fieldcontain" >
-                            <label for="budget">Consumption Budget:</label>
-                            <input type="range" name="budget" id="budget" value="" min="0" max="300" step='10' data-highlight="true"  />
-                        </div>
                     </div>
                 </div>
                 
@@ -139,7 +140,12 @@
                 </div>
                 
                 <div id="tabs-4" >
-                    <p>TODO: Quiz functionality</p>
+                    
+                    <div class="demo-container">
+                        <p>History Consumption(Litres) per Shower</p>
+                        <div id="placeholderh" class="demo-placeholder"></div>
+                    </div>
+
                 </div>
                 
                 <div id="tabs-5">
@@ -178,6 +184,11 @@
             
                 <div id="tabs-8">
                     <div class='preferences' >
+                     <div data-role="fieldcontain" >
+                            <label for="budget">Consumption Budget:</label>
+                            <input type="range" name="budget" id="budget" value="" min="0" max="300" step='10' data-highlight="true"  />
+                        </div>
+                     
                         <div data-role="fieldcontain" >
                             <label for="slider2">Notifications:</label>
                             <select name="slider2" id="slider2" data-role="slider">

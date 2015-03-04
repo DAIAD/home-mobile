@@ -72,6 +72,60 @@ var successR = function() {
     
 } //end
 
+$('#history').click(function(){ successH();});
+var successH = function(){
+
+    var historyData = {
+        "litres" : {label: "Litres",data: []}
+    };
+    
+    var dataset = [{
+                   label: "Consumption",
+                   data: [],
+                   yaxis: 1,
+                   color: "#1e90ff",
+                   lines: {show: true}
+                   }
+                   ];
+    
+    var ploth = $.plot("#placeholderh",dataset, { series: {
+           yaxis: {min: 0},
+           xaxis: {tickDecimals: 0}
+           }
+           });
+
+
+    fetchHistoryData(function(jsn){
+              dataset[0].data = jsn.litres.data;
+              ploth.setData(dataset);
+              ploth.setupGrid();
+              ploth.draw();
+              //$('#spinner').hide();
+              
+              });
+    
+    
+    function fetchHistoryData(callback){
+        historyData.litres.data.length=0;
+        sm.db.transaction(function(tx) {
+                          tx.executeSql('SELECT indexs,volume FROM feel WHERE his = 1 order by indexs ',[], function(tx, results) {
+                                        var len = results.rows.length;
+                                        
+                                        for (var i=0; i<len; i++){
+                                        historyData.litres.data.push([results.rows.item(i).indexs,results.rows.item(i).volume]);
+                                        }
+                                        callback(historyData);
+                                        
+                                        }); //execute end
+                          }); //transaction end
+        
+    }
+
+    
+    
+}
+
+
 //Analysis  - Dates - Consumption
 $('#whole').click(function(){ successW();});
 
@@ -92,8 +146,8 @@ var successW = function(){
                    label: "Consumption",
                    data: [],
                    yaxis: 1,
-                   color: "#1e90ff" ,
-                   lines: { show: true }
+                   color: "#1e90ff",
+                   lines: {show: true}
                    }
                    ];
     
@@ -105,7 +159,7 @@ var successW = function(){
                     max: (new Date(2016, 0, 1)).getTime(),
                     twelveHourClock: false
                     },
-                yaxis: { min: 0 },
+                yaxis: { min: 0,ticks: 10 },
                 grid: {
                     markings: [ { lineWidth: 2, yaxis: { from: BudgetValue, to: BudgetValue }, color: "#FF0000" }]
                     }
@@ -113,6 +167,8 @@ var successW = function(){
     
     
     var plot =  $.plot("#placeholder", dataset, options);
+    
+    
     
       $('#submitAnalysis').click(function(){
                         
@@ -359,7 +415,7 @@ $('#compare').click(function(){
 $('#shareViaMail').click(function(){
                          
                          window.plugins.socialsharing.shareViaEmail (
-                                                                     'Packets: ' + JSON.stringify(packets) + '!Well done' ,
+                                                                     'Packets: ' + JSON.stringify(packets)  ,
                                                                      'Total packets',
                                                                      null, // TO: must be null or an array
                                                                      null, // CC: must be null or an array

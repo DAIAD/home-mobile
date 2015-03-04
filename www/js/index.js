@@ -5,6 +5,10 @@ txCharacteristic: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E", // transmit is from th
 rxCharacteristic: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E" // receive is from the phone's perspective
 };
 
+
+var diffv = [];
+var diffe = [];
+
 var json = {
     "litres" : {label: "Litres",data: [],xaxis: 1},
     "temp" : {label: "Temperature",data: [],xaxis: 1},
@@ -12,7 +16,11 @@ var json = {
 };
 
 /*push bluetooth packets*/
-var packets = [];
+var packets = {
+    "applicationKey":"c11f91c3-579b-48e8-afbd-988bf517ebdc",
+    "deviceId":"ddc847df-c0c5-4cff-ba12-11ede01356c5",
+    "measurements":[]
+};
 
 //Initialize the app with components at startup
 var app = {
@@ -29,7 +37,7 @@ var app = {
         sm.openDb();
         var bleconnection = new bleConnection();
         var uploading = new uploadTask();
-        var sched = new scheduler();
+        //var sched = new scheduler();
     },
     
     refreshDeviceList: function() {
@@ -46,7 +54,7 @@ var app = {
         onConnect = function() {
             var blemanager = new BluetoothManager({flag: 'connected',name: device.name, id: device.id});
             blemanager.response();
-            $('#deviceList').append(device.name + '<img src="img/amphiro.png" width="40" height="40"/></br>');
+            $('#deviceList').append(device.name);
             ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, onData, onError);
         },
         
@@ -64,6 +72,13 @@ var app = {
             }
         },
         
+        uploadData = function(){
+        
+            var ntfmanager = new NotificationManager({flag: 'start',id:deviceId});
+            ntfmanager.response();
+        
+        },
+        
         onData = function(data) { // data received from Arduino
             $.event.trigger({type:'current'});
             
@@ -71,48 +86,59 @@ var app = {
             //data packet (9bytes) = 1b temp | 2b volume | 2b shower number(index) | 1b history | 2b shower time(relative) |  1 byte lbyte
         
             processData(data, function(a,b,c,d,e,f,g,k,l) {
-                    if (c == 0) {
-                        json.litres.data.push([k,b]);
-                        json.temp.data.push([k,a]);
-                        json.energy.data.push([k,l]);
-                    }
-                        
-                    if (json.litres.data.length > 5)
-                         {
-                              json.litres.data.shift();
-                              json.temp.data.shift();
-                              json.energy.data.shift();
-                          }
                         
                         sm.FeelData(a,b,e,c,d,f,g,k,l);
+                    
                     });
         
             function processData(arg1,callback) {
-                
                 var vw = new Uint8Array(arg1);
                 t = vw[0];
                 v= (256*vw[1] + vw[2])/10;
                 i = (256*vw[3])+vw[4];
                 h = vw[5];
                 st = (256*vw[6])+vw[7];
-                bt = 0;
-                cf = 0;
-                var n = new Date();
-                var d = n.getTime();
-                var s = v*(t-15)*4.182;
-                var ee = s/3.6;
-                var e = Math.round(ee * 10) / 10;
+                bt = 0;cf = 0; /*keep for analysis firmware*/
+                var d = new Date().getTime();
+                var e = Math.round((v*(t-10)*4.182)/3.6 * 10) / 10;
+
+                if (h == 0){
+                    json.litres.data.push([d,v]);
+                    json.temp.data.push([d,t]);
+                    json.energy.data.push([d,e]);
+                    
+                    diffv.push(v);
+                    diffe.push(e);
+                    
+                    if (diffv.length == 2 ) {
+                        
+                        dv = diffv[1] - diffv[0];
+                        de = diffe[1] - diffe[0];
+                        
+                        packets.measurements.push({
+                                                      "temperature":t,
+                                                      "volume":dv,
+                                                      "energy":de,
+                                                      "showerID":i,
+                                                      "history":h,
+                                                      "showerTime":st,
+                                                      "timestamp":d,
+                                                      });
+                        
+                        diffv.length = 0;
+                        diffe.length = 0;
+                    }
+
+                }
+
+                if (json.litres.data.length > 5)
+                {
+                    json.litres.data.shift();
+                    json.temp.data.shift();
+                    json.energy.data.shift();
+                }
+
                 
-                packets.push({
-                         "Temperature":t,
-                         "Volume":v,
-                         "Energy":e,
-                         "ShowerID":i,
-                         "History":h,
-                         "ShowerTime":st,
-                         "Timestamp":d,
-                         });
-            
                 callback(t,v,h,st,i,bt,cf,d,e);
             }
         }
@@ -123,6 +149,7 @@ var app = {
     checkBluetooth : function() {
             ble.isEnabled(function(){alert("Bluetooth is enabled");},function(){alert("Bluetooth is *not* enabled");});
     }
+    
 };
 
 app.initialize();

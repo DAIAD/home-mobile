@@ -20,49 +20,6 @@ var EventBus = {
     }
 };
 
-/*
-document.addEventListener("online", onOnline, false);
-document.addEventListener("offline", onOffline, false);
-
-var checkWifi = function() {
-    EventBus.subscribe('contextManager/wifi', this.sendResponse);
-};
-
-checkWifi.prototype = {
-    sendResponse: function(flag) {
-        //alert("Wifi : " + flag);
-        //resultDiv.innerHTML = resultDiv.innerHTML + "Wifi status " + flag + "</br>";
-        //resultDiv.scrollTop = resultDiv.scrollHeight;
-        $('#resultDiv').append('<tr><td> Wifi status:' + flag + '</td></tr>');
-    }
-};
-
-var WifiManager = function(param) {
-    this.param = param;
-};
-
-WifiManager.prototype = {
-    response: function() {
-        EventBus.publish('contextManager/wifi', this.param.flag);
-    }
-};
-
-
-function onOnline() {
-    // Handle the online event
-    var wifimanager = new WifiManager({flag: 'enabled'});
-    wifimanager.response();
-}
-
-
-function onOffline() {
-    // Handle the offline event
-    var wifimanager = new WifiManager({flag: 'disabled'});
-    wifimanager.response();
-    
-}
- 
- */
 
 /* Check Network Connection */
 function checkConnection() {
@@ -84,7 +41,7 @@ function checkConnection() {
 
 }
 
-//Subscriber to bluetooth connection
+/*Subscriber to bluetooth connection*/
 var bleConnection = function() {
     EventBus.subscribe('contextManager/ble', this.sendResponse);
 };
@@ -100,12 +57,13 @@ bleConnection.prototype = {
         
         if (param.flag == 'Disconnected'){
             $('#resultDiv').append('<tr><td>Device(Name-ID) :: ' + param.id + ' >>>  Device Status :: ' + param.flag + '</td></tr>');
-            $('#resultDiv').append('<tr><td> Transmitted packets :: ' + packets.length +  '</td></tr>');
+            $('#resultDiv').append('<tr><td> Transmitted packets :: ' + packets.measurements.length +  '</td></tr>');
             resultDiv.scrollTop = resultDiv.scrollHeight;
         }
     }
 };
 
+/*Bluetooth Manager*/
 var BluetoothManager = function(param) {
     this.param = param;
 };
@@ -116,17 +74,35 @@ BluetoothManager.prototype = {
     }
 };
 
+/*Notification Manager*/
+var NotificationManager = function(param) {
+    this.param = param;
+};
 
-//Subscriber to scheduler event
+NotificationManager.prototype = {
+    response: function() {
+        EventBus.publish('notification/upload', this.param);
+    }
+};
+
+
+/*Uploading data task*/
 var uploadTask = function() {
-    EventBus.subscribe('upload', this.sendResponse);
+    EventBus.subscribe('notification/upload', this.sendResponse);
 };
 
 uploadTask.prototype = {
-    sendResponse: function(flag) {
-        if (flag == 'start'){
-            $('#resultDiv').append('<tr><td>'+ new Date() +' :: Wifi detected!Trying remote connection with server..</td></tr>');
-            resultDiv.scrollTop = resultDiv.scrollHeight;
+    sendResponse: function(param) {
+        if (param.flag == 'start'){
+            
+            var InternetConnection  =  checkConnection();
+            
+            if ( InternetConnection == 'WiFi connection' ){
+                
+                $('#resultDiv').append('<tr><td>'+ new Date() +' :: Wifi detected!'+ param.id +' trying remote connection with server..</td></tr>');
+                $('#resultDiv').append('<tr><td> Uploading  :: ' + packets.measurements.length +  ' packets .. </td></tr>');
+                resultDiv.scrollTop = resultDiv.scrollHeight;
+            
             
             /*Ajax request - post data*/
             /*
@@ -145,7 +121,7 @@ uploadTask.prototype = {
              });
              
              */
-            
+            }
         }
     }
 };
@@ -161,6 +137,8 @@ uploadTask.prototype = {
  Todo: implement specific intervals 
  
  */
+
+/*Scheduler*/
 var scheduler = function() {
     EventBus.subscribe('contextManager/ble', this.sendResponse);
 };
