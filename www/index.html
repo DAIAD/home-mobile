@@ -18,6 +18,7 @@
                       $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );  
                       });
                 </script>
+                <title>Daiad</title>
                 
     </head>
     
@@ -110,6 +111,9 @@
                             <ul>
                                 <li ><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
                                 <li ><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li></li>
+                                <li><input value="Consum. Budget" disabled/></li>
+                                <li><input name="budget" id="budget" value=""/></li>
                             </ul>
                             <ul>
                                 <li><a href="#" id="submitAnalysis">Set Dates(From-To)</a></li>
@@ -141,11 +145,12 @@
                 
                 <div id="tabs-4" >
                     
+                    <p> Total Water Consumption(Litres) Per Shower - Device Disconnected</p>
                     <div class="demo-container">
-                        <p>History Consumption(Litres) per Shower</p>
                         <div id="placeholderh" class="demo-placeholder"></div>
                     </div>
-
+                   
+                   
                 </div>
                 
                 <div id="tabs-5">
@@ -158,12 +163,18 @@
                         </div>
    
                         <div id="averageBoxes">
-                            <p>Your average Consumption(Litres) : </p>
-                            <div id="average" class='boxOther'></div>
-                            <p>Similar Households consumption (Litres) : </p>
-                            <div id="households" class='boxOther'>76</div>
-                            <p>Status : </p>
-                            <div id="compStatus" class='boxOther'></div>
+                            <div style="width:30%;height:100%;float:left;">
+                                <p>Your average Consumption (Litres) : </p>
+                                <div id="average" class='boxAvg'></div>
+                            </div>
+                            <div style="width:30%;height:100%;float:left;">
+                                <p>Similar Households consumption (Litres) : </p>
+                                <div id="households" class='boxAvg'></div>
+                            </div>
+                            <div style="width:30%;height:100%;float:left;">
+                                <p> Consumption Comparison Status : </p>
+                                <div id="compStatus" class='boxAvg'></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -184,10 +195,7 @@
             
                 <div id="tabs-8">
                     <div class='preferences' >
-                     <div data-role="fieldcontain" >
-                            <label for="budget">Consumption Budget:</label>
-                            <input type="range" name="budget" id="budget" value="" min="0" max="300" step='10' data-highlight="true"  />
-                        </div>
+                     
                      
                         <div data-role="fieldcontain" >
                             <label for="slider2">Notifications:</label>

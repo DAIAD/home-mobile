@@ -75,6 +75,8 @@ var successR = function() {
 $('#history').click(function(){ successH();});
 var successH = function(){
 
+    
+    
     var historyData = {
         "litres" : {label: "Litres",data: []}
     };
@@ -88,21 +90,25 @@ var successH = function(){
                    }
                    ];
     
-    var ploth = $.plot("#placeholderh",dataset, { series: {
+    var plot = $.plot("#placeholderh",dataset, { series: {
            yaxis: {min: 0},
-           xaxis: {tickDecimals: 0}
-           }
+            xaxis: {tickDecimals: 0},
+            points: {
+                      show: true
+                      }
+                      }
            });
-
-
+    
+    
     fetchHistoryData(function(jsn){
               dataset[0].data = jsn.litres.data;
-              ploth.setData(dataset);
-              ploth.setupGrid();
-              ploth.draw();
+              plot.setData(dataset);
+              plot.setupGrid();
+              plot.draw();
               //$('#spinner').hide();
               
               });
+    
     
     
     function fetchHistoryData(callback){
@@ -136,7 +142,7 @@ var successW = function(){
     $( "#year" ).addClass( "ui-btn-active" );
     var BudgetValue = window.localStorage.getItem('budget');
     $('#budget').val(BudgetValue);
-    $('#budget').slider('refresh');
+    //$('#budget').slider('refresh');
     
     var json1 = {
         "litres" : {label: "Litres",data: []}
@@ -147,7 +153,7 @@ var successW = function(){
                    data: [],
                    yaxis: 1,
                    color: "#1e90ff",
-                   lines: {show: true}
+                   bars: {show: true}
                    }
                    ];
     
@@ -163,6 +169,7 @@ var successW = function(){
                 grid: {
                     markings: [ { lineWidth: 2, yaxis: { from: BudgetValue, to: BudgetValue }, color: "#FF0000" }]
                     }
+                
         };
     
     
@@ -174,7 +181,11 @@ var successW = function(){
                         
                         var d1 = $('#mode1a').val();
                         var d2 = $('#mode2a').val();
-                                 
+                                 if (d1 == 0 || d2 == 0){
+                                 navigator.notification.alert('Please fill Dates From/To!',onDone,'Analysis','Done');
+                                 function onDone(){return;}
+                                 return;
+                                 }
                         start = d1.split("-");
                         stop = d2.split("-");
                         var months = new Date(start[0],start[1]-1,start[2]).getTime();
@@ -195,8 +206,8 @@ var successW = function(){
                         var end = new Date();
                         plot.getOptions().xaxes[0].min = start.setHours(0,0,0,0);
                         plot.getOptions().xaxes[0].max = end.setHours(23,59,59,999);
-                        plot.getOptions().xaxes[0].minTickSize = [1,"hour"];
-                        plot.getOptions().xaxes[0].twelveHourClock = true;
+                        plot.getOptions().xaxes[0].minTickSize = [4,"hour"];
+                        plot.getOptions().xaxes[0].twelveHourClock = false;
                         plot.setupGrid();
                         plot.draw();
                         
@@ -271,9 +282,9 @@ var successW = function(){
     function fetchData(callback){
         json1.litres.data.length=0;
         sm.db.transaction(function(tx) {
-                          tx.executeSql('SELECT cdate,volume FROM feel WHERE his = 0 ',[], function(tx, results) {
+                          tx.executeSql('SELECT cdate,volume FROM (SELECT * from feel where his == 0 group by indexs ) order by cdate  ',[], function(tx, results) {
                                         var len = results.rows.length;
-                                        
+                                      
                                         for (var i=0; i<len; i++){
                                             json1.litres.data.push([results.rows.item(i).cdate,results.rows.item(i).volume]);
                                         }
@@ -328,8 +339,8 @@ $(document).one('current', function(){
                 $('#energy-box').append((json.energy.data[json.energy.data.length - 1][1]/1000).toFixed(2)).append('kWh');
                 
                 if (Bv == json.litres.data[json.litres.data.length - 1][1]){
-                
-                $('#resultDiv').append('<tr><td>ALERT!!! You reached the consumption budget!!!</td></tr>');
+                    navigator.notification.beep(1);
+                    $('#resultDiv').append('<tr><td>ALERT!!! You reached the consumption budget!!!</td></tr>');
                     resultDiv.scrollTop = resultDiv.scrollHeight;
                 
                 /*
@@ -358,7 +369,10 @@ $(document).one('current', function(){
                 $.event.trigger({type:'realtime'});
                 } else {}
                  */
-                $("#notification").fadeIn("slow").append('Real time...?');
+              
+                navigator.notification.beep(1);
+                $('#resultDiv').append('<tr><td>Transmission in progress..</td></tr>');
+                $("#notification").fadeIn("slow").append('Transmission in progress..Click OK to see');
                 
                 $(".accept").click(function(){
                                    $.event.trigger({type:'realtime'});
@@ -379,6 +393,7 @@ $(document).one('current', function(){
 $('#compare').click(function(){
                              
                   $('#submitAvg').click(function(){
+                                        
                                         var d1 = $('#mode1').val();
                                         var d2 = $('#mode2').val();
                                         start = d1.split("-");
@@ -386,8 +401,9 @@ $('#compare').click(function(){
                                         var months = new Date(start[0],start[1]-1,start[2]).getTime();
                                         var monthf = new Date(stop[0],stop[1]-1,stop[2]).getTime();
                                         fetchDateData(months,monthf,function(avg){
-                                                      $('#average').empty();$('#compStatus').empty();
+                                                      $('#average').empty();$('#compStatus').empty();$('#households').empty();
                                                       $('#average').append(avg);
+                                                      $('#households').append(Math.floor(Math.random() * 100));
                                                       var hholds = $('#households').text();
                                                       
                                                       $('#compStatus').append(compareSimilar);
@@ -395,6 +411,7 @@ $('#compare').click(function(){
                                                         if (avg >= hholds) { return 'BAD'; }
                                                         else
                                                             return 'GOOD';
+                                                      
                                                       }
                                                       
                                                       });

@@ -41,7 +41,7 @@ var app = {
     },
     
     refreshDeviceList: function() {
-        deviceList.innerHTML = ''; // empties the list
+        $('#deviceList').empty(); // empties the list
         if (cordova.platformId === 'android' ) { // Android filtering is broken
             ble.scan([], 10, app.onDiscoverDevice, app.onError);
         } else {
@@ -54,7 +54,7 @@ var app = {
         onConnect = function() {
             var blemanager = new BluetoothManager({flag: 'connected',name: device.name, id: device.id});
             blemanager.response();
-            $('#deviceList').append(device.name);
+            $('#deviceList').empty().append(device.name);
             ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, onData, onError);
         },
         
@@ -64,8 +64,9 @@ var app = {
             {
                 var blemanager = new BluetoothManager({flag: 'Disconnected',id:deviceId});
                 blemanager.response();
-                deviceList.innerHTML = '';
+                
                 try {
+                	$('#deviceList').empty();
                     ble.connect(deviceId, onConnect, onError);
                 }
                 catch(ERROR) {}
