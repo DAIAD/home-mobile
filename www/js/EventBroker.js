@@ -52,10 +52,12 @@ bleConnection.prototype = {
         if (param.flag == 'connected'){
             
             $('#resultDiv').append('<tr><td>Device(Name-ID) :: '+ param.name + ' : ' + param.id + '  >>>  Device Status :: '+ param.flag +'</td></tr>');
+            $('#deviceList').append(param.name +'</br>');
             resultDiv.scrollTop = resultDiv.scrollHeight;
         }
         
         if (param.flag == 'Disconnected'){
+            $('#deviceList').empty();
             $('#resultDiv').append('<tr><td>Device(Name-ID) :: ' + param.id + ' >>>  Device Status :: ' + param.flag + '</td></tr>');
             $('#resultDiv').append('<tr><td> Transmitted packets :: ' + packets.measurements.length +  '</td></tr>');
             resultDiv.scrollTop = resultDiv.scrollHeight;

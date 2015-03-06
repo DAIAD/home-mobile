@@ -22,6 +22,7 @@ var packets = {
     "measurements":[]
 };
 
+
 //Initialize the app with components at startup
 var app = {
     
@@ -50,24 +51,22 @@ var app = {
     },
         
     onDiscoverDevice: function(device) {
-        var deviceId = device.id;
+        //var deviceId = device.id;
         onConnect = function() {
             var blemanager = new BluetoothManager({flag: 'connected',name: device.name, id: device.id});
             blemanager.response();
-            $('#deviceList').empty().append(device.name);
-            ble.startNotification(deviceId, bluefruit.serviceUUID, bluefruit.rxCharacteristic, onData, onError);
+         
+            ble.startNotification(device.id, bluefruit.serviceUUID, bluefruit.rxCharacteristic, onData, onError);
         },
-        
+                
         onError = function(reason){
             //alert("ERROR: " + reason); // real apps should use notification.alert
             if (reason == 'Disconnected')
             {
-                var blemanager = new BluetoothManager({flag: 'Disconnected',id:deviceId});
+                var blemanager = new BluetoothManager({flag: 'Disconnected',id:device.id});
                 blemanager.response();
-                
                 try {
-                	$('#deviceList').empty();
-                    ble.connect(deviceId, onConnect, onError);
+                        ble.connect(device.id, onConnect, onError);
                 }
                 catch(ERROR) {}
             }
@@ -81,7 +80,8 @@ var app = {
         },
         
         onData = function(data) { // data received from Arduino
-            $.event.trigger({type:'current'});
+            
+               $.event.trigger({type:'progress'});
             
             //data packet(12bytes) = 1b temp | 2b volume | 2b shower number | 1b history | 2b shower time | 1b reserved | 1b breaktime - cycle | 1b cycle flag | 1 byte lbyte
             //data packet (9bytes) = 1b temp | 2b volume | 2b shower number(index) | 1b history | 2b shower time(relative) |  1 byte lbyte
@@ -120,7 +120,7 @@ var app = {
                                                       "temperature":t,
                                                       "volume":dv,
                                                       "energy":de,
-                                                      "showerID":i,
+                                                      "showerId":i,
                                                       "history":h,
                                                       "showerTime":st,
                                                       "timestamp":d,
@@ -139,17 +139,19 @@ var app = {
                     json.energy.data.shift();
                 }
 
-                
+                $.event.trigger({type:'current',message: json});
                 callback(t,v,h,st,i,bt,cf,d,e);
             }
         }
 
-        ble.connect(deviceId, onConnect, onError);
+        ble.connect(device.id, onConnect, onError);
     },
         
     checkBluetooth : function() {
             ble.isEnabled(function(){alert("Bluetooth is enabled");},function(){alert("Bluetooth is *not* enabled");});
     }
+    
+    
     
 };
 

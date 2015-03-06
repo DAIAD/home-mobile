@@ -13,7 +13,6 @@
                 <script type="text/javascript" src="libs/jqm-datebox.mode.calbox.js"></script>
                 <script>
                     $(function() {
-                      $("body").fadeIn(2000);
                       $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
                       $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );  
                       });
@@ -22,7 +21,7 @@
                 
     </head>
     
-    <body style="display:none;">
+    <body>
         
         <div data-role="page" id="home" >
             <div data-role="header">
@@ -33,7 +32,6 @@
             <!-- Simple notification div -->
             <div id="notification" style="display: none;">
                 <span class="accept"><a title="accept this notification">OK</a></span>
-                <span class="dismiss"><a title="dismiss this notification">CLOSE</a></span>
             </div>
             
             <div data-role="content">
@@ -144,7 +142,7 @@
                 </div>
                 
                 <div id="tabs-4" >
-                    
+                    <div id="spinner2" ></div>
                     <p> Total Water Consumption(Litres) Per Shower - Device Disconnected</p>
                     <div class="demo-container">
                         <div id="placeholderh" class="demo-placeholder"></div>
@@ -164,15 +162,15 @@
    
                         <div id="averageBoxes">
                             <div style="width:30%;height:100%;float:left;">
-                                <p>Your average Consumption (Litres) : </p>
+                                <p>Your Average Consumption  : </p>
                                 <div id="average" class='boxAvg'></div>
                             </div>
                             <div style="width:30%;height:100%;float:left;">
-                                <p>Similar Households consumption (Litres) : </p>
+                                <p>Similar Households  : </p>
                                 <div id="households" class='boxAvg'></div>
                             </div>
                             <div style="width:30%;height:100%;float:left;">
-                                <p> Consumption Comparison Status : </p>
+                                <p> Consumption Comparison : </p>
                                 <div id="compStatus" class='boxAvg'></div>
                             </div>
                         </div>
@@ -184,7 +182,7 @@
                     <div class="sharing">
                         <p>Share your consumption : </p>
                         <button id="shareViaMail">Share Via Email</button>
-                        <button id="shareViaFb">Share Via Facebook</button>
+                        <!--<button id="shareViaFb">Share Via Facebook</button>-->
                         <div id="resultSharing"></div>
                     </div>
                 </div> <!-- tabs6 -->

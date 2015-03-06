@@ -202,7 +202,7 @@ and (max-device-width : 640px) {
 #dateSelection{width:50%;height:50%;}
 #averageBoxes{width:100%;height:50%;}
 
-.sharing { width:50%;height:50%;border: 1px #267df2 groove;background-color: lightblue;}
+.sharing { width:50%;height:50%;border: 1px #267df2 groove;}
 
 thead,tbody { display: block; }
 #news {
@@ -234,12 +234,11 @@ thead,tbody { display: block; }
 #notification {
     position:fixed;
     top:5%;
-    width:90%;
-    padding:5%;
+    width:96%;
+    padding:2%;
     z-index:105;
     text-align:center;
-    font-size:100%;
-    border: 1px #267df2 groove;
-    background-color: lightblue;
+    font-size:120%;
+    background-color: #4ea5cd; border-color: #3b8eb5;
 }
 

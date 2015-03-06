@@ -76,7 +76,7 @@ $('#history').click(function(){ successH();});
 var successH = function(){
 
     
-    
+    $('#spinner2').show();
     var historyData = {
         "litres" : {label: "Litres",data: []}
     };
@@ -86,30 +86,30 @@ var successH = function(){
                    data: [],
                    yaxis: 1,
                    color: "#1e90ff",
-                   lines: {show: true}
+                   bars: {show: true}
                    }
                    ];
     
-    var plot = $.plot("#placeholderh",dataset, { series: {
-           yaxis: {min: 0},
-            xaxis: {tickDecimals: 0},
-            points: {
-                      show: true
-                      }
+    var plot = $.plot("#placeholderh",dataset,
+                      {
+                      series: {
+                      yaxis: {min: 0},
+                      xaxis: {tickDecimals: 0},
+                      },
+                      bars: {
+                        align: "center",
+                        barWidth: 1
                       }
            });
-    
     
     fetchHistoryData(function(jsn){
               dataset[0].data = jsn.litres.data;
               plot.setData(dataset);
               plot.setupGrid();
               plot.draw();
-              //$('#spinner').hide();
+              $('#spinner2').hide();
               
               });
-    
-    
     
     function fetchHistoryData(callback){
         historyData.litres.data.length=0;
@@ -153,12 +153,16 @@ var successW = function(){
                    data: [],
                    yaxis: 1,
                    color: "#1e90ff",
-                   bars: {show: true}
+                   bars: {
+                   show: true,
+                   align: "center",
+                   barWidth: 12*24*60*60,
+                   fill: true
                    }
-                   ];
+                   }];
     
     var options = {
-                xaxis: {
+                   xaxis: {
                     mode: "time",
                     minTickSize: [1, "month"],
                     min: (new Date(2015, 0, 1)).getTime(),
@@ -167,15 +171,13 @@ var successW = function(){
                     },
                 yaxis: { min: 0,ticks: 10 },
                 grid: {
-                    markings: [ { lineWidth: 2, yaxis: { from: BudgetValue, to: BudgetValue }, color: "#FF0000" }]
+                    markings: [ { lineWidth: 4, yaxis: { from: BudgetValue, to: BudgetValue }, color: "#FF0000" }]
                     }
-                
+        
         };
     
     
     var plot =  $.plot("#placeholder", dataset, options);
-    
-    
     
       $('#submitAnalysis').click(function(){
                         
@@ -183,7 +185,7 @@ var successW = function(){
                         var d2 = $('#mode2a').val();
                                  if (d1 == 0 || d2 == 0){
                                  navigator.notification.alert('Please fill Dates From/To!',onDone,'Analysis','Done');
-                                 function onDone(){return;}
+                                 function onDone(){}
                                  return;
                                  }
                         start = d1.split("-");
@@ -206,7 +208,7 @@ var successW = function(){
                         var end = new Date();
                         plot.getOptions().xaxes[0].min = start.setHours(0,0,0,0);
                         plot.getOptions().xaxes[0].max = end.setHours(23,59,59,999);
-                        plot.getOptions().xaxes[0].minTickSize = [4,"hour"];
+                        plot.getOptions().xaxes[0].minTickSize = [2,"hour"];
                         plot.getOptions().xaxes[0].twelveHourClock = false;
                         plot.setupGrid();
                         plot.draw();
@@ -263,7 +265,7 @@ var successW = function(){
       $('#budget').on('change', function () {
                       var bla = $('#budget').val();
                       window.localStorage.setItem('budget',bla);
-                      plot.getOptions().grid.markings = [ { lineWidth: 2, yaxis: { from: bla, to: bla }, color: "#FF0000" }];
+                      plot.getOptions().grid.markings = [ { lineWidth: 4, yaxis: { from: bla, to: bla }, color: "#FF0000" }];
                       plot.setupGrid();
                       plot.draw();
                       
@@ -278,15 +280,15 @@ var successW = function(){
               
               });
     
-    
     function fetchData(callback){
         json1.litres.data.length=0;
         sm.db.transaction(function(tx) {
-                          tx.executeSql('SELECT cdate,volume FROM (SELECT * from feel where his == 0 group by indexs ) order by cdate  ',[], function(tx, results) {
+                tx.executeSql('SELECT cdate,volume FROM (SELECT * from feel where his == 0 group by indexs ) order by cdate  ',[], function(tx, results) {
                                         var len = results.rows.length;
                                       
                                         for (var i=0; i<len; i++){
                                             json1.litres.data.push([results.rows.item(i).cdate,results.rows.item(i).volume]);
+                              
                                         }
                                         callback(json1);
                                         
@@ -297,59 +299,34 @@ var successW = function(){
     
 }
 
-//Last Consumption
-$(document).on('last', function(){
+$(document).one('progress', function(){
 
-               var values = JSON.parse(window.localStorage.getItem('jsonData'));
-               $('#temp-box1').empty();$('#litres-box1').empty();$('#point-box1').empty();$('#energy-box1').empty();
-               if (values != null){
-                    $('#temp-box1').append(values.temp.data[values.temp.data.length - 1][1]).append('c');
-                    $('#point-box1').append(EnergyClass(values));
-                    $('#litres-box1').append(values.litres.data[values.litres.data.length - 1][1]).append('L');
-                    $('#energy-box1').append(values.energy.data[values.energy.data.length - 1][1]).append('Wh');
-               }
-               else {
-                    $('#temp-box1').append('0').append('c');
-                    $('#point-box1').append('--');
-                    $('#litres-box1').append('0').append('L');
-                    $('#energy-box1').append('0').append('Wh');
-               }
-               
-               
-               function EnergyClass(a){
-                    if (a.litres.data[values.litres.data.length - 1][1] < 30){ return 'A+';}
-                    else if (a.litres.data[values.litres.data.length - 1][1] >= 30 && a.litres.data[values.litres.data.length - 1][1] < 45){ return 'A';}
-                    else if (a.litres.data[values.litres.data.length - 1][1] >= 45 && a.litres.data[values.litres.data.length - 1][1] < 50){ return 'A-'}
-                    else if (a.litres.data[values.litres.data.length - 1][1] >= 50 && a.litres.data[values.litres.data.length - 1][1] < 60){ return 'B+';}
-                    else if (a.litres.data[values.litres.data.length - 1][1] >= 60 && a.litres.data[values.litres.data.length - 1][1] < 75){ return 'B';}
-                    else if (a.litres.data[values.litres.data.length - 1][1] >= 75 && a.litres.data[values.litres.data.length - 1][1] < 90){ return 'B-';}
-                    else
-                        return 'C';
-               }
-               
-               });
+				navigator.notification.beep(1);
+                $("#notification").fadeIn("fast").append('Transmission in progress..Click OK to see').delay(10000).fadeOut("slow");
+                $(".accept").click(function(){$.event.trigger({type:'realtime'});$("#notification").fadeOut("slow");});
+             
+						setTimeout(function(){
+                            navigator.notification.beep(3);
+                           var minutes = (500000*0.001)/60;
+                           $("#notification").empty().fadeIn("fast").append('Close the pump!Your shower duration is: ' +minutes+' minutes!').delay(5000).fadeOut("fast");
+                           },500000);
+});
 
 //Current consumption.Boxes insted of graph
-$(document).one('current', function(){
-               function plotBoxes() {
+$(document).on('current', function(e){
+              
+                
                 $('#temp-box').empty();$('#litres-box').empty();$('#point-box').empty();$('#energy-box').empty();
-                $('#temp-box').append(json.temp.data[json.temp.data.length - 1][1]).append('c');
-                $('#point-box').append(EnergyClass(json.litres.data[json.litres.data.length - 1][1]));
-                $('#litres-box').append(json.litres.data[json.litres.data.length - 1][1]).append('L');
-                $('#energy-box').append((json.energy.data[json.energy.data.length - 1][1]/1000).toFixed(2)).append('kWh');
+                $('#temp-box').append(e.message.temp.data[e.message.temp.data.length - 1][1]).append('c');
+                $('#point-box').append(EnergyClass(e.message.litres.data[e.message.litres.data.length - 1][1]));
+                $('#litres-box').append(e.message.litres.data[e.message.litres.data.length - 1][1]).append('L');
+                $('#energy-box').append((e.message.energy.data[e.message.energy.data.length - 1][1]/1000).toFixed(2)).append('kWh');
                 
-                if (Bv == json.litres.data[json.litres.data.length - 1][1]){
-                    navigator.notification.beep(1);
-                    $('#resultDiv').append('<tr><td>ALERT!!! You reached the consumption budget!!!</td></tr>');
-                    resultDiv.scrollTop = resultDiv.scrollHeight;
+                var Bv = window.localStorage.getItem('budget');
                 
-                /*
-                    $("#notification").fadeIn("slow").append('You reached the budget limit!!!');
-                
-                    $(".dismiss").click(function(){
-                                    $("#notification").fadeOut("slow");
-                                    });
-                 */
+                if (Bv == e.message.litres.data[e.message.litres.data.length - 1][1]){
+                    navigator.notification.beep(2);
+                    $("#notification").empty().fadeIn("fast").append('You reached the consumption budget').delay(5000).fadeOut("fast");
                 }
                             
                 function EnergyClass(a){
@@ -362,31 +339,7 @@ $(document).one('current', function(){
                     else
                     return 'C';
                     }
-
-                }
-                /*
-                if (confirm("Trasmission started!See??") == true) {
-                $.event.trigger({type:'realtime'});
-                } else {}
-                 */
-              
-                navigator.notification.beep(1);
-                $('#resultDiv').append('<tr><td>Transmission in progress..</td></tr>');
-                $("#notification").fadeIn("slow").append('Transmission in progress..Click OK to see');
-                
-                $(".accept").click(function(){
-                                   $.event.trigger({type:'realtime'});
-                                    $("#notification").fadeOut("slow");
-                                   });
-                $(".dismiss").click(function(){
-                                    $("#notification").fadeOut("slow");
-                                    });
-
-                var Bv = window.localStorage.getItem('budget');
-                intern = setInterval(plotBoxes,2000);
             
-                
-                              
                });
 
 //Simple Households compare(average consumption)
@@ -449,6 +402,7 @@ $('#shareViaMail').click(function(){
                          
                          });
 
+/*
 $('#shareViaFb').click(function(){
                        
                        window.plugins.socialsharing.shareViaFacebook(
@@ -464,7 +418,7 @@ $('#shareViaFb').click(function(){
                                                                      }
                                                                      );
                        });
-
+*/
 
 
 //Remove dynamically created page for real time
