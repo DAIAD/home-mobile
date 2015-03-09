@@ -14,7 +14,8 @@
                 <script>
                     $(function() {
                       $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-                      $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );  
+                      $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
+                      $.event.trigger({type:'last'});
                       });
                 </script>
                 <title>Daiad</title>
@@ -40,7 +41,7 @@
                         <li data-icon="false"><a href="#tabs-1" id='ble'>HOME</a></li>
                         <li data-icon="false"><a href="#tabs-2" id='whole'>ANALYSIS</a></li>
                         <li data-icon="false"><a href="#tabs-3" id='realfeel'>REAL TIME</a></li>
-                        <li data-icon="false"><a href="#tabs-4" id='history'>HISTORY(ShowerID)</a></li>
+                        <li data-icon="false"><a href="#tabs-4" id='history'>HISTORY</a></li>
                         <li data-icon="false"><a href="#tabs-5" id='compare'>COMPARE</a></li>
                         <li data-icon="false"><a href="#tabs-6" id='share'>SHARE</a></li>
                         <li data-icon="false"><a href="#tabs-7" id='community'>COMMUNITY</a></li>
@@ -78,25 +79,41 @@
                    	<div class='homeTab'>
                        	<div id='row_one'>
                             <div id="apCon">
-                                <div class="boxCategory">CONNECTED APPLIANCES</div>
+                                <div class="boxCategory">- APPLIANCES -</div>
                                 <div id='deviceList' class="boxCategory"></div>
+                                <div id="bleStatus" class="boxD">Bluetooth Status :: Disconnected</div>
                             </div>
                             
                             <div id="currentData" >
-                                <div class="boxCategory">CURRENT CONSUMPTION</div>
+                                <div class="boxCategory">- CURRENT CONSUMPTION -</div>
                                 <div id='litres-box' class="boxLitres">0 L</div>
                                 <div id='energy-box' class="boxEnergy">0 kWh</div>
                                 <div id='temp-box' class="boxOther">0 C</div>
-                                <div id='point-box' class="boxOther">A+</div>
-                                
+                                <div id='point-box' class="boxOther">Energy Class: A+</div>
+                                <div id='duration-box' class="boxD">Duration :: 0H 0M 0S</div>
+                                <div class="boxD">
+                                    <div id='progressText'>Budget Status :: 0 %</div>
+                                </div>
                             </div>
-
-                            <table id="news">
+                            
+                            <div id="lastData" >
+                                <div class="boxCategory">- LAST CONSUMPTION -</div>
+                                <div id='litres-last' class="boxLitres"></div>
+                                <div id='energy-last' class="boxEnergy"></div>
+                                <div id='temp-last' class="boxOther"></div>
+                                <div id='point-last' class="boxOther"></div>
+                                <div id='duration-last' class="boxD"></div>
+                            </div>
+                            
+    
+    <!--
+                            <table id="news" style="display:none;">
                                 <thead>
                                     <tr><th>NEWS-ALERTS-OPERATIONS</th></tr>
                                 </thead>
                                 <tbody id='resultDiv'></tbody>
                             </table>
+ -->
                         </div>
                     </div>
                 </div>
@@ -131,9 +148,9 @@
                         <div id="choices1">
                             <div data-role="navbar" >
                                 <ul>
-                                    <li><input type='checkbox' name='litres' checked='checked' id='litres' disabled></input><label for='litres'>Litres</label></li>
-                                    <li><input type='checkbox' name='temp'  id='temp'></input><label for='temp'>Temp</label></li>
-                                    <li><input type='checkbox' name='energy'  id='energy'></input><label for='energy'>Energy</label></li>
+                                    <li><input type='checkbox' name='litres' checked='checked' id='litres' disabled></input><label for='litres'>Water(L)</label></li>
+                                    <li><input type='checkbox' name='temp'  id='temp'></input><label for='temp'>Temperature(C)</label></li>
+                                    <li><input type='checkbox' name='energy'  id='energy'></input><label for='energy'>Energy(wH)</label></li>
                                 </ul>
                             </div>
                         </div>
@@ -147,8 +164,6 @@
                     <div class="demo-container">
                         <div id="placeholderh" class="demo-placeholder"></div>
                     </div>
-                   
-                   
                 </div>
                 
                 <div id="tabs-5">
@@ -161,18 +176,15 @@
                         </div>
    
                         <div id="averageBoxes">
-                            <div style="width:30%;height:100%;float:left;">
-                                <p>Your Average Consumption  : </p>
-                                <div id="average" class='boxAvg'></div>
+                            <div style="width:100%;height:40%;">
+                                <p>Your Average Consumption(Litres/Min)</p>
+                                <div id="average" class='boxOther'></div>
                             </div>
-                            <div style="width:30%;height:100%;float:left;">
-                                <p>Similar Households  : </p>
-                                <div id="households" class='boxAvg'></div>
+                            <div style="width:100%;height:40%;">
+                                <p>Similar Households Consumption(Litres/Min)</p>
+                                <div id="households" class='boxOther'></div>
                             </div>
-                            <div style="width:30%;height:100%;float:left;">
-                                <p> Consumption Comparison : </p>
-                                <div id="compStatus" class='boxAvg'></div>
-                            </div>
+                        
                         </div>
                     </div>
                 </div>

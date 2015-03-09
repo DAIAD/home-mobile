@@ -12,18 +12,13 @@ var successReal = function() {
     $('<div>').attr({'id':'choices4'}).appendTo(inside);
     $('<div>').attr({'id':'placeholder4', 'class':'demo-placeholder'}).appendTo(inside);
     var choiceContainer = $("#choices4");
-    choiceContainer.append("<div data-role='navbar'><ul><li><input type='checkbox' name='litres' checked='checked' id='litres1' disabled></input><label for='litres1'>Litres</label></li><li><input type='checkbox' name='temp' checked='checked' id='temp1' ></input><label for='temp1'>Temperature</label></li></ul></div>");
+    choiceContainer.append("<div data-role='navbar'><ul><li><input type='checkbox' name='litres' checked='checked' id='litres1' disabled></input><label for='litres1'>Water(L)</label></li><li><input type='checkbox' name='temp' checked='checked' id='temp1' ></input><label for='temp1'>Temperature(C)</label></li><li><input type='checkbox' name='energy' checked='checked' id='energy1' ></input><label for='energy1'>Energy(wH)</label></li></ul></div>");
     $.mobile.changePage( "#real", { transition: "slide"});
     $('#real').on('pageshow',function(){
                   
                 function plotAccordingToChoices1() {
                   
                   var data1 = [];
-                  var i = 0;
-                  $.each(json, function(key, val) {
-                         val.color = i;
-                         ++i;
-                         });
                   
                   choiceContainer.find("input:checked").each(function () {
                                                              var key = $(this).attr("name");
@@ -36,7 +31,7 @@ var successReal = function() {
                   
                 }
                   
-                  internReal = setInterval(plotAccordingToChoices1,2000);
+                  internReal = setInterval(plotAccordingToChoices1,1000);
                   
                   }); // pageshow end
 } //end
@@ -68,7 +63,7 @@ var successR = function() {
         
     }
    
-    intern = setInterval(plotAccordingToChoices,2000);
+    intern = setInterval(plotAccordingToChoices,1000);
     
 } //end
 
@@ -149,7 +144,7 @@ var successW = function(){
     };
     
     var dataset = [{
-                   label: "Consumption",
+                   label: "Consumption(Litres)",
                    data: [],
                    yaxis: 1,
                    color: "#1e90ff",
@@ -300,13 +295,15 @@ var successW = function(){
 }
 
 $(document).one('progress', function(){
-
-				navigator.notification.beep(1);
+                
+                
+				//navigator.notification.beep(1);
                 $("#notification").fadeIn("fast").append('Transmission in progress..Click OK to see').delay(10000).fadeOut("slow");
+                
                 $(".accept").click(function(){$.event.trigger({type:'realtime'});$("#notification").fadeOut("slow");});
              
 						setTimeout(function(){
-                            navigator.notification.beep(3);
+                            //navigator.notification.beep(3);
                            var minutes = (500000*0.001)/60;
                            $("#notification").empty().fadeIn("fast").append('Close the pump!Your shower duration is: ' +minutes+' minutes!').delay(5000).fadeOut("fast");
                            },500000);
@@ -316,16 +313,21 @@ $(document).one('progress', function(){
 $(document).on('current', function(e){
               
                 
-                $('#temp-box').empty();$('#litres-box').empty();$('#point-box').empty();$('#energy-box').empty();
-                $('#temp-box').append(e.message.temp.data[e.message.temp.data.length - 1][1]).append('c');
-                $('#point-box').append(EnergyClass(e.message.litres.data[e.message.litres.data.length - 1][1]));
-                $('#litres-box').append(e.message.litres.data[e.message.litres.data.length - 1][1]).append('L');
-                $('#energy-box').append((e.message.energy.data[e.message.energy.data.length - 1][1]/1000).toFixed(2)).append('kWh');
-                
+               $('#temp-box').empty();$('#litres-box').empty();$('#point-box').empty();$('#energy-box').empty();$('#duration-box').empty();
+               $('#progressText').empty();
+                $('#temp-box').append(e.message.temp.data[e.message.temp.data.length - 1][1]).append(' C');
+                $('#point-box').append('Energy Class: ').append(EnergyClass(e.message.litres.data[e.message.litres.data.length - 1][1]));
+                $('#litres-box').append(e.message.litres.data[e.message.litres.data.length - 1][1]).append(' Litres');
+                $('#energy-box').append((e.message.energy.data[e.message.energy.data.length - 1][1]/1000).toFixed(2)).append(' kWh');
+                $('#duration-box').append('Duration :: ').append(secondsToTime(e.message.duration.data[e.message.duration.data.length - 1][1]));
+               
+  
                 var Bv = window.localStorage.getItem('budget');
-                
+               var bper = ((e.message.litres.data[e.message.litres.data.length - 1][1]/Bv)*100).toFixed();
+               $('#progressText').css({'width':bper+'%','background-color':'lightblue'}).append('Budget Status :: ').append(bper).append(' %');
+               
                 if (Bv == e.message.litres.data[e.message.litres.data.length - 1][1]){
-                    navigator.notification.beep(2);
+                    //navigator.notification.beep(2);
                     $("#notification").empty().fadeIn("fast").append('You reached the consumption budget').delay(5000).fadeOut("fast");
                 }
                             
@@ -339,8 +341,92 @@ $(document).on('current', function(e){
                     else
                     return 'C';
                     }
-            
+               
+               function secondsToTime(secs)
+               {
+               var hours = Math.floor(secs / (60 * 60));
+               
+               var divisor_for_minutes = secs % (60 * 60);
+               var minutes = Math.floor(divisor_for_minutes / 60);
+               
+               var divisor_for_seconds = divisor_for_minutes % 60;
+               var seconds = Math.ceil(divisor_for_seconds);
+               
+               var obj = {
+               "h": hours,
+               "m": minutes,
+               "s": seconds
+               };
+               return  obj.h + "H "+obj.m+ "M " + obj.s +"S";
+               }
+               
+               
                });
+
+$(document).on('last', function(){
+               
+               
+               var values = JSON.parse(window.localStorage.getItem('jsonData'));
+               $('#temp-last').empty();$('#litres-last').empty();$('#point-last').empty();$('#energy-last').empty();$('#duration-last').empty();
+               if (values != null){
+               $('#temp-last').append(values.temp.data[values.temp.data.length - 1][1]).append(' C');
+               $('#point-last').append('Energy Class: ').append(metaphoricEnergy(values));
+               $('#litres-last').append(values.litres.data[values.litres.data.length - 1][1]).append(' Litres');
+               $('#energy-last').append((values.energy.data[values.energy.data.length - 1][1]/1000).toFixed(2)).append(' kWh');
+               $('#duration-last').append('Duration :: ').append(secondsToTime(values.duration.data[values.duration.data.length - 1][1]));
+               
+               }
+               
+               else {
+               
+               $('#temp-last').append('0').append('c');
+               $('#point-last').append('--');
+               $('#litres-last').append('0').append('L');
+               $('#energy-last').append('0').append('Wh');
+               $('#date-last').append(' 0');
+               $('#duration-last').append(' 0 ');
+                                      
+               
+               }
+               
+               
+               function metaphoricEnergy(a){
+               
+               if (a.litres.data[values.litres.data.length - 1][1] < 30){ return 'A+';}
+               else if (a.litres.data[values.litres.data.length - 1][1] >= 30 && a.litres.data[values.litres.data.length - 1][1] < 45){ return 'A';}
+               else if (a.litres.data[values.litres.data.length - 1][1] >= 45 && a.litres.data[values.litres.data.length - 1][1] < 50){ return 'A-'}
+               else if (a.litres.data[values.litres.data.length - 1][1] >= 50 && a.litres.data[values.litres.data.length - 1][1] < 60){ return 'B+';}
+               else if (a.litres.data[values.litres.data.length - 1][1] >= 60 && a.litres.data[values.litres.data.length - 1][1] < 75){ return 'B';}
+               else if (a.litres.data[values.litres.data.length - 1][1] >= 75 && a.litres.data[values.litres.data.length - 1][1] < 90){ return 'B-';}
+               else
+               return 'C';
+               
+               }
+               
+               function secondsToTime(secs)
+               {
+               var hours = Math.floor(secs / (60 * 60));
+               
+               var divisor_for_minutes = secs % (60 * 60);
+               var minutes = Math.floor(divisor_for_minutes / 60);
+               
+               var divisor_for_seconds = divisor_for_minutes % 60;
+               var seconds = Math.ceil(divisor_for_seconds);
+               
+               var obj = {
+               "h": hours,
+               "m": minutes,
+               "s": seconds
+               };
+               return  obj.h + "H "+obj.m+ "M " + obj.s +"S";
+               }
+
+               
+               
+               
+               });
+
+
 
 //Simple Households compare(average consumption)
 $('#compare').click(function(){
@@ -354,26 +440,33 @@ $('#compare').click(function(){
                                         var months = new Date(start[0],start[1]-1,start[2]).getTime();
                                         var monthf = new Date(stop[0],stop[1]-1,stop[2]).getTime();
                                         fetchDateData(months,monthf,function(avg){
-                                                      $('#average').empty();$('#compStatus').empty();$('#households').empty();
+                                                      $('#average').empty();$('#households').empty();
                                                       $('#average').append(avg);
-                                                      $('#households').append(Math.floor(Math.random() * 100));
+                                                      $('#households').append(Math.floor(Math.random() * 100)*60/1000);
                                                       var hholds = $('#households').text();
                                                       
-                                                      $('#compStatus').append(compareSimilar);
-                                                      function compareSimilar(){
-                                                        if (avg >= hholds) { return 'BAD'; }
-                                                        else
-                                                            return 'GOOD';
                                                       
-                                                      }
+                                                        if (avg >= hholds) { alert('BAD'); }
+                                                        else
+                                                           { alert('GOOD'); }
+                                                      
+                                                     
                                                       
                                                       });
                                   });
 
                function fetchDateData(d1,d2,AvgRes){
                   sm.db.transaction(function(tx) {
-                        tx.executeSql('SELECT avg(volume) as average FROM feel WHERE cdate >= '+d1+' and cdate <= '+d2+' ',[], function(tx, results) {
-                                      res = Math.round(results.rows.item(0).average);
+                        tx.executeSql('SELECT volume FROM feel WHERE cdate >= '+d1+' and cdate <= '+d2+' ',[], function(tx, results) {
+                                      var len = results.rows.length;
+                                      var sum = 0;
+                                      for (var i=1; i<len; i++){
+                                            
+                              				dv = results.rows.item(i).volume - results.rows.item(i-1).volume;
+                              				sum = sum + dv;
+                                        }
+                                      
+                                      res = ((sum/len).toFixed(3))*60;
                                       AvgRes(res);
                                       }); //execute end
                                     }); //transaction end
@@ -385,20 +478,23 @@ $('#compare').click(function(){
 $('#shareViaMail').click(function(){
                          
                          window.plugins.socialsharing.shareViaEmail (
-                                                                     'Packets: ' + JSON.stringify(packets)  ,
-                                                                     'Total packets',
-                                                                     null, // TO: must be null or an array
-                                                                     null, // CC: must be null or an array
-                                                                     null, // BCC: must be null or an array
-                                                                     null,
-                                                                     function(msg) {
-                                                                     alert('SocialSharing success: ' + msg);
-                                                                     },
-                                                                     function(msg) {
-                                                                     alert('SocialSharing error: ' + msg);
-                                                                     }
+                                        '<b>My Last Consumption</b> : </br> Water(L): '+ json.litres.data[json.litres.data.length - 1][1] +
+                                        '</br>  Energy(wH): ' + json.energy.data[json.energy.data.length - 1][1] +
+                                        '</br>  Temperature(C): ' +json.temp.data[json.temp.data.length - 1][1] +
+                                        '</br>  Duration(seconds): ' +json.duration.data[json.duration.data.length - 1][1],
+                                        'Total packets',
+                                        null, // TO: must be null or an array
+                                        null, // CC: must be null or an array
+                                        null, // BCC: must be null or an array
+                                        null,
+                                        function(msg) {
+                                        alert('SocialSharing success: ' + msg);
+                                        },
+                                        function(msg) {
+                                        alert('SocialSharing error: ' + msg);
+                                        }
                                                                      
-                                                                     );
+                                        );
                          
                          });
 

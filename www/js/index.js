@@ -8,11 +8,12 @@ rxCharacteristic: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E" // receive is from the 
 
 var diffv = [];
 var diffe = [];
-
+var flag = 0;
 var json = {
     "litres" : {label: "Litres",data: [],xaxis: 1},
     "temp" : {label: "Temperature",data: [],xaxis: 1},
-    "energy" : {label: "Energy",data: [],xaxis: 1}
+    "energy" : {label: "Energy",data: [],xaxis: 1},
+    "duration" : {label:"Duration",data: []}
 };
 
 /*push bluetooth packets*/
@@ -44,7 +45,7 @@ var app = {
     refreshDeviceList: function() {
         $('#deviceList').empty(); // empties the list
         if (cordova.platformId === 'android' ) { // Android filtering is broken
-            ble.scan([], 10, app.onDiscoverDevice, app.onError);
+            ble.scan([bluefruit.serviceUUID], 10, app.onDiscoverDevice, app.onError);
         } else {
             ble.scan([bluefruit.serviceUUID], 10, app.onDiscoverDevice, app.onError);
         }
@@ -53,9 +54,9 @@ var app = {
     onDiscoverDevice: function(device) {
         //var deviceId = device.id;
         onConnect = function() {
-            var blemanager = new BluetoothManager({flag: 'connected',name: device.name, id: device.id});
+            var blemanager = new BluetoothManager({flag: 'Connected',name: device.name, id: device.id});
             blemanager.response();
-         
+            $('#deviceList').empty().append(device.name);
             ble.startNotification(device.id, bluefruit.serviceUUID, bluefruit.rxCharacteristic, onData, onError);
         },
                 
@@ -65,23 +66,26 @@ var app = {
             {
                 var blemanager = new BluetoothManager({flag: 'Disconnected',id:device.id});
                 blemanager.response();
+                
                 try {
                         ble.connect(device.id, onConnect, onError);
+                    if (flag == 1) {
+                        window.localStorage.setItem('jsonData',JSON.stringify(json));
+                        $.event.trigger({type : 'last'});
+                        
+                        var ntfmanager = new NotificationManager({flag: 'start'});
+                        ntfmanager.response();
+
+                    }
                 }
                 catch(ERROR) {}
             }
         },
         
-        uploadData = function(){
-        
-            var ntfmanager = new NotificationManager({flag: 'start',id:deviceId});
-            ntfmanager.response();
-        
-        },
-        
         onData = function(data) { // data received from Arduino
+            flag = 1;
             
-               $.event.trigger({type:'progress'});
+            $.event.trigger({type:'progress'});
             
             //data packet(12bytes) = 1b temp | 2b volume | 2b shower number | 1b history | 2b shower time | 1b reserved | 1b breaktime - cycle | 1b cycle flag | 1 byte lbyte
             //data packet (9bytes) = 1b temp | 2b volume | 2b shower number(index) | 1b history | 2b shower time(relative) |  1 byte lbyte
@@ -101,12 +105,14 @@ var app = {
                 st = (256*vw[6])+vw[7];
                 bt = 0;cf = 0; /*keep for analysis firmware*/
                 var d = new Date().getTime();
-                var e = Math.round((v*(t-10)*4.182)/3.6 * 10) / 10;
+                var e = Math.round((v*(t-6)*4.182)/3.6 * 10) / 10;
 
                 if (h == 0){
+                    
                     json.litres.data.push([d,v]);
                     json.temp.data.push([d,t]);
                     json.energy.data.push([d,e]);
+                    json.duration.data.push([d,st]);
                     
                     diffv.push(v);
                     diffe.push(e);
@@ -132,11 +138,12 @@ var app = {
 
                 }
 
-                if (json.litres.data.length > 5)
+                if (json.litres.data.length > 4)
                 {
                     json.litres.data.shift();
                     json.temp.data.shift();
                     json.energy.data.shift();
+                    json.duration.data.shift();
                 }
 
                 $.event.trigger({type:'current',message: json});

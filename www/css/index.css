@@ -1,10 +1,7 @@
 /* --- MEDIA QUERIES --- */
 
 /*Nexus 5 smartphone*/
-@media only screen 
-and (min-device-width : 360px) 
-and (max-device-width : 640px) {
-
+@media only screen and (min-device-width : 360px) and (max-device-width : 640px) {
 #tabsmenu {
 	display:none;
 }
@@ -25,7 +22,7 @@ and (max-device-width : 640px) {
         margin: 1px auto;
         width:36%;
         font-weight: bold;
-        font-size: 150%;
+        font-size: 100%;
         padding: 1%;
     }
 .boxlitres{
@@ -36,7 +33,7 @@ and (max-device-width : 640px) {
         margin: 1px auto;
         width:30%;
         font-weight: bold;
-        font-size: 200%;
+        font-size: 100%;
         padding: 15%;
     }
 .boxEnergy{
@@ -47,12 +44,20 @@ and (max-device-width : 640px) {
         margin: 1px auto;
         width:30%;
         font-weight: bold;
-        font-size: 150%;
+        font-size: 100%;
         padding: 4%;
     }
-    
+    .boxD{
+        float:right;
+        border: 1px #267df2 groove;
+        background-color:  #fff;
+        text-align:center;
+        margin: 1px auto;
+        width:100%;
+        font-weight: bold;
+        font-size: 50%;
+    }
     .boxAvg{
-        
         border: 1px #267df2 groove;
         background-color: #69A4FF;
         text-align:center;
@@ -72,41 +77,6 @@ and (max-device-width : 640px) {
 
 }
 
-/*ipad portrait*/
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-
-.ui-tabs-vertical { width: 100%; }
-.ui-tabs-vertical .ui-tabs-nav {  position:fixed;float: left; width:20%;  border: 1px #267df2 groove;background-color: lightblue; }
-.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-right-width: 0 !important; }
-.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-.ui-tabs-vertical .ui-tabs-panel { position:fixed;left:25%; width:75%;height:80%;}
-
-#menupanel {
-    display:none;
-}
-
-.boxCategory{
-    border: 1px #267df2 groove;
-    background-color: #A4D5F5;
-    margin: 1px auto;
-    font-weight: bold;
-    font-size: 100%;
-    text-align: center;
-}
-.boxOther{
-    display: inline-block;
-    border: 1px #267df2 groove;
-    background-color: #A4D5F5;
-    text-align:center;
-    margin: 1px auto;
-    width:33%;
-    font-weight: bold;
-    font-size: 200%;
-    padding: 8%;
-}
-
-}
 
 /*ipad lanscape*/
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
@@ -122,46 +92,76 @@ and (max-device-width : 640px) {
 	}
     .boxCategory{
         border: 1px #267df2 groove;
-        background-color: #69A4FF;
         margin: 1px auto;
         font-weight: bold;
         font-size: 100%;
         text-align: center;
+        background-color: #69A4FF;
     }
     .boxOther{
         display: inline-block;
         float:right;
-        border: 2px #267df2 groove;
-        background-color:  #fff;
+        border: 1px #267df2 groove;
         text-align:center;
         margin: 1px auto;
         width:36%;
         font-weight: bold;
         font-size: 150%;
         padding: 1%;
+        background: -moz-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -webkit-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -o-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -ms-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: radial-gradient(100% 100%, #69A4FF, #fff);
+        color: #fff;
+
     }
     .boxlitres{
         float:left;
-        border: 3px #267df2 groove;
-        background-color: #69A4FF;
+        border: 1px #267df2 groove;
+        /*background-color: #69A4FF;*/
         text-align:center;
         margin: 1px auto;
         width:40%;
         font-weight: bold;
         font-size: 200%;
         padding: 10%;
+        background: -moz-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -webkit-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -o-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -ms-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: radial-gradient(100% 100%, #69A4FF, #fff);
+        color: #fff;
+        
     }
     .boxEnergy{
         float:right;
-        border: 2px #267df2 groove;
-        background-color: #fff;
+        border: 1px #267df2 groove;
         text-align:center;
         margin: 1px auto;
         width:30%;
         font-weight: bold;
         font-size: 150%;
         padding: 4%;
+        background: -moz-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -webkit-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -o-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: -ms-radial-gradient(100% 100%, #69A4FF, #fff);
+        background: radial-gradient(100% 100%, #69A4FF, #fff);
+        color: #fff;
     }
+    .boxD{
+        
+        float:left;
+        border: 1px #267df2 groove;
+        text-align:center;
+        margin: 1px auto;
+        width:100%;
+        font-weight: bold;
+        font-size: 100%;
+        background-color: #fff;
+    }
+
     .boxAvg{
         
         border: 1px #267df2 groove;
@@ -173,13 +173,13 @@ and (max-device-width : 640px) {
         font-size: 150%;
         padding: 20%;
     }
-
+    
 
 }
 
 /*Default css*/
 .ui-header {
-    background: #FFF !important;
+    background:  #fff !important;
 }
 .ui-content {
     width: 100%;
@@ -195,12 +195,13 @@ and (max-device-width : 640px) {
 #resultDiv {height:85%;overflow-y: auto;overflow-x: hidden;}
 
 #currentData{width:100%;height:45%;}
+#lastData{width:100%;height:40%}
 #apCon{width:100%;height:15%;}
-#lastData{width:50%;height:100%;float:right;}
+
 
 #comp{width:100%;height:100%;}
-#dateSelection{width:50%;height:50%;}
-#averageBoxes{width:100%;height:50%;}
+#dateSelection{width:50%;height:40%;}
+#averageBoxes{width:100%;height:60%;}
 
 .sharing { width:50%;height:50%;border: 1px #267df2 groove;}
 
@@ -241,4 +242,5 @@ thead,tbody { display: block; }
     font-size:120%;
     background-color: #4ea5cd; border-color: #3b8eb5;
 }
+
 

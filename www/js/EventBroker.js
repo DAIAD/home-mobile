@@ -35,8 +35,6 @@ function checkConnection() {
     states[Connection.CELL]     = 'Cell generic connection';
     states[Connection.NONE]     = 'No network connection';
     
-    $('#resultDiv').append('<tr><td> Connection Type :: ' + states[networkState] + '</td></tr>');
-    resultDiv.scrollTop = resultDiv.scrollHeight;
     return states[networkState];
 
 }
@@ -49,18 +47,12 @@ var bleConnection = function() {
 bleConnection.prototype = {
     sendResponse: function(param) {
         
-        if (param.flag == 'connected'){
-            
-            $('#resultDiv').append('<tr><td>Device(Name-ID) :: '+ param.name + ' : ' + param.id + '  >>>  Device Status :: '+ param.flag +'</td></tr>');
-            $('#deviceList').append(param.name +'</br>');
-            resultDiv.scrollTop = resultDiv.scrollHeight;
+        if (param.flag == 'Connected'){
+            $('#bleStatus').empty().append('Bluetooth Status :: '+ param.flag );
         }
         
         if (param.flag == 'Disconnected'){
-            $('#deviceList').empty();
-            $('#resultDiv').append('<tr><td>Device(Name-ID) :: ' + param.id + ' >>>  Device Status :: ' + param.flag + '</td></tr>');
-            $('#resultDiv').append('<tr><td> Transmitted packets :: ' + packets.measurements.length +  '</td></tr>');
-            resultDiv.scrollTop = resultDiv.scrollHeight;
+            $('#bleStatus').empty().append('Bluetooth Status :: '+ param.flag );
         }
     }
 };
@@ -96,33 +88,28 @@ var uploadTask = function() {
 uploadTask.prototype = {
     sendResponse: function(param) {
         if (param.flag == 'start'){
-            
+           
             var InternetConnection  =  checkConnection();
             
             if ( InternetConnection == 'WiFi connection' ){
-                
-                $('#resultDiv').append('<tr><td>'+ new Date() +' :: Wifi detected!'+ param.id +' trying remote connection with server..</td></tr>');
-                $('#resultDiv').append('<tr><td> Uploading  :: ' + packets.measurements.length +  ' packets .. </td></tr>');
-                resultDiv.scrollTop = resultDiv.scrollHeight;
+                 alert('wifi found')
+                /*
+                $.ajax({
+                       type : "POST",
+                       url : 'http://app-c1-n01.dev.daiad.eu:8080/api/v1/amphiro',
+                       dataType : 'json',
+                       data : JSON.stringify(packets),
+                       contentType : "application/json"
+                       }).done(function(data) {
+                               alert('done');
+                               }).fail(function() {
+                                       alert('fail');
+                                       }).always(function() {
+                                                 alert('always');
+                                                 });
+           
             
-            
-            /*Ajax request - post data*/
-            /*
-             
-             $.ajax({
-             type: "POST",
-             url: "",
-             // The key needs to match your method's input parameter (case-sensitive).
-             data: JSON.stringify({ Packets: packets }),
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             success: function(data){alert(data);},
-             failure: function(errMsg) {
-             alert(errMsg);
-             }
-             });
-             
-             */
+           */
             }
         }
     }
