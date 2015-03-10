@@ -9,14 +9,17 @@
                 <script type="text/javascript" src="libs/jquery.flot.js"></script>
                 <script type="text/javascript" src="libs/flot_time.js"></script>
                 <script type="text/javascript" src="libs/flot_resize.js"></script>
+                <script type="text/javascript" src="libs/jquery.flot.pie.js"></script>
                 <script type="text/javascript" src="libs/jqm-datebox.core.js"></script>
                 <script type="text/javascript" src="libs/jqm-datebox.mode.calbox.js"></script>
                 <script>
                     $(function() {
+                    $.event.trigger({type:'last'});
                       $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
                       $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
-                      $.event.trigger({type:'last'});
+                      
                       });
+                      
                 </script>
                 <title>Daiad</title>
                 
@@ -32,7 +35,6 @@
             
             <!-- Simple notification div -->
             <div id="notification" style="display: none;">
-                <span class="accept"><a title="accept this notification">OK</a></span>
             </div>
             
             <div data-role="content">
@@ -78,11 +80,6 @@
                 <div id="tabs-1" >
                    	<div class='homeTab'>
                        	<div id='row_one'>
-                            <div id="apCon">
-                                <div class="boxCategory">- APPLIANCES -</div>
-                                <div id='deviceList' class="boxCategory"></div>
-                                <div id="bleStatus" class="boxD">Bluetooth Status :: Disconnected</div>
-                            </div>
                             
                             <div id="currentData" >
                                 <div class="boxCategory">- CURRENT CONSUMPTION -</div>
@@ -90,10 +87,11 @@
                                 <div id='energy-box' class="boxEnergy">0 kWh</div>
                                 <div id='temp-box' class="boxOther">0 C</div>
                                 <div id='point-box' class="boxOther">Energy Class: A+</div>
-                                <div id='duration-box' class="boxD">Duration :: 0H 0M 0S</div>
+                                <div id='duration-box' class="boxD">Duration : 0H 0M 0S</div>
                                 <div class="boxD">
-                                    <div id='progressText'>Budget Status :: 0 %</div>
+                                    <div id='progressText'>Budget Status: 0%</div>
                                 </div>
+
                             </div>
                             
                             <div id="lastData" >
@@ -105,7 +103,23 @@
                                 <div id='duration-last' class="boxD"></div>
                             </div>
                             
-    
+                            
+                            
+                            <div id="apCon">
+                                <div class="boxCategory">- APPLIANCES -</div>
+                                <div id='deviceList' class="boxAppliance"></div>
+                                <div id="bleStatus" class="boxD">Status :: None</div>
+                            </div>
+
+                            
+                            <div id="pie">
+                                <div class="boxCategory">- BUDGET CONSUMPTION -</div>
+                                <div class="boxD">
+                                    <div id="placeholderp" class="demo-placeholder"></div>
+                                </div>
+                                
+                            </div>
+    						
     <!--
                             <table id="news" style="display:none;">
                                 <thead>

@@ -300,7 +300,7 @@ $(document).one('progress', function(){
 				//navigator.notification.beep(1);
                 $("#notification").fadeIn("fast").append('Transmission in progress..Click OK to see').delay(10000).fadeOut("slow");
                 
-                $(".accept").click(function(){$.event.trigger({type:'realtime'});$("#notification").fadeOut("slow");});
+                $("#notification").click(function(){$.event.trigger({type:'realtime'})});
              
 						setTimeout(function(){
                             //navigator.notification.beep(3);
@@ -317,14 +317,14 @@ $(document).on('current', function(e){
                $('#progressText').empty();
                 $('#temp-box').append(e.message.temp.data[e.message.temp.data.length - 1][1]).append(' C');
                 $('#point-box').append('Energy Class: ').append(EnergyClass(e.message.litres.data[e.message.litres.data.length - 1][1]));
-                $('#litres-box').append(e.message.litres.data[e.message.litres.data.length - 1][1]).append(' Litres');
+                $('#litres-box').append(e.message.litres.data[e.message.litres.data.length - 1][1]).append(' L');
                 $('#energy-box').append((e.message.energy.data[e.message.energy.data.length - 1][1]/1000).toFixed(2)).append(' kWh');
-                $('#duration-box').append('Duration :: ').append(secondsToTime(e.message.duration.data[e.message.duration.data.length - 1][1]));
+                $('#duration-box').append('Duration : ').append(secondsToTime(e.message.duration.data[e.message.duration.data.length - 1][1]));
                
   
                 var Bv = window.localStorage.getItem('budget');
                var bper = ((e.message.litres.data[e.message.litres.data.length - 1][1]/Bv)*100).toFixed();
-               $('#progressText').css({'width':bper+'%','background-color':'lightblue'}).append('Budget Status :: ').append(bper).append(' %');
+               $('#progressText').append('Budget Status : ').append(bper).append(' %');
                
                 if (Bv == e.message.litres.data[e.message.litres.data.length - 1][1]){
                     //navigator.notification.beep(2);
@@ -357,7 +357,7 @@ $(document).on('current', function(e){
                "m": minutes,
                "s": seconds
                };
-               return  obj.h + "H "+obj.m+ "M " + obj.s +"S";
+               return  obj.h + "hrs "+obj.m+ "mins " + obj.s +"secs";
                }
                
                
@@ -371,10 +371,9 @@ $(document).on('last', function(){
                if (values != null){
                $('#temp-last').append(values.temp.data[values.temp.data.length - 1][1]).append(' C');
                $('#point-last').append('Energy Class: ').append(metaphoricEnergy(values));
-               $('#litres-last').append(values.litres.data[values.litres.data.length - 1][1]).append(' Litres');
+               $('#litres-last').append(values.litres.data[values.litres.data.length - 1][1]).append(' L');
                $('#energy-last').append((values.energy.data[values.energy.data.length - 1][1]/1000).toFixed(2)).append(' kWh');
-               $('#duration-last').append('Duration :: ').append(secondsToTime(values.duration.data[values.duration.data.length - 1][1]));
-               
+               $('#duration-last').append('Duration : ').append(secondsToTime(values.duration.data[values.duration.data.length - 1][1]));
                }
                
                else {
@@ -387,6 +386,48 @@ $(document).on('last', function(){
                $('#duration-last').append(' 0 ');
                                       
                
+               }
+ 
+               piechart(values.litres.data[values.litres.data.length - 1][1]);
+               
+               function piechart(a){
+               var Bv = window.localStorage.getItem('budget');
+               //alert(Bv);
+               var bper = ((a/Bv)*100).toFixed();
+               avl = 100-bper;
+               //alert(bper);
+               var dataPie = [
+                              { label: "Consumed",
+                                data: bper
+                              },
+                              { label: "Available",
+                                data: avl
+                              }
+                              ];
+               
+               $.plot('#placeholderp', dataPie, {
+                      series: {
+                      pie: {
+                        show: true,
+                        radius: 1,
+                            label: {
+                                show: true,
+                                radius: 3/4,
+                                background: {
+                                    opacity: 0.5,
+                                    color: '#1e90ff'
+                                }
+                            }
+                        }
+                      
+                      },
+                      legend: {
+                        show: false
+                      }
+                    });
+                  
+				$("#pie").fadeIn(1500);
+                    
                }
                
                
@@ -418,15 +459,10 @@ $(document).on('last', function(){
                "m": minutes,
                "s": seconds
                };
-               return  obj.h + "H "+obj.m+ "M " + obj.s +"S";
+               return  obj.h + "hrs "+obj.m+ "mins " + obj.s +"secs";
                }
 
-               
-               
-               
-               });
-
-
+           });
 
 //Simple Households compare(average consumption)
 $('#compare').click(function(){

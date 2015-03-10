@@ -35,7 +35,8 @@ var app = {
         refreshButton.addEventListener('touchstart', this.refreshDeviceList, false);
     },
     onDeviceReady: function() {
-        app.refreshDeviceList();
+    	setTimeout(app.refreshDeviceList,1500);
+        //app.refreshDeviceList();
         sm.openDb();
         var bleconnection = new bleConnection();
         var uploading = new uploadTask();
@@ -56,7 +57,7 @@ var app = {
         onConnect = function() {
             var blemanager = new BluetoothManager({flag: 'Connected',name: device.name, id: device.id});
             blemanager.response();
-            $('#deviceList').empty().append(device.name);
+            $('#deviceList').empty().append('<img src="img/amphiro.png" width="40%" height="72%"/>').fadeIn("fast");
             ble.startNotification(device.id, bluefruit.serviceUUID, bluefruit.rxCharacteristic, onData, onError);
         },
                 

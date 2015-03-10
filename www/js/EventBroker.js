@@ -48,11 +48,11 @@ bleConnection.prototype = {
     sendResponse: function(param) {
         
         if (param.flag == 'Connected'){
-            $('#bleStatus').empty().append('Bluetooth Status :: '+ param.flag );
+            $('#bleStatus').empty().append('Name: '+param.name+ '-Status: '+ param.flag );
         }
         
         if (param.flag == 'Disconnected'){
-            $('#bleStatus').empty().append('Bluetooth Status :: '+ param.flag );
+            $('#bleStatus').empty().append(' Status : '+ param.flag );
         }
     }
 };
@@ -92,8 +92,8 @@ uploadTask.prototype = {
             var InternetConnection  =  checkConnection();
             
             if ( InternetConnection == 'WiFi connection' ){
-                 alert('wifi found')
-                /*
+                 //alert('wifi found')
+               
                 $.ajax({
                        type : "POST",
                        url : 'http://app-c1-n01.dev.daiad.eu:8080/api/v1/amphiro',
@@ -109,7 +109,7 @@ uploadTask.prototype = {
                                                  });
            
             
-           */
+           
             }
         }
     }
