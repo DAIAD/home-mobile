@@ -93,7 +93,7 @@ uploadTask.prototype = {
             
             if ( InternetConnection == 'WiFi connection' ){
                  //alert('wifi found')
-               
+               /*
                 $.ajax({
                        type : "POST",
                        url : 'http://app-c1-n01.dev.daiad.eu:8080/api/v1/amphiro',
@@ -109,7 +109,7 @@ uploadTask.prototype = {
                                                  });
            
             
-           
+           */
             }
         }
     }

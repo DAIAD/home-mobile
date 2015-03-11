@@ -5,7 +5,6 @@ txCharacteristic: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E", // transmit is from th
 rxCharacteristic: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E" // receive is from the phone's perspective
 };
 
-
 var diffv = [];
 var diffe = [];
 var flag = 0;
@@ -16,13 +15,16 @@ var json = {
     "duration" : {label:"Duration",data: []}
 };
 
+var vlm = {
+    "volume" : {label: "Litres",data: [],xaxis: 1}
+};
+
 /*push bluetooth packets*/
 var packets = {
     "applicationKey":"c11f91c3-579b-48e8-afbd-988bf517ebdc",
     "deviceId":"ddc847df-c0c5-4cff-ba12-11ede01356c5",
     "measurements":[]
 };
-
 
 //Initialize the app with components at startup
 var app = {
@@ -32,7 +34,6 @@ var app = {
     },
     bindEvents: function() {
         document.addEventListener('deviceready', this.onDeviceReady, false);
-        refreshButton.addEventListener('touchstart', this.refreshDeviceList, false);
     },
     onDeviceReady: function() {
     	setTimeout(app.refreshDeviceList,1500);
@@ -46,9 +47,9 @@ var app = {
     refreshDeviceList: function() {
         $('#deviceList').empty(); // empties the list
         if (cordova.platformId === 'android' ) { // Android filtering is broken
-            ble.scan([bluefruit.serviceUUID], 10, app.onDiscoverDevice, app.onError);
+            ble.scan([bluefruit.serviceUUID], 30, app.onDiscoverDevice, app.onError);
         } else {
-            ble.scan([bluefruit.serviceUUID], 10, app.onDiscoverDevice, app.onError);
+            ble.scan([bluefruit.serviceUUID], 30, app.onDiscoverDevice, app.onError);
         }
     },
         
@@ -71,12 +72,11 @@ var app = {
                 try {
                         ble.connect(device.id, onConnect, onError);
                     if (flag == 1) {
+                        clearTimeout(pump);
                         window.localStorage.setItem('jsonData',JSON.stringify(json));
                         $.event.trigger({type : 'last'});
-                        
-                        var ntfmanager = new NotificationManager({flag: 'start'});
-                        ntfmanager.response();
-
+                        //var ntfmanager = new NotificationManager({flag: 'start'});
+                        //ntfmanager.response();
                     }
                 }
                 catch(ERROR) {}
@@ -85,15 +85,13 @@ var app = {
         
         onData = function(data) { // data received from Arduino
             flag = 1;
-            
             $.event.trigger({type:'progress'});
-            
             //data packet(12bytes) = 1b temp | 2b volume | 2b shower number | 1b history | 2b shower time | 1b reserved | 1b breaktime - cycle | 1b cycle flag | 1 byte lbyte
             //data packet (9bytes) = 1b temp | 2b volume | 2b shower number(index) | 1b history | 2b shower time(relative) |  1 byte lbyte
         
             processData(data, function(a,b,c,d,e,f,g,k,l) {
                         
-                        sm.FeelData(a,b,e,c,d,f,g,k,l);
+                        //sm.FeelData(a,b,e,c,d,f,g,k,l);
                     
                     });
         
@@ -119,10 +117,9 @@ var app = {
                     diffe.push(e);
                     
                     if (diffv.length == 2 ) {
-                        
                         dv = diffv[1] - diffv[0];
                         de = diffe[1] - diffe[0];
-                        
+                        vlm.volume.data.push([d,dv]);
                         packets.measurements.push({
                                                       "temperature":t,
                                                       "volume":dv,
@@ -139,7 +136,7 @@ var app = {
 
                 }
 
-                if (json.litres.data.length > 4)
+                if (json.litres.data.length > 10)
                 {
                     json.litres.data.shift();
                     json.temp.data.shift();

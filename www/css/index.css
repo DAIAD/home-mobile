@@ -5,15 +5,15 @@
 #row_one {width:100%;height:100%;}
     #currentData{width:100%;height:35%;}
     #lastData{width:100%;height:30%;}
-    #apCon{width:40%;height:35%;float:left;}
-	#pie{width:50%;height:35%;float:right;display:none;}
+    #apCon{width:49%;height:35%;float:left;}
+	#pie{width:49%;height:35%;float:right;display:none;}
 	
 #tabsmenu {
 	display:none;
 }
 .boxCategory{
     border: 1px #267df2 groove;
-    background-color: #A4D5F5;
+    background-color: #69A4FF;
     margin: 1px auto;
     font-weight: bold;
     font-size: 50%;
@@ -234,7 +234,7 @@
 #dateSelection{width:50%;height:40%;}
 #averageBoxes{width:100%;height:60%;}
 
-.sharing { width:50%;height:50%;border: 1px #267df2 groove;}
+.sharing { width:50%;height:50%;}
 
 thead,tbody { display: block; }
 #news {

@@ -45,8 +45,11 @@
                         <li data-icon="false"><a href="#tabs-3" id='realfeel'>REAL TIME</a></li>
                         <li data-icon="false"><a href="#tabs-4" id='history'>HISTORY</a></li>
                         <li data-icon="false"><a href="#tabs-5" id='compare'>COMPARE</a></li>
+                        
                         <li data-icon="false"><a href="#tabs-6" id='share'>SHARE</a></li>
+                        
                         <li data-icon="false"><a href="#tabs-7" id='community'>COMMUNITY</a></li>
+                         
                         <li data-icon="false"><a href="#tabs-8" id='preferences'>SETTINGS</a></li>
                     </ul>
 
@@ -135,11 +138,10 @@
                 <div id="tabs-2">
                     <div id="spinner" ></div>
                     <div class="demo-container">
-                       
                         <div data-role="navbar">
                             <ul>
-                                <li ><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
-                                <li ><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li style='width:10%'><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li style='width:10%'><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
                                 <li></li>
                                 <li><input value="Consum. Budget" disabled/></li>
                                 <li><input name="budget" id="budget" value=""/></li>
@@ -162,8 +164,8 @@
                         <div id="choices1">
                             <div data-role="navbar" >
                                 <ul>
-                                    <li><input type='checkbox' name='litres' checked='checked' id='litres' disabled></input><label for='litres'>Water(L)</label></li>
-                                    <li><input type='checkbox' name='temp'  id='temp'></input><label for='temp'>Temperature(C)</label></li>
+                                    <li><input type='checkbox' name='volume' checked='checked' id='volume' disabled></input><label for='volume'>Water(L)</label></li>
+                                    <li></li>
                                     <li><input type='checkbox' name='energy'  id='energy'></input><label for='energy'>Energy(wH)</label></li>
                                 </ul>
                             </div>
@@ -191,11 +193,11 @@
    
                         <div id="averageBoxes">
                             <div style="width:100%;height:40%;">
-                                <p>Your Average Consumption(Litres/Min)</p>
+                                <p>Your Average Consumption(Litres/Day)</p>
                                 <div id="average" class='boxOther'></div>
                             </div>
                             <div style="width:100%;height:40%;">
-                                <p>Similar Households Consumption(Litres/Min)</p>
+                                <p>Similar Households Consumption(Litres/Day)</p>
                                 <div id="households" class='boxOther'></div>
                             </div>
                         
@@ -203,15 +205,15 @@
                     </div>
                 </div>
                 
-                
+             
                 <div id="tabs-6">
                     <div class="sharing">
                         <p>Share your consumption : </p>
                         <button id="shareViaMail">Share Via Email</button>
-                        <!--<button id="shareViaFb">Share Via Facebook</button>-->
+                        <button id="shareViaFb">Share Via Facebook</button>
                         <div id="resultSharing"></div>
                     </div>
-                </div> <!-- tabs6 -->
+                </div>
                 
                 <div id="tabs-7">
                     <p>TODO:Daiad@commons functionality</p>

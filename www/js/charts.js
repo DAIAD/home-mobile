@@ -6,7 +6,7 @@ var successReal = function() {
     var mapPage    =  $('<div>').attr({'id':'real','data-role':'page'}).appendTo('body');
     var mapHeader  = $('<div>').attr({'data-role':'header','id':'map-header'}).appendTo(mapPage);
     $('<h3>').html('Real Time Graph').appendTo(mapHeader);
-    $('<a>').attr({'href':'#home','id':'conback','class' : 'ui-btn-left'}).html('Back').appendTo(mapHeader);
+    $('<a>').attr({'href':'#home','id':'conback','class' : 'ui-btn-left','style':'width:20%'}).html('Back').appendTo(mapHeader);
     var mapContent = $('<div>').attr({'data-role':'content'}).appendTo(mapPage);
     var inside = $('<div>').attr({'class':'demo-container'}).appendTo(mapContent);
     $('<div>').attr({'id':'choices4'}).appendTo(inside);
@@ -38,7 +38,7 @@ var successReal = function() {
 
 
 //Real Time via Menu
-$('#realfeel').click(function(){ successR(); });
+$('#realfeel').one('click',function(){ successR(); });
 
 var successR = function() {
     $('#spinner1').show();
@@ -46,20 +46,23 @@ var successR = function() {
         
         var data = [];
         var i = 0;
-        $.each(json, function(key, val) {
+        $.each(vlm, function(key, val) {
                val.color = i;
                ++i;
                });
         
         $('#choices1').find("input:checked").each(function () {
                                                   var key = $(this).attr("name");
-                                                  if (key && json[key]) {
-                                                  data.push(json[key]);
+                                                  if (key && vlm[key]) {
+                                                  data.push(vlm[key]);
                                                   }
                                                   });
         
         $('#spinner1').hide();
-        $.plot("#placeholder1", data, {yaxis: {min: 0},xaxis: {mode: "time"}});
+        $.plot("#placeholder1", data, {
+               yaxis: {min: 0},
+               xaxis: {mode: "time"}
+               });
         
     }
    
@@ -67,10 +70,10 @@ var successR = function() {
     
 } //end
 
-$('#history').click(function(){ successH();});
+$('#history').one('click',function(){ successH();});
+
 var successH = function(){
 
-    
     $('#spinner2').show();
     var historyData = {
         "litres" : {label: "Litres",data: []}
@@ -85,50 +88,49 @@ var successH = function(){
                    }
                    ];
     
-    var plot = $.plot("#placeholderh",dataset,
-                      {
-                      series: {
-                      yaxis: {min: 0},
-                      xaxis: {tickDecimals: 0},
-                      },
-                      bars: {
-                        align: "center",
-                        barWidth: 1
-                      }
-           });
+    var options = {
+    series: {
+    yaxis: {min: 0},
+    xaxis: {tickDecimals: 0},
+    },
+    bars: {
+    align: "center",
+    barWidth: 1
+    }
+
+    
+    };
+    
     
     fetchHistoryData(function(jsn){
+              plot1 = $.plot("#placeholderh",dataset,options);
               dataset[0].data = jsn.litres.data;
-              plot.setData(dataset);
-              plot.setupGrid();
-              plot.draw();
+              plot1.setData(dataset);
+              plot1.setupGrid();
+              plot1.draw();
               $('#spinner2').hide();
               
               });
     
     function fetchHistoryData(callback){
-        historyData.litres.data.length=0;
         sm.db.transaction(function(tx) {
                           tx.executeSql('SELECT indexs,volume FROM feel WHERE his = 1 order by indexs ',[], function(tx, results) {
                                         var len = results.rows.length;
                                         
                                         for (var i=0; i<len; i++){
-                                        historyData.litres.data.push([results.rows.item(i).indexs,results.rows.item(i).volume]);
+                                            historyData.litres.data.push([results.rows.item(i).indexs,results.rows.item(i).volume]);
                                         }
                                         callback(historyData);
                                         
                                         }); //execute end
                           }); //transaction end
-        
     }
 
-    
-    
 }
 
 
 //Analysis  - Dates - Consumption
-$('#whole').click(function(){ successW();});
+$('#whole').one('click',function(){ successW();});
 
 var successW = function(){
     
@@ -170,9 +172,6 @@ var successW = function(){
                     }
         
         };
-    
-    
-    var plot =  $.plot("#placeholder", dataset, options);
     
       $('#submitAnalysis').click(function(){
                         
@@ -267,6 +266,7 @@ var successW = function(){
                       });
     
     fetchData(function(jsn){
+              plot =  $.plot("#placeholder", dataset, options);
               dataset[0].data = jsn.litres.data;
               plot.setData(dataset);
               plot.setupGrid();
@@ -295,18 +295,17 @@ var successW = function(){
 }
 
 $(document).one('progress', function(){
-                
-                
+ 
 				//navigator.notification.beep(1);
                 $("#notification").fadeIn("fast").append('Transmission in progress..Click OK to see').delay(10000).fadeOut("slow");
                 
                 $("#notification").click(function(){$.event.trigger({type:'realtime'})});
              
-						setTimeout(function(){
+					pump = setTimeout(function(){
                             //navigator.notification.beep(3);
                            var minutes = (500000*0.001)/60;
-                           $("#notification").empty().fadeIn("fast").append('Close the pump!Your shower duration is: ' +minutes+' minutes!').delay(5000).fadeOut("fast");
-                           },500000);
+                           $("#notification").empty().fadeIn("fast").append('You should close the pump!!').delay(5000).fadeOut("fast");
+                           },10000);
 });
 
 //Current consumption.Boxes insted of graph
@@ -327,41 +326,45 @@ $(document).on('current', function(e){
                $('#progressText').append('Budget Status : ').append(bper).append(' %');
                
                 if (Bv == e.message.litres.data[e.message.litres.data.length - 1][1]){
-                    //navigator.notification.beep(2);
+                    navigator.notification.beep(2);
                     $("#notification").empty().fadeIn("fast").append('You reached the consumption budget').delay(5000).fadeOut("fast");
                 }
                             
-                function EnergyClass(a){
-                    if (a < 30){ return 'A+';}
-                    else if (a >= 30 && a  < 45){ return 'A';}
-                    else if (a >= 45 && a  < 50){ return 'A-';}
-                    else if (a >= 50 && a  < 60){ return 'B+';}
-                    else if (a >= 60 && a  < 75){ return 'B';}
-                    else if (a >= 75 && a  < 90){ return 'B-';}
-                    else
-                    return 'C';
-                    }
-               
-               function secondsToTime(secs)
-               {
-               var hours = Math.floor(secs / (60 * 60));
-               
-               var divisor_for_minutes = secs % (60 * 60);
-               var minutes = Math.floor(divisor_for_minutes / 60);
-               
-               var divisor_for_seconds = divisor_for_minutes % 60;
-               var seconds = Math.ceil(divisor_for_seconds);
-               
-               var obj = {
-               "h": hours,
-               "m": minutes,
-               "s": seconds
-               };
-               return  obj.h + "hrs "+obj.m+ "mins " + obj.s +"secs";
-               }
-               
                
                });
+
+function EnergyClass(a){
+    if (a < 30){ return 'A+';}
+    else if (a >= 30 && a  < 45){ return 'A';}
+    else if (a >= 45 && a  < 50){ return 'A-';}
+    else if (a >= 50 && a  < 60){ return 'B+';}
+    else if (a >= 60 && a  < 75){ return 'B';}
+    else if (a >= 75 && a  < 90){ return 'B-';}
+    else
+        return 'C';
+}
+
+
+
+function secondsToTime(secs)
+{
+    var hours = Math.floor(secs / (60 * 60));
+    
+    var divisor_for_minutes = secs % (60 * 60);
+    var minutes = Math.floor(divisor_for_minutes / 60);
+    
+    var divisor_for_seconds = divisor_for_minutes % 60;
+    var seconds = Math.ceil(divisor_for_seconds);
+    
+    var obj = {
+        "h": hours,
+        "m": minutes,
+        "s": seconds
+    };
+    return  obj.h + "hrs "+obj.m+ "mins " + obj.s +"secs";
+}
+
+
 
 $(document).on('last', function(){
                
@@ -370,22 +373,19 @@ $(document).on('last', function(){
                $('#temp-last').empty();$('#litres-last').empty();$('#point-last').empty();$('#energy-last').empty();$('#duration-last').empty();
                if (values != null){
                $('#temp-last').append(values.temp.data[values.temp.data.length - 1][1]).append(' C');
-               $('#point-last').append('Energy Class: ').append(metaphoricEnergy(values));
+               
                $('#litres-last').append(values.litres.data[values.litres.data.length - 1][1]).append(' L');
+               $('#point-last').append('Energy Class: ').append(EnergyClass(values.litres.data[values.litres.data.length - 1][1]));
                $('#energy-last').append((values.energy.data[values.energy.data.length - 1][1]/1000).toFixed(2)).append(' kWh');
                $('#duration-last').append('Duration : ').append(secondsToTime(values.duration.data[values.duration.data.length - 1][1]));
                }
-               
                else {
-               
                $('#temp-last').append('0').append('c');
                $('#point-last').append('--');
                $('#litres-last').append('0').append('L');
                $('#energy-last').append('0').append('Wh');
                $('#date-last').append(' 0');
                $('#duration-last').append(' 0 ');
-                                      
-               
                }
  
                piechart(values.litres.data[values.litres.data.length - 1][1]);
@@ -431,37 +431,8 @@ $(document).on('last', function(){
                }
                
                
-               function metaphoricEnergy(a){
                
-               if (a.litres.data[values.litres.data.length - 1][1] < 30){ return 'A+';}
-               else if (a.litres.data[values.litres.data.length - 1][1] >= 30 && a.litres.data[values.litres.data.length - 1][1] < 45){ return 'A';}
-               else if (a.litres.data[values.litres.data.length - 1][1] >= 45 && a.litres.data[values.litres.data.length - 1][1] < 50){ return 'A-'}
-               else if (a.litres.data[values.litres.data.length - 1][1] >= 50 && a.litres.data[values.litres.data.length - 1][1] < 60){ return 'B+';}
-               else if (a.litres.data[values.litres.data.length - 1][1] >= 60 && a.litres.data[values.litres.data.length - 1][1] < 75){ return 'B';}
-               else if (a.litres.data[values.litres.data.length - 1][1] >= 75 && a.litres.data[values.litres.data.length - 1][1] < 90){ return 'B-';}
-               else
-               return 'C';
                
-               }
-               
-               function secondsToTime(secs)
-               {
-               var hours = Math.floor(secs / (60 * 60));
-               
-               var divisor_for_minutes = secs % (60 * 60);
-               var minutes = Math.floor(divisor_for_minutes / 60);
-               
-               var divisor_for_seconds = divisor_for_minutes % 60;
-               var seconds = Math.ceil(divisor_for_seconds);
-               
-               var obj = {
-               "h": hours,
-               "m": minutes,
-               "s": seconds
-               };
-               return  obj.h + "hrs "+obj.m+ "mins " + obj.s +"secs";
-               }
-
            });
 
 //Simple Households compare(average consumption)
@@ -473,37 +444,30 @@ $('#compare').click(function(){
                                         var d2 = $('#mode2').val();
                                         start = d1.split("-");
                                         stop = d2.split("-");
+                                        days = stop[2] - start[2];
                                         var months = new Date(start[0],start[1]-1,start[2]).getTime();
                                         var monthf = new Date(stop[0],stop[1]-1,stop[2]).getTime();
-                                        fetchDateData(months,monthf,function(avg){
-                                                      $('#average').empty();$('#households').empty();
+                                        fetchDateData(months,monthf,days,function(avg){
+                                                    $('#average').empty();$('#households').empty();
                                                       $('#average').append(avg);
-                                                      $('#households').append(Math.floor(Math.random() * 100)*60/1000);
-                                                      var hholds = $('#households').text();
-                                                      
-                                                      
-                                                        if (avg >= hholds) { alert('BAD'); }
-                                                        else
-                                                           { alert('GOOD'); }
-                                                      
-                                                     
-                                                      
-                                                      });
+                                                      $('#households').append(Math.floor(Math.random() * 100).toFixed(2));
+                                                });
                                   });
 
-               function fetchDateData(d1,d2,AvgRes){
+               function fetchDateData(d1,d2,days,AvgRes){
                   sm.db.transaction(function(tx) {
                         tx.executeSql('SELECT volume FROM feel WHERE cdate >= '+d1+' and cdate <= '+d2+' ',[], function(tx, results) {
                                       var len = results.rows.length;
+                                      
                                       var sum = 0;
                                       for (var i=1; i<len; i++){
                                             
                               				dv = results.rows.item(i).volume - results.rows.item(i-1).volume;
                               				sum = sum + dv;
-                                        }
                                       
-                                      res = ((sum/len).toFixed(3))*60;
-                                      AvgRes(res);
+                                        }
+                        
+                                      AvgRes((sum/days).toFixed(2));
                                       }); //execute end
                                     }); //transaction end
                   }
@@ -534,7 +498,7 @@ $('#shareViaMail').click(function(){
                          
                          });
 
-/*
+
 $('#shareViaFb').click(function(){
                        
                        window.plugins.socialsharing.shareViaFacebook(
@@ -550,7 +514,7 @@ $('#shareViaFb').click(function(){
                                                                      }
                                                                      );
                        });
-*/
+
 
 
 //Remove dynamically created page for real time
