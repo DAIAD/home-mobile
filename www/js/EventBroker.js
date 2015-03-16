@@ -93,7 +93,7 @@ uploadTask.prototype = {
             
             if ( InternetConnection == 'WiFi connection' ){
                  //alert('wifi found')
-               /*
+               
                 $.ajax({
                        type : "POST",
                        url : 'http://app-c1-n01.dev.daiad.eu:8080/api/v1/amphiro',
@@ -101,15 +101,17 @@ uploadTask.prototype = {
                        data : JSON.stringify(packets),
                        contentType : "application/json"
                        }).done(function(data) {
-                               alert('done');
+                               //alert('done');
+                               navigator.notification.beep(1);
+                               $("#notification").empty().fadeIn("fast").append('Your consumption data has been uploaded!!').delay(4000).fadeOut("slow");
                                }).fail(function() {
-                                       alert('fail');
+                                       //alert('fail');
                                        }).always(function() {
-                                                 alert('always');
+                                                 //alert('always');
                                                  });
            
             
-           */
+           
             }
         }
     }

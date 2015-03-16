@@ -46,15 +46,12 @@ var successR = function() {
         
         var data = [];
         var i = 0;
-        $.each(vlm, function(key, val) {
-               val.color = i;
-               ++i;
-               });
-        
+                
         $('#choices1').find("input:checked").each(function () {
                                                   var key = $(this).attr("name");
                                                   if (key && vlm[key]) {
                                                   data.push(vlm[key]);
+                                                  
                                                   }
                                                   });
         
@@ -66,11 +63,11 @@ var successR = function() {
         
     }
    
-    intern = setInterval(plotAccordingToChoices,1000);
+    intern = setInterval(plotAccordingToChoices,500);
     
 } //end
 
-$('#history').one('click',function(){ successH();});
+$('#history').on('click',function(){ successH();});
 
 var successH = function(){
 
@@ -101,6 +98,7 @@ var successH = function(){
     
     };
     
+    //setInterval(fetchHistoryData,20000);
     
     fetchHistoryData(function(jsn){
               plot1 = $.plot("#placeholderh",dataset,options);
@@ -113,8 +111,10 @@ var successH = function(){
               });
     
     function fetchHistoryData(callback){
+        historyData.litres.data.length = 0;
         sm.db.transaction(function(tx) {
-                          tx.executeSql('SELECT indexs,volume FROM feel WHERE his = 1 order by indexs ',[], function(tx, results) {
+                          
+                          tx.executeSql('SELECT distinct indexs,volume FROM feel WHERE his = 1 order by indexs',[], function(tx, results) {
                                         var len = results.rows.length;
                                         
                                         for (var i=0; i<len; i++){
@@ -130,7 +130,7 @@ var successH = function(){
 
 
 //Analysis  - Dates - Consumption
-$('#whole').one('click',function(){ successW();});
+$('#whole').on('click',function(){ successW();});
 
 var successW = function(){
     
@@ -139,8 +139,7 @@ var successW = function(){
     $( "#year" ).addClass( "ui-btn-active" );
     var BudgetValue = window.localStorage.getItem('budget');
     $('#budget').val(BudgetValue);
-    //$('#budget').slider('refresh');
-    
+
     var json1 = {
         "litres" : {label: "Litres",data: []}
     };
@@ -178,22 +177,35 @@ var successW = function(){
                         var d1 = $('#mode1a').val();
                         var d2 = $('#mode2a').val();
                                  if (d1 == 0 || d2 == 0){
-                                 navigator.notification.alert('Please fill Dates From/To!',onDone,'Analysis','Done');
-                                 function onDone(){}
-                                 return;
+                                 alert('Please fill Dates From/To!');
+                                 
                                  }
+                                 else{
                         start = d1.split("-");
                         stop = d2.split("-");
                         var months = new Date(start[0],start[1]-1,start[2]).getTime();
                         var monthf = new Date(stop[0],stop[1]-1,stop[2]).getTime();
-                                 
                         plot.getOptions().xaxes[0].min = months;
                         plot.getOptions().xaxes[0].max = monthf;
-                        plot.getOptions().xaxes[0].minTickSize = [1,"day"];
-                        plot.getOptions().xaxes[0].twelveHourClock = true;
-                        plot.setupGrid();
-                        plot.draw();
-                        
+                        if ( stop[2]-start[2] <= 3 ){
+                                 plot.getOptions().xaxes[0].minTickSize = [2,"hour"];
+                                 plot.getOptions().xaxes[0].twelveHourClock = false;
+                                 plot.setupGrid();
+                                 plot.draw();
+                                 }
+                        else if (( stop[2]-start[2] == 0 )){
+                                 plot.getOptions().xaxes[0].minTickSize = [2,"hour"];
+                                 plot.getOptions().xaxes[0].twelveHourClock = false;
+                                 plot.setupGrid();
+                                 plot.draw();
+                                 }
+                        else{
+                                 plot.getOptions().xaxes[0].minTickSize = [1,"day"];
+                                 plot.getOptions().xaxes[0].twelveHourClock = true;
+                                 plot.setupGrid();
+                                 plot.draw();
+                                 }
+                            }
                         });
     
       $('#today').click(function(){
@@ -218,7 +230,7 @@ var successW = function(){
                        var lastday = new Date(curr.setDate(last));
                        plot.getOptions().xaxes[0].min = firstday;
                        plot.getOptions().xaxes[0].max = lastday;
-                       plot.getOptions().xaxes[0].minTickSize = [1,"day"];
+                       plot.getOptions().xaxes[0].minTickSize = [1,"hour"];
                        plot.setupGrid();
                        plot.draw();
                        
@@ -265,6 +277,8 @@ var successW = function(){
                       
                       });
     
+    
+    
     fetchData(function(jsn){
               plot =  $.plot("#placeholder", dataset, options);
               dataset[0].data = jsn.litres.data;
@@ -280,7 +294,7 @@ var successW = function(){
         sm.db.transaction(function(tx) {
                 tx.executeSql('SELECT cdate,volume FROM (SELECT * from feel where his == 0 group by indexs ) order by cdate  ',[], function(tx, results) {
                                         var len = results.rows.length;
-                                      
+                             
                                         for (var i=0; i<len; i++){
                                             json1.litres.data.push([results.rows.item(i).cdate,results.rows.item(i).volume]);
                               
@@ -296,16 +310,16 @@ var successW = function(){
 
 $(document).one('progress', function(){
  
-				//navigator.notification.beep(1);
-                $("#notification").fadeIn("fast").append('Transmission in progress..Click OK to see').delay(10000).fadeOut("slow");
+				navigator.notification.beep(1);
+                $("#notification").fadeIn("fast").append('Transmission in progress.. Touch me!!').delay(7000).fadeOut("fast");
                 
                 $("#notification").click(function(){$.event.trigger({type:'realtime'})});
              
 					pump = setTimeout(function(){
-                            //navigator.notification.beep(3);
+                           navigator.notification.beep(1);
                            var minutes = (500000*0.001)/60;
-                           $("#notification").empty().fadeIn("fast").append('You should close the pump!!').delay(5000).fadeOut("fast");
-                           },10000);
+                           $("#notification").empty().fadeIn("fast").append('You should close the pump!!Flow Duration.. 8mins').delay(5000).fadeOut("slow");
+                           },500000);
 });
 
 //Current consumption.Boxes insted of graph
@@ -326,8 +340,8 @@ $(document).on('current', function(e){
                $('#progressText').append('Budget Status : ').append(bper).append(' %');
                
                 if (Bv == e.message.litres.data[e.message.litres.data.length - 1][1]){
-                    navigator.notification.beep(2);
-                    $("#notification").empty().fadeIn("fast").append('You reached the consumption budget').delay(5000).fadeOut("fast");
+                    navigator.notification.beep(1);
+                    $("#notification").empty().fadeIn("fast").append('Consumption Budget Status: Overflow!! ').delay(4000).fadeOut("slow");
                 }
                             
                
@@ -448,9 +462,16 @@ $('#compare').click(function(){
                                         var months = new Date(start[0],start[1]-1,start[2]).getTime();
                                         var monthf = new Date(stop[0],stop[1]-1,stop[2]).getTime();
                                         fetchDateData(months,monthf,days,function(avg){
-                                                    $('#average').empty();$('#households').empty();
+                                                      $('#average').empty();$('#households').empty();$('#status').empty();
                                                       $('#average').append(avg);
-                                                      $('#households').append(Math.floor(Math.random() * 100).toFixed(2));
+                                                      $('#households').append(Math.floor(Math.random() * 10));
+                                                      var sml = $('#households').text();
+                                                      if( avg > sml ){
+                                                      $('#status').append('Bad');
+                                                      }
+                                                      else {
+                                                        $('#status').append('Good');
+                                                      }
                                                 });
                                   });
 
@@ -467,7 +488,7 @@ $('#compare').click(function(){
                                       
                                         }
                         
-                                      AvgRes((sum/days).toFixed(2));
+                                      AvgRes((sum/days).toFixed());
                                       }); //execute end
                                     }); //transaction end
                   }

@@ -18,7 +18,8 @@ var json = {
 var vlm = {
     "volume" : {label: "Litres",data: [],xaxis: 1}
 };
-
+var count = 0;
+var valueBefore = 0;
 /*push bluetooth packets*/
 var packets = {
     "applicationKey":"c11f91c3-579b-48e8-afbd-988bf517ebdc",
@@ -47,9 +48,9 @@ var app = {
     refreshDeviceList: function() {
         $('#deviceList').empty(); // empties the list
         if (cordova.platformId === 'android' ) { // Android filtering is broken
-            ble.scan([bluefruit.serviceUUID], 30, app.onDiscoverDevice, app.onError);
+            ble.scan([bluefruit.serviceUUID], 40, app.onDiscoverDevice, app.onError);
         } else {
-            ble.scan([bluefruit.serviceUUID], 30, app.onDiscoverDevice, app.onError);
+            ble.scan([bluefruit.serviceUUID], 40, app.onDiscoverDevice, app.onError);
         }
     },
         
@@ -72,11 +73,12 @@ var app = {
                 try {
                         ble.connect(device.id, onConnect, onError);
                     if (flag == 1) {
-                        clearTimeout(pump);
+                        
                         window.localStorage.setItem('jsonData',JSON.stringify(json));
                         $.event.trigger({type : 'last'});
-                        //var ntfmanager = new NotificationManager({flag: 'start'});
-                        //ntfmanager.response();
+                        var ntfmanager = new NotificationManager({flag: 'start'});
+                        ntfmanager.response();
+                        clearTimeout(pump);
                     }
                 }
                 catch(ERROR) {}
@@ -91,7 +93,7 @@ var app = {
         
             processData(data, function(a,b,c,d,e,f,g,k,l) {
                         
-                        //sm.FeelData(a,b,e,c,d,f,g,k,l);
+                        sm.FeelData(a,b,e,c,d,f,g,k,l);
                     
                     });
         
@@ -103,7 +105,7 @@ var app = {
                 h = vw[5];
                 st = (256*vw[6])+vw[7];
                 bt = 0;cf = 0; /*keep for analysis firmware*/
-                var d = new Date().getTime();
+                d = new Date().getTime();
                 var e = Math.round((v*(t-6)*4.182)/3.6 * 10) / 10;
 
                 if (h == 0){
@@ -117,9 +119,9 @@ var app = {
                     diffe.push(e);
                     
                     if (diffv.length == 2 ) {
-                        dv = diffv[1] - diffv[0];
-                        de = diffe[1] - diffe[0];
-                        vlm.volume.data.push([d,dv]);
+                        dv = (diffv[1] - diffv[0]).toFixed(1);
+                        de = (diffe[1] - diffe[0]).toFixed(1);
+                        
                         packets.measurements.push({
                                                       "temperature":t,
                                                       "volume":dv,
@@ -129,15 +131,39 @@ var app = {
                                                       "showerTime":st,
                                                       "timestamp":d,
                                                       });
+                        if (dv >= 0.10) {
+                            valueBefore = dv;
+                            
+                            vlm.volume.data.push([d,dv]);
+                            count = 0;
+
+                        }
+                        else if (dv == 0.0) {
+                           
+                            count = count + 1;
+                            if(count > 3) {
+                                vlm.volume.data.push([d,valueBefore-0.01]);
+                            }
+                            else{
+                                vlm.volume.data.push([d,valueBefore]);
+                            }
+    
+                        }
+
+                        if (vlm.volume.data.length > 25){
+                            vlm.volume.data.shift();
+                        }
+
                         
                         diffv.length = 0;
                         diffe.length = 0;
+                        
                     }
 
                 }
-
                 if (json.litres.data.length > 10)
                 {
+                    
                     json.litres.data.shift();
                     json.temp.data.shift();
                     json.energy.data.shift();

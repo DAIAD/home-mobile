@@ -45,11 +45,11 @@
                         <li data-icon="false"><a href="#tabs-3" id='realfeel'>REAL TIME</a></li>
                         <li data-icon="false"><a href="#tabs-4" id='history'>HISTORY</a></li>
                         <li data-icon="false"><a href="#tabs-5" id='compare'>COMPARE</a></li>
-                        
+                        <!--
                         <li data-icon="false"><a href="#tabs-6" id='share'>SHARE</a></li>
                         
                         <li data-icon="false"><a href="#tabs-7" id='community'>COMMUNITY</a></li>
-                         
+                         -->
                         <li data-icon="false"><a href="#tabs-8" id='preferences'>SETTINGS</a></li>
                     </ul>
 
@@ -90,7 +90,7 @@
                                 <div id='energy-box' class="boxEnergy">0 kWh</div>
                                 <div id='temp-box' class="boxOther">0 C</div>
                                 <div id='point-box' class="boxOther">Energy Class: A+</div>
-                                <div id='duration-box' class="boxD">Duration : 0H 0M 0S</div>
+                                <div id='duration-box' class="boxD">Duration : 0hrs 0mins 0secs</div>
                                 <div class="boxD">
                                     <div id='progressText'>Budget Status: 0%</div>
                                 </div>
@@ -140,8 +140,8 @@
                     <div class="demo-container">
                         <div data-role="navbar">
                             <ul>
-                                <li style='width:10%'><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
-                                <li style='width:10%'><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li ><input placeholder="Date From" name="mode1a" id="mode1a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
+                                <li ><input placeholder="Date To" name="mode2a" id="mode2a" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' /></li>
                                 <li></li>
                                 <li><input value="Consum. Budget" disabled/></li>
                                 <li><input name="budget" id="budget" value=""/></li>
@@ -160,17 +160,20 @@
                 
                 <div id="tabs-3">
                     <div id="spinner1" ></div>
+                    <p>Real Time Flow Detection</p>
+                    
                     <div class="demo-container">
                         <div id="choices1">
                             <div data-role="navbar" >
                                 <ul>
                                     <li><input type='checkbox' name='volume' checked='checked' id='volume' disabled></input><label for='volume'>Water(L)</label></li>
                                     <li></li>
-                                    <li><input type='checkbox' name='energy'  id='energy'></input><label for='energy'>Energy(wH)</label></li>
+                                    <li></li>
                                 </ul>
                             </div>
                         </div>
                         <div id="placeholder1" class="demo-placeholder" ></div>
+                        
                     </div>
                 </div>
                 
@@ -192,20 +195,30 @@
                         </div>
    
                         <div id="averageBoxes">
-                            <div style="width:100%;height:40%;">
+                            <div style="height:30%;">
                                 <p>Your Average Consumption(Litres/Day)</p>
-                                <div id="average" class='boxOther'></div>
+                                <div class='boxD'>
+                                    <div id="average"></div>
+                                </div>
                             </div>
-                            <div style="width:100%;height:40%;">
+                            <div style="height:30%;">
                                 <p>Similar Households Consumption(Litres/Day)</p>
-                                <div id="households" class='boxOther'></div>
+                                <div class='boxD'>
+                                    <div id="households"></div>
+                                </div>
                             </div>
+                            <div style="height:30%;">
+                                <p>Status for Selected Dates(Good/Bad)</p>
+                                <div class='boxD'>
+                                    <div id="status"></div>
+                                </div>
+                            </div>
+
                         
                         </div>
                     </div>
                 </div>
-                
-             
+                <!--
                 <div id="tabs-6">
                     <div class="sharing">
                         <p>Share your consumption : </p>
@@ -218,7 +231,7 @@
                 <div id="tabs-7">
                     <p>TODO:Daiad@commons functionality</p>
                 </div>
-            
+                 -->
                 <div id="tabs-8">
                     <div class='preferences' >
                      

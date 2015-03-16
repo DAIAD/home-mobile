@@ -4,53 +4,59 @@
 @media only screen and (min-device-width : 360px) and (max-device-width : 640px) {
 #row_one {width:100%;height:100%;}
     #currentData{width:100%;height:35%;}
-    #lastData{width:100%;height:30%;}
-    #apCon{width:49%;height:35%;float:left;}
-	#pie{width:49%;height:35%;float:right;display:none;}
+    #lastData{width:100%;height:32%;}
+    #apCon{width:49%;height:40%;float:left;}
+	#pie{width:49%;height:40%;float:right;display:none;}
+
+#spinner,#spinner1,#spinner2{
+    display:none;position:fixed;z-index:500;top:0;left:0;height:100%;width:100%;
+    background: rgba( 255, 255, 255, .8 )url('../img/ajax-loader.gif') 50% 50%
+    no-repeat;
+}
 	
 #tabsmenu {
 	display:none;
 }
 .boxCategory{
     border: 1px #267df2 groove;
-    background-color: #69A4FF;
+    background-color:  #A4D5F5;
     margin: 1px auto;
     font-weight: bold;
-    font-size: 50%;
+    font-size: 70%;
     text-align: center;
 }
 .boxOther{
         display: inline-block;
         float:right;
         border: 1px #267df2 groove;
-        background-color:  #A4D5F5;
+        background-color:  #69A4FF;
         text-align:center;
         margin: 1px auto;
         width:36%;
         font-weight: bold;
-        font-size: 50%;
+        font-size: 85%;
         padding: 1%;
     }
 .boxlitres{
         float:left;
         border: 1px #267df2 groove;
-        background-color:  #A4D5F5;
+        background-color:  #69A4FF;
         text-align:center;
         margin: 1px auto;
-        width:40%;
+        width:38%;
         font-weight: bold;
-        font-size: 100%;
-        padding: 10%;
+        font-size: 150%;
+        padding: 11%;
     }
 .boxEnergy{
         float:right;
         border: 1px #267df2 groove;
-        background-color: #A4D5F5;
+        background-color: #69A4FF;
         text-align:center;
         margin: 1px auto;
         width:30%;
         font-weight: bold;
-        font-size: 70%;
+        font-size: 100%;
         padding: 4%;
     }
     .boxD{
@@ -104,6 +110,12 @@
 .ui-tabs-vertical .ui-tabs-nav li a { display:block; background: #FFF; font-size:100%; height:5%; }
 .ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px;}
 .ui-tabs-vertical .ui-tabs-panel { position:fixed;left:22%; width:75%;height:80%;}
+
+#spinner,#spinner1,#spinner2{
+    display:none;position:fixed;z-index:500;top:0;left:22%;height:100%;width:75%;
+    background: rgba( 255, 255, 255, .8 )url('../img/ajax-loader.gif') 50% 50%
+    no-repeat;
+}
 
 #row_one {width:100%;height:100%;}
 #currentData{width:50%;height:50%;float:left;}
@@ -231,8 +243,8 @@
 #resultDiv {height:85%;overflow-y: auto;overflow-x: hidden;}
 
 #comp{width:100%;height:100%;}
-#dateSelection{width:50%;height:40%;}
-#averageBoxes{width:100%;height:60%;}
+#dateSelection{width:40%;height:50%;float:left;}
+#averageBoxes{width:50%;height:50%;float:right;}
 
 .sharing { width:50%;height:50%;}
 
@@ -253,11 +265,7 @@ thead,tbody { display: block; }
     background-image: -webkit-linear-gradient(top, #fdfdfd, #eee);
 }
 
-#spinner,#spinner1,#spinner2{
-    display:none;position:fixed;z-index:500;top:0;left:0;height:100%;width:100%;
-    background: rgba( 255, 255, 255, .8 )url('../img/ajax-loader.gif') 50% 50%
-    no-repeat;
-}
+
 .preferences {width: 100%;}
 .demo-container {width: 100%;}
 .demo-placeholder {width: 100%;height:80%;}
