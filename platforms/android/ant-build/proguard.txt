@@ -1,9 +1,0 @@
-# view AndroidManifest.xml #generated:6
--keep class com.example.daiad.Daiad { <init>(...); }
-
-# view AndroidManifest.xml #generated:13
--keep class de.appplant.cordova.plugin.background.ForegroundService { <init>(...); }
-
-# view AndroidManifest.xml #generated:12
--keep class org.pgsqlite.SQLitePlugin { <init>(...); }
-
