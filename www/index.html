@@ -1,194 +1,1377 @@
 <html>
     <head>
-        		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-                <link rel="stylesheet" href="css/jquery.mobile-1.4.4.css">
-                <link rel="stylesheet" href="css/index.css">
-                <link rel="stylesheet" href="css/jqm-datebox.css" />
-				<script src="libs/jquery-1.11.1.min.js"></script>
-				<script src="libs/jquery.mobile-1.4.4.js"></script>
-                <script type="text/javascript" src="libs/jquery.flot.js"></script>
-                <script type="text/javascript" src="libs/flot_time.js"></script>
-                <script type="text/javascript" src="libs/flot_resize.js"></script>
-                <script type="text/javascript" src="libs/jqm-datebox.core.js"></script>
-                <script type="text/javascript" src="libs/jqm-datebox.mode.calbox.js"></script>
-                <script>
-                    $(function() {
-                      $("body").fadeIn(2000);
-                      $( "#tabs" ).tabs().addClass( "ui-tabs-vertical ui-helper-clearfix" );
-                      $( "#tabs li" ).removeClass( "ui-corner-top" ).addClass( "ui-corner-left" );
-                      });
-                </script>
-                
+        <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/jquery.mobile-1.4.4.css">
+        <link rel="stylesheet" href="css/framework7.min.css">
+        <link rel="stylesheet" href="css/index.css">
+        <script  src="libs/jquery-1.11.1.min.js"></script>
+        <script  src="libs/jquery.mobile-1.4.4.js"></script>
+        <script  src="libs/aes.js"></script>
+        <script  src="libs/lib-typedarrays.js"></script>
+        <script  src="libs/pad-nopadding.js"></script>
+        <script  src="libs/mode-ecb.js"></script>
+        <script  src="libs/jquery.flot.js"></script>
+        <script  src="libs/jquery.flot.trendline.js"></script>
+        <script  src="libs/jquery.flot.axislabels.js"></script>
+        <script  src="libs/validate.js"></script>
     </head>
     
-    <body style="display:none;">
-        
-        <div data-role="page" id="home" >
-            <div data-role="header">
-                    <h2>DAIAD</h2>
-                    <!--<a href="#" id="menupanel" data-role="button" class="panelbtn" data-iconpos="notext" data-shadow="true" data-iconshadow="true">Menu</a> -->
+    <body style='-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none; '>
+  
+        <div data-role="page" id="welcomePage">
+            
+            <div class="page-content">
+                
+                <div class="apptexts">
+                </div>
+            <!--<a href ="#developer">dev</a>-->
             </div>
             
-            <div data-role="content">
-                <div id="tabs" >
-                    <ul data-role="listview" id="tabsmenu" data-inset="true" data-theme="e">
-                        <li data-icon="false"><a href="#tabs-1" id='ble'>HOME</a></li>
-                        <li data-icon="false"><a href="#tabs-2" id='whole'>ANALYSIS</a></li>
-                        <li data-icon="false"><a href="#tabs-3" id='realfeel'>REAL TIME</a></li>
-                        <li data-icon="false"><a href="#tabs-4" id='current'>CURRENT</a></li>
-                        <li data-icon="false"><a href="#tabs-5" id='compare'>COMPARE</a></li>
-                        <li data-icon="false"><a href="#tabs-6" id='share'>SHARE</a></li>
-                        <li data-icon="false"><a href="#tabs-7" id='community'>COMMUNITY</a></li>
-                        <li data-icon="false"><a href="#tabs-8" id='preferences'>SETTINGS</a></li>
-                    </ul>
-                    
-                    <!--
-                    <script>
-                    $('#menupanel').click(function(){$('#tabsmenu').show();var index = $("li.ui-tabs-active").index();//alert(index);
-                     //$('.ui-tabs-panel').show();var href = $('ul li a').eq(index).attr('href');//alert(href);$(href).hide(); });
-                     $('ul').click('li',function(){$('#tabsmenu').hide();var index = $("li.ui-tabs-active").index();//alert(index);
-                     //$('.ui-tabs-panel').show();var href = $('ul li a').eq(index).attr('href');//alert(href);$(href).show();});</script>
-                    -->
-                    
-                <div id="tabs-1" >
-                   	<div class='homeTab'>
-                       	<div id='row_one'>
-                            <div id="currentData" >
-                                <div class="boxCategory">Current Consumption</div>
-                                <div id='litres-box' class="boxOther">0 L</div>
-                                <div id='point-box' class="boxOther">A+</div>
-                                <div id='temp-box' class="boxOther">0 C</div>
-                                <div id='energy-box' class="boxOther">0 kWh</div>
-                            </div>
-                            <div id="apCon">
-                                <div class="boxCategory">Appliances</div>
-                                <div id='deviceList'></div>
-                            </div>
-                        </div>
-                        
-                        <div id ="row_two">
-                            <table id="news">
-                                <thead>
-                                    <tr><th>News-Alerts-Operations</th></tr>
-                                </thead>
-                                <tbody id='resultDiv'></tbody>
-                            </table>
-                            <button id="refreshButton">Refresh</button>
-                        </div>
+        </div>
+        
+        <div data-role="page" id="developer" >
+           
+           <div class="page-content" style="position:fixed;width:100%;height:90%;">
+               
+               <div id="nikolas"></div>
+               
+           </div>
+           
+       </div>
+       
+        <div data-role="page" id="trend">
+            
+            <div class="page-content" >
+                <div class="content-block">
+                    <div class="buttons-row" id="trendList" >
+                        <p id="volume" class=" active button" >Water</p>
+                        <p id="energy" class=" button" >Energy</p>
+                        <p id="flow" class="button" >Flow Rate</p>
+                        <p id="temperature" class=" button "  >Temperature</p>
                     </div>
                 </div>
                 
-                <div id="tabs-2">
-                    <div id="spinner" ></div>
-                    <div class="demo-container">
-                        <div data-role="navbar">
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner ">
+                                    <div class="item-title">Amphiro Device</div>
+                                    <div class="item-after" >
+                                        <div class="item-input">
+                                            <select id="chosenID" data-role="none"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+               </div>
+                <div class="list-block">
+                    <ul>
+                        <li>
+                            
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title" id="ShowerStatus"style="color:black;">Last Shower</div>
+                                    <div class="item-after" ><span id="ShowerMode"></span></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title" style="color:black;">Average </div>
+                                    <div class="item-after" id="average"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title" style="color:black;">Total </div>
+                                    <div class="item-after" id="total"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title" style="color:black;">Number of Showers</div>
+                                    <div class="item-after" id="number"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block-title">Your Consumption</div>
+                <div class="content-block">
+                    <div class="content-block-inner">
+                        <div id="graphmax" style="width:95%;height:55%;">
+                            <div id="placeholder" style="width:100%;height:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div data-role="page" id="compare">
+            <div class="page-content with-subnavbar" >
+               <div class="content-block">
+                <div class="buttons-row" id="compareList">
+                    <p id="ComVolume" class="comp button tab-link active">Water </p>
+                    <p id="ComEnergy" class="comp button tab-link ">Energy </p>
+                    <p id="ComFlow" class="comp button tab-link">Flow Rate</p>
+                </div>
+                </div>
+              
+                <div class="content-block">
+                    <img id="efff1" src="img/water_consumption.jpg" />
+                    <img id="efff" src="img/consumption_graphic_noclass.jpg" />
+                </div>
+               
+               <!--
+                <div class="content-block">
+                    <div class="content-block-inner">
+                        <p id="tips" >70% of households use showerheads with a lower
+                        flowrate. The flowrate highly determines your water consumption.
+                        A new shower head might help you saving water
+                        and energy.<p>
+                    </div>
+                </div>
+                -->
+                <div id="veselected">
+                    <div class="content-block-title" >Estimated Savings Per Year</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner" >
+                                        <div class="item-title" style="color:black;">Volume</div>
+                                        <div class="item-after" id="Vsave"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title" style="color:black;">Energy</div>
+                                        <div class="item-after" id="Esave"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title" style="color:black;">Money</div>
+                                        <div class="item-after" id="Msave"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--
+                    <div class="content-block-title" >moving two classes up</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title" style="color:black;">Would save you</div>
+                                        <div class="item-after" id="Oversave"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                     -->
+                </div>
+                <div id="flowselected" style="display:none;">
+                    <div class="content-block-title" >Savings Per Year Compared to a  </br> Shower Head</div>
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner" >
+                                        <div class="item-title" style="color:black;">Volume</div>
+                                        <div class="item-after" id="OVsave"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title" style="color:black;">Energy</div>
+                                        <div class="item-after" id="OEsave"></div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title" style="color:black;">Money</div>
+                                        <div class="item-after" id="OMsave"></div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+        
+        <div data-role="page" id="settings">
+            <div class="page-content">
+                
+                <div class="tabbar-labels" style="position:fixed;top:10%;left:5%;display:block;width:90%;height:40%;text-align:center;color:#7ca9bd;">
+                    <div class="toolbar-inner">
+                        <a id="toAccount" ><img src="img/settings_account.jpg"  style="width:80%;height:50%;"><span class="tabbar-label"  style="color:#383838;font-size:120%;">Account</span></a>
+                        <a id="toInstall" > <img src="img/settings_connection.jpg" style="width:80%;height:50%;"><span class="tabbar-label"  style="color:#383838;font-size:120%;">Connection</span></a>
+                    </div>
+                 </div>
+                
+                <div class="tabbar-labels" style="position:fixed;top:40%;left:5%;display:block;width:90%;height:40%;text-align:center;">
+                    <div class="toolbar-inner">
+                        <a id="toUpdate" ><img src="img/settings_b1.jpg" style="width:80%;height:50%;"><span class="tabbar-label" style="color:#383838;font-size:120%;">b1 Settings</span></a>
+                        <a href="#About" data-rel="popup" data-position-to="window" > <img src="img/settings_amphiro.jpg" style="width:80%;height:50%;"><span class="tabbar-label"  style="color:#383838;font-size:130%;">About</span></a>
+                    </div>
+                </div>
+                
+                <div data-role="popup" id="About" >
+                    
+                    <p class="about" ><a id="amphiro">Amphiro AG</a>  is a Cleantech-
+                    Spinoff from ETH Zurich. Our
+                    
+                    team pursues the goal to
+                    
+                    increase comfort and energy
+                    
+                    efficiency of drinking water 
+                    
+                    use and deliver efficiency 
+                    
+                    services for smart faucets.</br></br>
+                    
+                    Software included with Amphiro mobile apps:</br>
+                    
+                    DAIAD - FP7 project (GA 619186)</br>
+                    Copyright 2015 DAIAD Consortium</br>
+                    Contact: <a id="daiad">DAIAD</a></br></br>
+                    Open Source Software:</br>
+                    Apache Cordova </br>
+                    jQuery - jQuery mobile</br>
+                    Flot - Crypto</br>
+                    </p>
+                    
+                </div>
+
+            </div>
+            
+        </div>
+        
+        <div data-role="page" id="PairedAmphiro">
+            
+            <div class="page-content" >
+                
+                <div class="content-block-title" style="color:#383838;">PAIRED AMPHIRO DEVICES</div>
+                <div class="list-block">
+                    <ul id="paired">
+                    </ul>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div data-role="page" id="AmphiroInstall">
+            <div class="page-content" >
+                <div class="content-block">
+                    <img  src="img/unnamed.png" class="connect_image" />
+                    <div class="connect_screen">
+                        <p ></br>Turn on the water and let it run.Your amphiro b1 will be shown in the device list</br></br></p>
+                        <p ></br>Click on your amphiro b1.The b1 display starts showing you the connection key</br></br></p>
+                        <p></br>Insert the connection key to connect your amphiro b1</p>
+                    </div>
+                </div>
+                
+                <div class="content-block-title" style="color:#383838;">Searching for amphiro b1.. </div>
+                <div class="list-block">
+                    <ul class="discovered">
+                    </ul>
+                </div>
+                <div class="content-block-title" style="color:#383838;">Connected amphiro b1 </div>
+                <div class="list-block">
+                    <ul class="already">
+                    </ul>
+                     
+                </div>
+            </div>
+            
+        </div>
+        
+        <div data-role="page" id="CustomizeAmphiroInstall">
+            <div class="page-content" >
+                <div class="content-block">
+                        <img  src="img/unnamed.png" class="connect_image" />
+                        <div class="connect_screen">
+                            <p ></br>Turn on the water and let it run.Your amphiro b1 will be shown in the device list</br></br></p>
+                            <p ></br>Click on your amphiro b1.The b1 display starts showing you the connection key</br></br></p>
+                            <p></br>Insert the connection key to connect your amphiro b1</p>
+                        </div>
+                </div>
+                
+                <div class="content-block-title" style="color:#383838;">Searching for amphiro b1.. </div>
+                <div class="list-block">
+                    <ul class="discovered">
+                    </ul>
+                </div>
+            </div>
+            
+        </div>
+
+        <div data-role="page" id="Account">
+            <div class="page-content" >
+                <!--
+                <div class="list-block" >
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Privacy Settings</div>
+                                    <div class="item-after" >
+                                        <div class="item-input">
+                                            <label class="label-switch">
+                                                <input id="privacy" type="checkbox" data-role="none" />
+                                                <div class="checkbox" style="background-color:#7ca9bd;"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                 -->
+                <div class="list-block" >
+                    <ul id="accountInfos">
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner ">
+                                    <div class="item-title">Email Address</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="display:none;">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Password</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="display:none;">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Re-Password</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">First name</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Last name</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Gender</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Date of birth</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Country</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Zip code</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="display:none;">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">userkey</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+                  <!--
+                <div class="list-block" >
+                    <ul>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Analytics Reports</div>
+                                    <div class="item-after" >
+                                        <div class="item-input">
+                                            <label class="label-switch">
+                                                <input id="repo" type="checkbox" data-role="none" checked>
+                                                <div class="checkbox" style="background-color:#7ca9bd;"></div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="rep">
+                            <div class="item-content">
+                                <div class="item-inner ">
+                                    <div class="item-title">Frequency</div>
+                                    <div class="item-after" >
+                                        <div class="item-input">
+                                            <select id="frequency" name="units" data-role="none">
+                                                <option value="onceWeek">Once Per Week</option>
+                                                <option value="everyMonth">Every Month</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                   -->
+                <div class="list-block" >
+                    <ul>
+                        <li>
+                            <label class="label-checkbox item-content">
+                                <!-- Checked by default -->
+                                <input type="checkbox" id="uploadData" value="0" data-role='none'>
+                                    <div class="item-media">
+                                        <i class="icon icon-form-checkbox" style="background-color:#7ca9bd;"></i>
+                                    </div>
+                                    <div class="item-inner">
+                                       <div class="item-title" style="font-size:70%;">Do not send water consumption data to researchers</div>
+                                       
+                                    </div>
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+                <div class="list-block inset" >
+                    <div class="row">
+                        <div class="col-25"></div>
+                        <div class="col-50">
+                            <p id="logout" class="button button-fill button-big" style="background-color:#7ca9bd;">Logout</p>
+                        </div>
+                        <div class="col-25"></div>
+                    </div>
+                </div>
+                <!--
+                <div class="content-block">
+                    <div class="content-block-inner">
+                        <p>Reports are only sent if at least one new shower has been synced between your amphiro device and the app, and if your app thereafter established an Internet connection.</p>
+                    </div>
+                </div>
+                 -->
+            </div>
+        </div>
+        
+        <div data-role="page" id="SetAccount">
+                        
+            <div class="page-content">
+                <div class="login-screen-title">Registration</div>
+                
+                <form id="form1">
+                    
+                    <div class="list-block">
+                        <ul>
+                            <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">E-mail</div>
+                                            <div class="item-input">
+                                                <input name="email" type="email" placeholder="E-mail">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Password</div>
+                                            <div class="item-input">
+                                                <input id="password" name="password" type="password" placeholder="Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            <li>
+                                <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Re-Enter Password</div>
+                                            <div class="item-input">
+                                                <input id="repassword" name="repassword" type="password" placeholder="Re-Enter your Password">
+                                                    </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">First Name</div>
+                                            <div class="item-input">
+                                                <input name="fname" type="text" placeholder="Your first name">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Last Name</div>
+                                            <div class="item-input">
+                                                <input name="lname" type="text" placeholder="Your last name">
+                                            </div>
+                                        </div>
+                                    </div>
+                            </li>
+                        
+                            <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Gender</div>
+                                            <div class="item-input">
+                                                <select name="gender" data-role="none">
+                                                    <option selected disabled>Select Gender</option>
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Date of birth</div>
+                                            <div class="item-input">
+                                                <input name="date" id="dateofbirth" type="date" min="1900-01-01" max="2016-01-01" value="1970-01-01"   >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">Country</div>
+                                            <div class="item-input">
+                                                <select name="country" data-role="none">
+                                             <option selected disabled>Select Country</option>
+                                             <option value="Australia" >Australia</option>
+                                             <option value="Austria" >Austria</option>
+                                             <option value="Belgium">Belgium</option>
+                                             <option value="Denmark" >Denmark</option>
+                                             <option value="France">France</option>
+                                             <option value="Germany" >Germany</option>
+                                             <option value="Greece" >Greece</option>
+                                             <option value="Italy" >Italy</option>
+                                             <option value="Luxembourg" >Luxembourg</option>
+                                             <option value="Portugal">Portugal</option>
+                                             <option value="Spain">Spain</option>
+                                             <option value="Sweden">Sweden</option>
+                                             <option value="Switzerland">Switzerland</option>
+                                             <option value="United Arab Emirates">United Arab Emirates</option>
+                                             <option value="United Kingdom">United Kingdom</option>
+                                             <option value="United States" >United States</option>
+                                            
+                                            <option value="Afghanistan" >Afghanistan</option>
+                                            <option value="Albania" >Albania</option>
+                                            <option value="Algeria" >Algeria</option>
+                                            <option value="American Samoa" >American Samoa</option>
+                                            <option value="Andorra" >Andorra</option>
+                                            <option value="Angola" >Angola</option>
+                                            <option value="Anguilla">Anguilla</option>
+                                            <option value="Antarctica" >Antarctica</option>
+                                            <option value="Antigua And Barbuda">Antigua And Barbuda</option>
+                                            <option value="Argentina" >Argentina</option>
+                                            <option value="Armenia">Armenia</option>
+                                            <option value="Aruba">Aruba</option>
+                                            
+                                            <option value="Azerbaijan">Azerbaijan</option>
+                                            <option value="Bahamas" >Bahamas</option>
+                                            <option value="Bahrain" >Bahrain</option>
+                                            <option value="Bangladesh" >Bangladesh</option>
+                                            <option value="Barbados" >Barbados</option>
+                                            <option value="Belarus">Belarus</option>
+                                           
+                                            <option value="Belize" >Belize</option>
+                                            <option value="Benin" >Benin</option>
+                                            <option value="Bermuda">Bermuda</option>
+                                            <option value="Bhutan" >Bhutan</option>
+                                            <option value="Bolivia" >Bolivia</option>
+                                            <option value="Bonaire, Sint Eustatius and Saba">Bonaire, Sint Eustatius and Saba</option>
+                                            <option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option>
+                                            <option value="Botswana" >Botswana</option>
+                                            <option value="Bouvet Island" >Bouvet Island</option>
+                                            <option value="Brazil" >Brazil</option>
+                                            <option value="British Indian Ocean Territory" >British Indian Ocean Territory</option>
+                                            <option value="Brunei Darussalam" >Brunei Darussalam</option>
+                                            <option value="Bulgaria" >Bulgaria</option>
+                                            <option value="Burkina Faso" >Burkina Faso</option>
+                                            <option value="Burundi" >Burundi</option>
+                                            <option value="Cambodia" >Cambodia</option>
+                                            <option value="Cameroon" >Cameroon</option>
+                                            <option value="Canada" >Canada</option>
+                                            <option value="Cape Verde" >Cape Verde</option>
+                                            <option value="Cayman Islands" >Cayman Islands</option>
+                                            <option value="Central African Republic" >Central African Republic</option>
+                                            <option value="Chad" >Chad</option>
+                                            <option value="Chile" >Chile</option>
+                                            <option value="China">China</option>
+                                            <option value="Christmas Island">Christmas Island</option>
+                                            <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                                            <option value="Colombia" >Colombia</option>
+                                            <option value="Comoros" >Comoros</option>
+                                            <option value="Congo" >Congo</option>
+                                            <option value="Congo, the Democratic Republic of the">Congo, the Democratic Republic of the</option>
+                                            <option value="Cook Islands" >Cook Islands</option>
+                                            <option value="Costa Rica" >Costa Rica</option>
+                                            <option value="CΓ΄te d'Ivoire" >CΓ΄te d'Ivoire</option>
+                                            <option value="Croatia" >Croatia</option>
+                                            <option value="Cuba" >Cuba</option>
+                                            <option value="CuraΓ§ao" >CuraΓ§ao</option>
+                                            <option value="Cyprus" >Cyprus</option>
+                                            <option value="Czech Republic" >Czech Republic</option>
+                                            
+                                            <option value="Djibouti" >Djibouti</option>
+                                            <option value="Dominica" >Dominica</option>
+                                            <option value="Dominican Republic" >Dominican Republic</option>
+                                            <option value="Ecuador" >Ecuador</option>
+                                            <option value="Egypt" >Egypt</option>
+                                            <option value="El Salvador" >El Salvador</option>
+                                            <option value="Equatorial Guinea" >Equatorial Guinea</option>
+                                            <option value="Eritrea" >Eritrea</option>
+                                            <option value="Estonia" >Estonia</option>
+                                            <option value="Ethiopia">Ethiopia</option>
+                                            <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                                            <option value="Faroe Islands">Faroe Islands</option>
+                                            <option value="Fiji">Fiji</option>
+                                            <option value="Finland" >Finland</option>
+                                           
+                                            <option value="French Guiana">French Guiana</option>
+                                            <option value="French Polynesia" >French Polynesia</option>
+                                            <option value="French Southern Territories">French Southern Territories</option>
+                                            <option value="Gabon">Gabon</option>
+                                            <option value="Gambia">Gambia</option>
+                                            <option value="Georgia">Georgia</option>
+                                            
+                                            <option value="Ghana" >Ghana</option>
+                                            <option value="Gibraltar" >Gibraltar</option>
+                                            
+                                            <option value="Greenland" >Greenland</option>
+                                            <option value="Grenada" >Grenada</option>
+                                            <option value="Guadeloupe" >Guadeloupe</option>
+                                            <option value="Guam" >Guam</option>
+                                            <option value="Guatemala" >Guatemala</option>
+                                            <option value="Guernsey" >Guernsey</option>
+                                            <option value="Guinea" >Guinea</option>
+                                            <option value="Guinea-Bissau" >Guinea-Bissau</option>
+                                            <option value="Guyana" >Guyana</option>
+                                            <option value="Haiti" >Haiti</option>
+                                            <option value="Heard Island and McDonald Islands">Heard Island and McDonald Islands</option>
+                                            <option value="Holy See (Vatican City State)" >Holy See (Vatican City State)</option>
+                                            <option value="Honduras" >Honduras</option>
+                                            <option value="Hong Kong" >Hong Kong</option>
+                                            <option value="Hungary" >Hungary</option>
+                                            <option value="Iceland">Iceland</option>
+                                            <option value="India" >India</option>
+                                            <option value="Indonesia" >Indonesia</option>
+                                            <option value="Iran">Iran</option>
+                                            <option value="Iraq" >Iraq</option>
+                                            <option value="Ireland" >Ireland</option>
+                                            <option value="Isle of Man" >Isle of Man</option>
+                                            <option value="Israel" >Israel</option>
+                                            
+                                            <option value="Jamaica" >Jamaica</option>
+                                            <option value="Japan" >Japan</option>
+                                            <option value="Jersey" >Jersey</option>
+                                            <option value="Jordan">Jordan</option>
+                                            <option value="Kazakhstan" >Kazakhstan</option>
+                                            <option value="Kenya" >Kenya</option>
+                                            <option value="Kiribati" >Kiribati</option>
+                                            <option value="Korea, Democratic People's Republic of">Korea, Democratic People's Republic of</option>
+                                            <option value="Korea, Republic of">Korea, Republic of</option>
+                                            <option value="Kuwait" >Kuwait</option>
+                                            <option value="Kyrgyzstan">Kyrgyzstan</option>
+                                            <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                                            <option value="Latvia">Latvia</option>
+                                            <option value="Lebanon">Lebanon</option>
+                                            <option value="Lesotho">Lesotho</option>
+                                            <option value="Liberia" >Liberia</option>
+                                            <option value="Libyan Arab Jamahiriya" >Libyan Arab Jamahiriya</option>
+                                            <option value="Liechtenstein" >Liechtenstein</option>
+                                            <option value="Lithuania">Lithuania</option>
+                                            
+                                            <option value="Macao" >Macao</option>
+                                            <option value="FYROM" >Macedonia, The Former Yugoslav Republic Of</option>
+                                            <option value="Madagascar" >Madagascar</option>
+                                            <option value="Malawi" >Malawi</option>
+                                            <option value="Malaysia" >Malaysia</option>
+                                            <option value="Maldives" >Maldives</option>
+                                            <option value="Mali">Mali</option>
+                                            <option value="Malta" >Malta</option>
+                                            <option value="Marshall Islands" >Marshall Islands</option>
+                                            <option value="Martinique">Martinique</option>
+                                            <option value="Mauritania">Mauritania</option>
+                                            <option value="Mauritius" >Mauritius</option>
+                                            <option value="Mayotte" >Mayotte</option>
+                                            <option value="Mexico" >Mexico</option>
+                                            <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                                            <option value="Moldova, Republic of" >Moldova, Republic of</option>
+                                            <option value="Monaco">Monaco</option>
+                                            <option value="Mongolia">Mongolia</option>
+                                            <option value="Montenegro" >Montenegro</option>
+                                            <option value="Montserrat" >Montserrat</option>
+                                            <option value="Morocco" >Morocco</option>
+                                            <option value="Mozambique" >Mozambique</option>
+                                            <option value="Myanmar" >Myanmar</option>
+                                            <option value="Namibia" >Namibia</option>
+                                            <option value="Nauru" >Nauru</option>
+                                            <option value="Nepal" >Nepal</option>
+                                            <option value="Netherlands" >Netherlands</option>
+                                            <option value="New Caledonia" >New Caledonia</option>
+                                            <option value="New Zealand" >New Zealand</option>
+                                            <option value="Nicaragua" >Nicaragua</option>
+                                            <option value="Niger" >Niger</option>
+                                            <option value="Nigeria" >Nigeria</option>
+                                            <option value="Niue" >Niue</option>
+                                            <option value="Norfolk Island" >Norfolk Island</option>
+                                            <option value="Northern Mariana Islands" >Northern Mariana Islands</option>
+                                            <option value="Norway" >Norway</option>
+                                            <option value="Oman">Oman</option>
+                                            <option value="Pakistan" >Pakistan</option>
+                                            <option value="Palau" >Palau</option>
+                                            <option value="Palestinian Territory, Occupied">Palestinian Territory, Occupied</option>
+                                            <option value="Panama">Panama</option>
+                                            <option value="Papua New Guinea">Papua New Guinea</option>
+                                            <option value="Paraguay" >Paraguay</option>
+                                            <option value="Peru" >Peru</option>
+                                            <option value="Philippines">Philippines</option>
+                                            <option value="Pitcairn" >Pitcairn</option>
+                                            <option value="Poland" >Poland</option>
+                                            
+                                            <option value="Puerto Rico">Puerto Rico</option>
+                                            <option value="Qatar" >Qatar</option>
+                                            <option value="Romania" >Romania</option>
+                                            <option value="Russian Federation">Russian Federation</option>
+                                            <option value="Rwanda">Rwanda</option>
+                                            <option value="Samoa">Samoa</option>
+                                            <option value="San Marino">San Marino</option>
+                                            <option value="Saudi Arabia">Saudi Arabia</option>
+                                            <option value="Senegal" >Senegal</option>
+                                            <option value="Serbia">Serbia</option>
+                                            <option value="Seychelles">Seychelles</option>
+                                            <option value="Sierra Leone">Sierra Leone</option>
+                                            <option value="Singapore">Singapore</option>
+                                            <option value="Slovakia" >Slovakia</option>
+                                            <option value="Slovenia" >Slovenia</option>
+                                            <option value="Solomon Islands" >Solomon Islands</option>
+                                            <option value="Somalia">Somalia</option>
+                                            <option value="South Africa">South Africa</option>
+                                            <option value="South Sudan" >South Sudan</option>
+                                            
+                                            <option value="Sri Lanka">Sri Lanka</option>
+                                            <option value="Sudan">Sudan</option>
+                                            <option value="Suriname">Suriname</option>
+                                            <option value="Swaziland">Swaziland</option>
+                                            
+                                            
+                                            <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                                            <option value="Taiwan, Province of China">Taiwan, Province of China</option>
+                                            <option value="Tajikistan">Tajikistan</option>
+                                            <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                                            <option value="Thailand">Thailand</option>
+                                            <option value="Timor-Leste">Timor-Leste</option>
+                                            <option value="Togo">Togo</option>
+                                            <option value="Tokelau">Tokelau</option>
+                                            <option value="Tonga">Tonga</option>
+                                            <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                                            <option value="Tunisia" >Tunisia</option>
+                                            <option value="Turkey" >Turkey</option>
+                                            <option value="Turkmenistan">Turkmenistan</option>
+                                            <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                                            <option value="Tuvalu">Tuvalu</option>
+                                            <option value="Uganda">Uganda</option>
+                                            <option value="Ukraine" >Ukraine</option>
+                                            
+                                            <option value="United States Minor Outlying Islands">United States Minor Outlying Islands</option>
+                                            <option value="Uruguay">Uruguay</option>
+                                            <option value="Uzbekistan">Uzbekistan</option>
+                                            <option value="Vanuatu" >Vanuatu</option>
+                                            <option value="Venezuela">Venezuela</option>
+                                            <option value="Vietnam" >Vietnam</option>
+                                            <option value="Virgin Islands, British">Virgin Islands, British</option>
+                                            <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option>
+                                            <option value="Wallis and Futuna">Wallis and Futuna</option>
+                                            <option value="Western Sahara">Western Sahara</option>
+                                            <option value="Yemen" >Yemen</option>
+                                            <option value="Zambia" >Zambia</option>
+                                            <option value="Zimbabwe">Zimbabwe</option>
+                                           </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            <li>
+                                    <div class="item-content">
+                                        <div class="item-inner">
+                                            <div class="item-title label">ZIP code</div>
+                                            <div class="item-input">
+                                                <input name="zip" type="text" placeholder="Your zip code">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                        </ul>
+                        
+                    </div>
+                </form>
+                
+            </div>
+           
+        </div>
+
+        <div data-role="page" id="AmphiroUpdate">
+            <div class="page-content" >
+                <div class="list-block inset" >
+                    <div class="buttons-row" id="updateBtns">
+                        <p  id="connection" class=" button active">Last Connection</p>
+                        <p  id="edit" class="button">Edit Settings</p>
+                    </div>
+                </div>
+                <div class="list-block" >
+                    <ul>
+                        <li id="lastConnection">
+                            <div class="item-content ">
+                                <div class="item-inner" >
+                                    <div class="item-title">Last Connection</div>
+                                    <div class="item-after" id="devt"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li id="lastUpdate" style="display:none;">
+                            <div class="item-content ">
+                                <div class="item-inner" >
+                                    <div class="item-title">Last Update</div>
+                                    <div class="item-after" id="devu"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!--infos -->
+                <div class="list-block" id="infos">
+                    <div class="content-block-title">DEVICE SETTINGS</div>
+                    <ul id="deviceopt">
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner ">
+                                    <div class="item-title">Name</div>
+                                    <div  class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Unit</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Currency</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Alarm(Minutes)</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Water Cost(Currency/m3)</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Heating System</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Efficiency(%)</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Energy Cost(Currency/kWh)</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Share of Solar(%)</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="display:none;">
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Estimates Shower per Week</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="display:none;">
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Calibrate(%)</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Time Between Showers(secs)</div>
+                                    <div class="item-after"></div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content ">
+                                <div class="item-inner">
+                                    <div class="item-title">Cold Water Temperature</div>
+                                    <div class="item-after" ></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- infos -->
+                    
+                <!--UPDATE FORM -->
+                <div class="list-block" id="updateform" style="display:none">
+                    
+                    <div class="content-block-title" style="display:none;"><span></span></div>
+                    <div class="content-block-title" style="display:none;"><span></span></div>
+                    <div class="content-block-title" style="display:none;"><span></span></div>
+                    <div class="content-block-title" style="display:none;"><span></span></div>
+                    
+                    <div class="list-block" >
+                        <ul>
+                            <li >
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">Device Name</div>
+                                        <div class="item-input" >
+                                            <input id="decivename" type="text" placeholder="Device Name" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Unit</div>
+                                    <div class="item-after" >
+                                        <div class="item-input">
+                                            <select dir="rtl" name="unit" id="unitname" data-role="none">
+                                                <option  value="Metric">Metric</option>
+                                                <option value="Imperial">Imperial</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Currency</div>
+                                    <div class="item-after" >
+                                        <div class="item-input" >
+                                            <select dir="rtl" name="currency" data-role="none">
+                                                <option value="EUR">EUR</option>
+                                                <option value="USD">USD</option>
+                                               <!-- <option value="GBP">GBP</option>
+                                                <option value="SFR">SFR</option>
+                                                <option value="SKR">SKR</option>
+                                                <option value="AED">AED</option>
+                                                <option value="QR">QR</option>
+                                                <option value="KR">KR</option> -->
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title">Alarm(Minutes)</div>
+                                    <div class="item-after" >
+                                        <div class="item-input" >
+                                            <select dir="rtl" name="alarm" data-role="none">
+                                                <option value="0">0</option>
+                                                <option value="300">5</option>
+                                                <option value="600">10</option>
+                                                <option value="900">15</option>
+                                                <option value="1200">20</option>
+                                                <option value="1500">25</option>
+                                                <option value="1800">30</option>
+                                                <option value="2100">35</option>
+                                                <option value="2400">40</option>
+                                                <option value="2700">45</option>
+                                                <option value="3000">50</option>
+                                                <option value="3300">55</option>
+                                                <option value="3600">60</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <!--
+                    <div class="list-block" >
+                    <div class="content-block-title"> alarm(sec) : <span></span></div>
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input">
+                                        <div class="range-slider" >
+                                            <input type="range" min="0" max="9000" value="0" step="500" data-role="none">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                     -->
+                    <div class="list-block" >
+                        <div class="content-block-title">water cost(currency/unit) : <span></span></div>
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-input">
+                                        <div class="range-slider" >
+                                            <input type="range" min="0.00" max="99.99" value="5.00" step="0.01" data-role="none" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                        
+                    <div class="list-block" >
+                            <div class="content-block-title" style="display:none;"><span></span></div>
                             <ul>
-                                <li><a href="#" id="today">Today</a></li>
-                                <li><a href="#" id="week">Week</a></li>
-                                <li><a href="#" id="month">Month</a></li>
-                                <li><a href="#" class="ui-btn-active" id="year">Year</a></li>
+                                <li>
+                                    <div class="item-content">
+                                        
+                                        <div class="item-inner">
+                                            <div class="item-title">Heating System</div>
+                                            <div class="item-after" >
+                                                <div class="item-input" >
+                                                    <select dir="rtl" name="heating" data-role="none">
+                                                        <option value="1">Electricity</option>
+                                                        <option value="2">Oil</option>
+                                                        <option value="0">Gas</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
                             </ul>
+                    </div>
+                    <div class="list-block" >
+                            <div class="content-block-title">heating efficiency (%) : <span></span></div>
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <div class="range-slider">
+                                                <input type="range" min="0" max="100" value="100" step="10" data-role="none">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    <div class="list-block" >
+                            <div class="content-block-title">energy cost(currency/kWh) : <span></span></div>
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <div class="range-slider">
+                                                <input type="range" min="0.01" max="9.99" value="0.33" step="0.01" data-role="none">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="list-block" >
+                            <div class="content-block-title">Share of Solar (%) : <span></span></div>
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <div class="range-slider">
+                                                <input type="range" min="0" max="100" value="0" step="4" data-role="none">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="list-block" style="display:none;">
+                            <div class="content-block-title">Estimated Showers per Week : <span></span></div>
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <div class="range-slider">
+                                                <input type="range" min="0" max="100" value="14" step="2" data-role="none" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="list-block" style="display:none;">
+                            <div class="content-block-title">Calibrate (%) : <span></span></div>
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <div class="range-slider">
+                                                <input type="range" min="0.50" max="2" value="1" step="0.02" data-role="none" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="list-block" >
+                            <div class="content-block-title">Time Between Showers : <span></span></div>
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <div class="range-slider" id="timer">
+                                                <input type="range" min="0" max="599" data-role="none" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    <div class="list-block" >
+                            <div class="content-block-title">Cold Temperature Water  : <span></span></div>
+                            <ul>
+                                <li class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-input">
+                                            <div class="range-slider">
+                                                <input id="coldSlider" type="range" min="1" max="30" value="10" step="1" data-role="none">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                    </div>
+                    
+                    <div class="list-block inset" >
+                        <div class="row">
+                            <div class="col-50">
+                                <p id="overwrite" class="button button-fill button-big" style="background-color:#7ca9bd;">Apply</p>
+                            </div>
+                            <div class="col-50">
+                                <p id="applydef" class="button button-fill button-big" style="background-color:#7ca9bd;">Defaults</p>
+                            </div>
                             
                         </div>
-                        <div id="placeholder" class="demo-placeholder"></div>
-                        <div data-role="fieldcontain" >
-                            <label for="budget">Consumption Budget:</label>
-                            <input type="range" name="budget" id="budget" value="" min="0" max="300" step='10' data-highlight="true"  />
-                        </div>
                     </div>
                 </div>
-                
-                <div id="tabs-3">
-                    <div id="spinner1" ></div>
-                    <div class="demo-container">
-                        <div id="choices1">
-                            <div data-role="navbar" >
-                                <ul>
-                                    <li><input type='checkbox' name='litres' checked='checked' id='litres' disabled></input><label for='litres'>Litres</label></li>
-                                    <li><input type='checkbox' name='temp'  id='temp'></input><label for='temp'>Temp</label></li>
-                                    <li><input type='checkbox' name='energy'  id='energy'></input><label for='energy'>Energy</label></li>
-                                    <li><input type='checkbox' name='index'  id='index'></input><label for='index'>ShowerID</label></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div id="placeholder1" class="demo-placeholder" ></div>
+                <!--update form -->
+            </div>
+        </div>
+        
+        <div data-role="page" id="login">
+            <!-- page-content has additional login-screen content -->
+            <div class="page-content ">
+                <div class="login-screen-content">
+                    <div class="login-screen-title">Login</div>
+                    <!-- Login form -->
+                    <div class="list-block" >
+                        <ul>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">Email</div>
+                                    <div class="item-input">
+                                        <input id="logmail" type="email" name="username" placeholder="Email">
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">Password</div>
+                                    <div class="item-input">
+                                        <input id="logpass" type="password" name="password" placeholder="Password">
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+        </div>
+        
+        <div data-role="page" id="about"></div>
+
+        <div id="homebar" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a id="homepage" href="#welcomePage" class="tab-link active" style="color:#FF6970"> <i class="tabbar-demo-icon-4"></i><span class="tabbar-label"><b>Home</b></span></a>
                 
-                <div id="tabs-4" >
-                    <p>Move to HOME or REAL TIME tabs</p>
-                </div>
-                
-                <div id="tabs-5">
-                    <div id="comp">
-                        <div id="dateSelection">
-                            <p>Select Dates : </p>
-                            <input placeholder="Date from.." name="mode1" id="mode1" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' />
-                            <input placeholder="Date to.." name="mode2" id="mode2" type="text" data-role="datebox" data-options='{"mode":"calbox", "overrideDateFormat": "%Y-%m-%d"}' />
-                            <input type="submit" id="submitAvg" value="Submit" />
-                        </div>
-   
-                        <div id="averageBoxes">
-                            <p>Your average Consumption(Litres) : </p>
-                            <div id="average" class='boxOther'></div>
-                            <p>Similar Households consumption (Litres) : </p>
-                            <div id="households" class='boxOther'>76</div>
-                            <p>Status : </p>
-                            <div id="compStatus" class='boxOther'></div>
-                        </div>
-                    </div>
-                </div>
-                
-                
-                <div id="tabs-6">
-                    <div class="sharing">
-                        <p>Share your consumption : </p>
-                        <button id="shareViaMail">Share Via Email</button>
-                        <button id="shareViaFb">Share Via Facebook</button>
-                        <div id="resultSharing"></div>
-                    </div>
-                </div> <!-- tabs6 -->
-                
-                <div id="tabs-7">
-                    <p>Daiad@commons functionality</p>
-                </div>
-            
-                <div id="tabs-8">
-                    <div class='preferences' >
-                        <div data-role="fieldcontain" >
-                            <label for="slider2">Notifications:</label>
-                            <select name="slider2" id="slider2" data-role="slider">
-                                <option value="off">Off</option>
-                                <option value="on">On</option>
-                            </select>
-                        </div>
-                        <div data-role="fieldcontain" >
-                            <fieldset data-role="controlgroup">
-                                <legend>Notify me:</legend>
-                                <input type="checkbox" name="checkbox-1a" id="checkbox-1a" class="custom" />
-                                <label for="checkbox-1a">Every day</label>
-                                <input type="checkbox" name="checkbox-2a" id="checkbox-2a" class="custom" />
-                                <label for="checkbox-2a">Every week</label>
-                                <input type="checkbox" name="checkbox-3a" id="checkbox-3a" class="custom" />
-                                <label for="checkbox-3a">Every month</label>
-                            </fieldset>
-                        </div>
-                    </div>
-                </div>
-                
-            </div><!--tabs-->
-                
-        </div><!-- content -->
-            
-            
-    </div>
-    <!--End Home Page-->
-    
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript" src="js/EventBroker.js"></script>
-    <script type="text/javascript" src="js/storageManager.js"></script>
-    <script type="text/javascript" src="js/charts.js"></script>
-    
+                <a href="#trend" class="tab-link"> <i class="tabbar-demo-icon-5"></i><span class="tabbar-label"><b>My Trends</b></span></a>
+               
+               
+                <a href="#compare" class="tab-link"> <i class="tabbar-demo-icon-6"></i><span class="tabbar-label"><b>My Efficiency</b></span></a>
+             
+                <a id="homeset" href="#settings" class="tab-link"> <i class="tabbar-demo-icon-7"></i><span class="tabbar-label"><b>Settings</b></span></a>
+            </div>
+        </div>
+        <div id="accountbar" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a id="acc2set"  class="tab-link " > <i class="tabbar-demo-icon-3"></i><span class="tabbar-label"><b>Back</b></span></a>
+                <a href="#" class="tab-link "><span class="tabbar-label"></span></a>
+                <a id="acc2sub" class="tab-link " > <i class="tabbar-demo-icon-8"></i><span class="tabbar-label"><b>Save</b></span></a>
+            </div>
+        </div>
+        <div id="connectbar" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a id="con2set"  class="tab-link " > <i class="tabbar-demo-icon-3"></i><span class="tabbar-label"><b>Back</b></span></a>
+                <!--<a href="#" class="tab-link "><span class="tabbar-label"></span></a>
+                <a id="connect" class="tab-link" > <i class="tabbar-demo-icon-9"></i><span class="tabbar-label">Connect your b1</span></a>-->
+            </div>
+        </div>
+        <div id="loginbar" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a id="log2wel" href="#" class="tab-link"> <i class="tabbar-demo-icon-3"></i><span class="tabbar-label"><b>Back</b></span></a>
+                <a href="#" class="tab-link "><span class="tabbar-label"></span></a>
+                <a id="submitlog"  class="tab-link  "> <i class="tabbar-demo-icon-2"></i><span class="tabbar-label"><b>Login</b></span></a>
+            </div>
+        </div>
+        <div id="registerbar" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a id="reg2wel"  class="tab-link " > <i class="tabbar-demo-icon-3"></i><span class="tabbar-label"><b>Back</b></span></a>
+                <a href="#" class="tab-link "><span class="tabbar-label"></span></a>
+                <a id="submitregister" class="tab-link " > <i class="tabbar-demo-icon-8"></i><span class="tabbar-label"><b>Submit</b></span></a>
+            </div>
+        </div>
+        <div id="noaccountbar" class=" tabbar tabbar-labels">
+            <div class="toolbar-inner">
+                <a href="#SetAccount" class="tab-link " > <i class="tabbar-demo-icon-1"></i><span class="tabbar-label" ><b>Set up account</b></span></a>
+                <a href="#" class="tab-link "><span class="tabbar-label"></span></a>
+                <a href="#login" class="tab-link"  > <i class="tabbar-demo-icon-2"></i><span class="tabbar-label"><b>Login</b></span></a>
+            </div>
+        </div>
+        <div id="pairedbar" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a id="paired2set" class="tab-link " > <i class="tabbar-demo-icon-3"></i><span class="tabbar-label"><b>Back</b></span></a>
+            </div>
+        </div>
+        <div id="updatebar" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a id="upd2dev" class="tab-link " > <i class="tabbar-demo-icon-3"></i><span class="tabbar-label"><b>Back</b></span></a>
+            </div>
+        </div>
+        <div id="customconnect" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a href="#CustomizeAmphiroInstall" class="tab-link"  > <i class="tabbar-demo-icon-9"></i><span class="tabbar-label" ><b>Connect your b1</b></span></a>
+            </div>
+        </div>
+        <div id="customconnectionbar" class=" tabbar tabbar-labels" >
+            <div class="toolbar-inner">
+                <a id="cc2m" href="#welcomePage"  class="tab-link "  > <i class="tabbar-demo-icon-3"></i><span class="tabbar-label"><b>Back</b></span></a>
+                <!--<a href="#" class="tab-link "><span class="tabbar-label"></span></a>
+                <a id="onConnect" class="tab-link"  > <i class="tabbar-demo-icon-9"></i><span class="tabbar-label">Connect your b1</span></a>-->
+            </div>
+        </div>
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/EventBroker.js"></script>
+        
     </body>
 </html>

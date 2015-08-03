@@ -20,165 +20,121 @@ var EventBus = {
     }
 };
 
-/*
-document.addEventListener("online", onOnline, false);
-document.addEventListener("offline", onOffline, false);
-
-var checkWifi = function() {
-    EventBus.subscribe('contextManager/wifi', this.sendResponse);
+var ModelObserver = function() {
+    EventBus.subscribe('model',this.changed);
 };
 
-checkWifi.prototype = {
-    sendResponse: function(flag) {
-        //alert("Wifi : " + flag);
-        //resultDiv.innerHTML = resultDiv.innerHTML + "Wifi status " + flag + "</br>";
-        //resultDiv.scrollTop = resultDiv.scrollHeight;
-        $('#resultDiv').append('<tr><td> Wifi status:' + flag + '</td></tr>');
+ModelObserver.prototype = {
+    changed: function() {
+        //alert(JSON.stringify(AppModel.devices));
+        app.UpdateDeviceSettingsToDb(JSON.stringify(AppModel.devices));
+        window.localStorage.setItem('amphiro',JSON.stringify(AppModel.devices));
     }
 };
 
-var WifiManager = function(param) {
+
+/***********************/
+/*Notification Manager*/
+var NotificationManager = function(param) {
     this.param = param;
 };
 
-WifiManager.prototype = {
-    response: function() {
-        EventBus.publish('contextManager/wifi', this.param.flag);
+NotificationManager.prototype = {
+    PairingCode : function(){
+        EventBus.publish('ble/code/wrong');
+    },
+    PairingCodeCorrect : function(){
+        EventBus.publish('ble/code/correct');
+    },
+    BleDisabled : function(){
+        EventBus.publish('ble/disabled');
+    },
+    LoginFailed : function(){
+        EventBus.publish('login/failed');
+    },
+    RegisterFailed : function(){
+        EventBus.publish('register/failed',this.param);
+    },
+    ConnectionMessage : function(){
+        EventBus.publish('connection/failed');
     }
 };
 
-
-function onOnline() {
-    // Handle the online event
-    var wifimanager = new WifiManager({flag: 'enabled'});
-    wifimanager.response();
-}
-
-
-function onOffline() {
-    // Handle the offline event
-    var wifimanager = new WifiManager({flag: 'disabled'});
-    wifimanager.response();
-    
-}
- 
- */
-
-/* Check Network Connection */
-function checkConnection() {
-    var networkState = navigator.connection.type;
-    
-    var states = {};
-    states[Connection.UNKNOWN]  = 'Unknown connection';
-    states[Connection.ETHERNET] = 'Ethernet connection';
-    states[Connection.WIFI]     = 'WiFi connection';
-    states[Connection.CELL_2G]  = 'Cell 2G connection';
-    states[Connection.CELL_3G]  = 'Cell 3G connection';
-    states[Connection.CELL_4G]  = 'Cell 4G connection';
-    states[Connection.CELL]     = 'Cell generic connection';
-    states[Connection.NONE]     = 'No network connection';
-    
-    $('#resultDiv').append('<tr><td> Connection Type :: ' + states[networkState] + '</td></tr>');
-    resultDiv.scrollTop = resultDiv.scrollHeight;
-    return states[networkState];
-
-}
-
-//Subscriber to bluetooth connection
-var bleConnection = function() {
-    EventBus.subscribe('contextManager/ble', this.sendResponse);
+var BluetoothNotifications = function() {
+    EventBus.subscribe('ble/code/wrong', this.AmphiroInstallationFailed);
+    EventBus.subscribe('ble/code/correct', this.AmphiroInstallationSuccess);
+    EventBus.subscribe('ble/code/unpair', this.AmphiroUnpaired);
+    EventBus.subscribe('ble/disabled', this.BleStatus);
+    EventBus.subscribe('login/failed', this.LoginFail);
+    EventBus.subscribe('register/failed',this.RegisterFailed);
+    EventBus.subscribe('connection/failed',this.ConnectionFailed);
 };
 
-bleConnection.prototype = {
-    sendResponse: function(param) {
+BluetoothNotifications.prototype = {
+    AmphiroInstallationFailed: function() {
+        navigator.notification.alert(
+                                     'Pairing failed!Insert display code again..',  // message
+                                     function(){},         // callback
+                                     'amphiro b1',            // title
+                                     'Done'                  // buttonName
+                                     );
+    },
+    AmphiroInstallationSuccess: function() {
+        navigator.notification.alert(
+                                     'Amphiro has been paired!!',  // message
+                                     function(){},         // callback
+                                     'amphiro b1',            // title
+                                     'Done'                  // buttonName
+                                     );
+    },
+    AmphiroUnpaired: function() {
+        navigator.notification.alert(
+                                 'Amphiro has been unpaired!!',  // message
+                                 function(){},         // callback
+                                 'amphiro b1',            // title
+                                 'Done'                  // buttonName
+                                 );
+    },
+
+    BleStatus : function(){
+        navigator.notification.alert(
+                                     'Bluetooth is disabled!',  // message
+                                     function(){},         // callback
+                                     'amphiro b1',            // title
+                                     'Done'                  // buttonName
+                                     );
+    },
+    LoginFail : function(){
+        navigator.notification.alert(
+                                     'Login Failed!Please try again..',  // message
+                                     function(){},         // callback
+                                     'amphiro b1',            // title
+                                     'Done'                  // buttonName
+                                     );
+
+    
+    },
+    RegisterFailed : function(param){
+        navigator.notification.alert(
+                                     'Register Failed!Email is unavailable.',  // message
+                                     function(){},         // callback
+                                     'amphiro b1',            // title
+                                     'Done'                  // buttonName
+                                     );
+
+    
+    },
+    ConnectionFailed : function(){
+        navigator.notification.alert(
+                                     'Please enable Wi-Fi Connection or Cellular Data.',  // message
+                                     function(){},         // callback
+                                     'amphiro b1',            // title
+                                     'Done'                  // buttonName
+                                     );
         
-        if (param.flag == 'connected'){
-            
-            $('#resultDiv').append('<tr><td>Device(Name-ID) :: '+ param.name + ' : ' + param.id + ' >> Status :: '+ param.flag +'</td></tr>');
-            resultDiv.scrollTop = resultDiv.scrollHeight;
-        }
         
-        if (param.flag == 'Disconnected'){
-            $('#resultDiv').append('<tr><td> Sensor Data progress :: ' + param.id + ' -' + param.flag + '</td></tr>');
-            $('#resultDiv').append('<tr><td> Transmitted packets :: ' + packets.length +  '</td></tr>');
-            resultDiv.scrollTop = resultDiv.scrollHeight;
-        }
     }
-};
 
-var BluetoothManager = function(param) {
-    this.param = param;
-};
-
-BluetoothManager.prototype = {
-    response: function() {
-        EventBus.publish('contextManager/ble', this.param);
-    }
-};
-
-
-//Subscriber to scheduler event
-var uploadTask = function() {
-    EventBus.subscribe('upload', this.sendResponse);
-};
-
-uploadTask.prototype = {
-    sendResponse: function(flag) {
-        if (flag == 'start'){
-            $('#resultDiv').append('<tr><td>'+ new Date() +' :: Wifi detected!Trying remote connection with server..</td></tr>');
-            resultDiv.scrollTop = resultDiv.scrollHeight;
-            
-            /*Ajax request - post data*/
-            /*
-             
-             $.ajax({
-             type: "POST",
-             url: "",
-             // The key needs to match your method's input parameter (case-sensitive).
-             data: JSON.stringify({ Packets: packets }),
-             contentType: "application/json; charset=utf-8",
-             dataType: "json",
-             success: function(data){alert(data);},
-             failure: function(errMsg) {
-             alert(errMsg);
-             }
-             });
-             
-             */
-            
-        }
-    }
-};
-
-
-/*
- 
- Scheduler for all the asychronous tasks.
- Directly send request to web service when wifi is detected and BLE is disconnected
- 
- Simple case!!
- 
- Todo: implement specific intervals 
- 
- */
-var scheduler = function() {
-    EventBus.subscribe('contextManager/ble', this.sendResponse);
-};
-
-scheduler.prototype = {
-    sendResponse: function(param) {
-       if (param.flag == 'Disconnected'){
-           $('#resultDiv').append('<tr><td>Scheduler :: Bluetooth is Disconnected. Checking Wifi Connection..</td></tr>');
-           resultDiv.scrollTop = resultDiv.scrollHeight;
-           var InternetConnection  =  checkConnection();
-           
-           if ( InternetConnection == 'WiFi connection' ){
-           
-               EventBus.publish('upload', 'start');
-           
-           }
-       }
-    }
 };
 
 

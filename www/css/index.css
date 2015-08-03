@@ -1,173 +1,612 @@
-body {
+@font-face {
+    font-family: 'CusFont';
+    src: url('../css/OfficinaSansStd-Book.otf'),
+        url('../css/OfficinaSansStd-BoldItalic.otf'),
+        url('../css/OfficinaSansStd-Bold.otf'),
+        url('../css/OfficinaSansStd-BookItalic.otf');
 }
 
-/* --- MEDIA QUERIES --- */
-
-@media only screen 
-and (min-device-width : 360px) 
-and (max-device-width : 640px) {
-
-.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 50%; border-right-width: 0 !important; }
-.ui-tabs-vertical .ui-tabs-nav li a { display:block; font-size:70%; }
-
+html *
+{
+    font-family : 'CusFont';
 }
 
-/*ipad portrait*/
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-.boxCategory{
-    border: 1px #267df2 groove;
-    background-color: lightblue;
-    margin: 1px auto;
-    font-weight: bold;
-    font-size: 100%;
-    text-align: center;
-}
-.boxOther{
-    display: inline-block;
-    border: 1px #267df2 groove;
-    background-color: lightblue;
-    text-align:center;
-    margin: 1px auto;
-    width:29%;
-    font-weight: bold;
-    font-size: 100%;
-    padding: 10%;
-}
-.boxer{
-    display: inline-block;
-    border: 1px #267df2 groove;
-    background-color: lightblue;
-    text-align:center;
-    margin: 1px auto;
-    width:38%;
-    font-weight: bold;
-    font-size: 100%;
-    padding: 5%;
-}
-
-.boxLitres{
-    display: inline-block;
-    border: 1px #267df2 groove;
-    background-color: lightblue;
-    text-align:center;
-    margin: 1px auto;
-    width:35%;
-    font-weight: bold;
-    font-size: 150%;
-    padding: 10%;
-}
-
-}
-
-/*ipad lanscape*/
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-    .boxCategory{
-        border: 1px #267df2 groove;
-        background-color: lightblue;
-        margin: 1px auto;
-        
-        font-weight: bold;
-        font-size: 100%;
-        text-align: center;
-    }
-    .boxOther{
-        display: inline-block;
-        border: 1px #267df2 groove;
-        background-color: lightblue;
-        text-align:center;
-        margin: 1px auto;
-        width:29%;
-        font-weight: bold;
-        font-size: 100%;
-        padding: 10%;
-    }
-    .boxer{
-        display: inline-block;
-        border: 1px #267df2 groove;
-        background-color: lightblue;
-        text-align:center;
-        margin: 1px auto;
-        width:38%;
-        font-weight: bold;
-        font-size: 100%;
-        padding: 5%;
-    }
-    .boxLitres{
-        display: inline-block;
-        border: 1px #267df2 groove;
-        background-color: lightblue;
-        text-align:center;
-        margin: 1px auto;
-        width:35%;
-        
-        font-weight: bold;
-        font-size: 150%;
-        padding: 10%;
-    }
-}
-
-/*Default css*/
-.ui-header {
-    background: #A4D5F5 !important;
-}
-.ui-content {
-    background :url('../img/daiad-home-transparent.png') ;
-    width: 100%;
-    height:100%;
-    position : fixed;
-}
-/*input.ui-slider-input {display: none;}*/
-.homeTab {width: 100%;height:100%;}
-
-#row_one {width:100%;height:50%;border:1px solid #ddd;}
-#row_two {width:100%;height:50%;}
-
-#resultDiv {height:90%;overflow-y: auto;overflow-x: hidden;}
-#deviceList {width:100%;height:50%;border: 1px #267df2 groove;background-color: lightblue;text-align:center;font-weight: bold;font-size: 100%;}
-
-#currentData{width:60%;height:100%;float:left;}
-#apCon{width:30%;height:100%;float:right;}
-#lastData{width:50%;height:100%;float:right;}
-
-#comp{width:100%;height:50%;}
-#dateSelection{width:40%;height:50%;float:left;}
-#averageBoxes{width:50%;float:right;}
-
-.sharing { width:50%;height:50%;border: 1px #267df2 groove;background-color: lightblue;}
-
-thead, tbody { display: block; }
-#news {
-    float:left
-    color: black;
-    background: -webkit-linear-gradient(top, #fdfdfd, #eee);
-    width: 100%;
-    height:90%;
-    border: 1px #267df2 groove;
-}
-#news tr td {
-    color: #666;
-    font-size: 160% helvetica;
-    padding: 0;
+.tabbar {
+    
+    position:fixed;
+    bottom:1%;
     width:100%;
-    background-image: -webkit-linear-gradient(top, #fdfdfd, #eee);
+    height:10%;
+    background:transparent;
+    display:none;
+    
 }
-#news tr td:last-child {border-right: none;}
-#news tr:last-child td {border-bottom: none;}
-#spinner,#spinner1{
-    display:none;position:fixed;z-index:500;top:0;left:0;height:100%;width:100%;
-    background: rgba( 255, 255, 255, .8 )url('../img/ajax-loader.gif') 50% 50%
-    no-repeat;
+.tabbar a{
+    
+    color:#383838;
+    margin:5%;
 }
-.preferences {width: 100%;}
-.demo-container {width: 100%;}
-.demo-placeholder {width: 100%;height:80%;}
-
-.ui-tabs-vertical { width: 100%; }
-.ui-tabs-vertical .ui-tabs-nav {  position:fixed;float: left; width:20%;  border: 1px #267df2 groove;background-color: lightblue; }
-.ui-tabs-vertical .ui-tabs-nav li { clear: left; width: 100%; border-right-width: 0 !important; }
-.ui-tabs-vertical .ui-tabs-nav li a { display:block; }
-.ui-tabs-vertical .ui-tabs-nav li.ui-tabs-active { padding-bottom: 0; padding-right: .1em; border-right-width: 1px; border-right-width: 1px; }
-.ui-tabs-vertical .ui-tabs-panel { position:fixed;left:25%; width:75%;height:80%;}
 
 
+
+#instructions{
+    color: #383838;
+}
+
+#decivename,#unitname {
+    text-align:right;
+}
+select, option {
+    text-align:right;
+}
+
+
+/*GENERIC IPAD*/
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait) {
+
+#trendList p{font-size:120%;border-color:#7ca9bd;color:#7ca9bd;}
+#trendList .active {
+    border-color:#7ca9bd;
+    background-color:#7ca9bd;
+    color: white;
+}
+
+#compareList p{font-size:120%;border-color:#7ca9bd;color:#7ca9bd;}
+#compareList .active {
+    border-color:#7ca9bd;
+    background-color:#7ca9bd;
+    color: white;
+}
+
+#updateBtns p{font-size:120%;border-color:#7ca9bd;color:#7ca9bd;}
+#updateBtns .active {
+border-color:#7ca9bd;
+background-color:#7ca9bd;
+color: white;
+}
+
+.settings_screen{
+    position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
+
+}
+.settings_screen_images{
+    width:70%;height:60%;
+}
+
+.connect_image {
+    width:40%;
+    height:55%;
+    position:relative;
+    left:7%;
+    
+}
+
+.connect_screen {
+    display:block;
+    float:right;
+    right:40%;
+    color: #383838;
+    font-size:150%;
+    width:50%;
+    height:50%;
+
+}
+
+.apptexts {
+    
+    font-size : 32;
+    position:fixed;
+    top:25%;
+    left:7%;
+    width:40%;
+    height:60%;
+    display:block;
+
+}
+.about { font-size:150%; }
+.page-content{position:fixed;top:9.5%;width:100%;height:74%;}
+
+#toAccount,#toInstall,#toAbout {
+    color: #7ca9bd;
+}
+
+#welcomePage {
+    background: url("../img/ipad/Home768x1024.jpg");
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+
+#login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall,#PairedAmphiro{
+   background: url("../img/ipad/Gen768x1024.jpg");
+   background-repeat:no-repeat;
+   background-size: 100% 100%;
+}
+
+
+
+#efff1{width:10%;height:42%;}
+ #tips {color:#7ca9bd;font-size:180%;}
+
+i.tabbar-demo-icon-1{width:80px;height:80px;background-image:url("../img/ipad/account_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-1{width:80px;height:80px;background-image:url("../img/ipad/account_orange.png");}
+i.tabbar-demo-icon-2{width:80px;height:80px;background-image:url("../img/ipad/login_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-2{background-image:url("../img/ipad/login_orange.png");}
+i.tabbar-demo-icon-3{width:80px;height:80px;background-image:url("../img/ipad/back_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-3{width:80px;height:80px;background-image:url("../img/ipad/back_orange.png");}
+i.tabbar-demo-icon-4{width:80px;height:80px;background-image:url("../img/ipad/home_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-4{width:80px;height:80px;background-image:url("../img/ipad/home_orange.png");}
+i.tabbar-demo-icon-5{width:80px;height:80px;background-image:url("../img/ipad/trends_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-5{width:80px;height:80px;background-image:url("../img/ipad/trends_orange.png");}
+i.tabbar-demo-icon-6{width:80px;height:80px;background-image:url("../img/ipad/compare_dark1.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-6{background-image:url("../img/ipad/compare_orange1.png");}
+i.tabbar-demo-icon-7{width:80px;height:80px;background-image:url("../img/ipad/settings_dark1.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-7{width:80px;height:80px;background-image:url("../img/ipad/settings_orange1.png");}
+i.tabbar-demo-icon-8{width:80px;height:80px;background-image:url("../img/ipad/submit_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-8{width:80px;height:80px;background-image:url("../img/ipad/submit_orange.png");}
+i.tabbar-demo-icon-9{width:80px;height:80px;background-image:url("../img/ipad/connect_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-9{width:80px;height:80px;background-image:url("../img/ipad/connect_orange.png");}
+
+}
+/*iphone 6 */
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation : portrait) {
+    
+    
+    .connect_image {
+        width:35%;
+        height:40%;
+        position:relative;
+        left:5%;
+        
+    }
+
+    .connect_screen {
+        display:block;
+        float:right;
+        color: #383838;
+        font-size:32;
+        width:50%;
+        height:100%;
+        
+    }
+    .settings_screen{
+        position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
+        
+    }
+    .settings_screen_images{
+        width:70%;height:60%;
+    }
+.about { font-size:80%; }
+.apptexts {
+    color: #383838
+    font-size : 18;
+    position:fixed;
+    top:30%;
+    left:7%;
+    width:40%;
+    height:60%;
+    display:block;
+    
+}
+
+.page-content{position:fixed;top:9.5%;width:100%;height:74%;}
+
+#welcomePage {
+    background: url("../img/iphone/Home750x1334.jpg");
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+
+#login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall{
+    background: url("../img/iphone/Gen750x1334.jpg");
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+}
+#toAccount,#toInstall,#toAbout {
+    color: #7ca9bd;
+}
+
+#trendList p{font-size:70%;border-color:#7ca9bd;color:#7ca9bd;}
+#trendList .active {
+    border-color:#7ca9bd;
+    background-color:#7ca9bd;
+    color: white;
+}
+
+#compareList p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
+#compareList .active {
+    border-color:#7ca9bd;
+    background-color:#7ca9bd;
+    color: white;
+}
+
+#updateBtns p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
+#updateBtns .active {
+    border-color:#7ca9bd;
+    background-color:#7ca9bd;
+    color: white;
+}
+
+#efff{width:40%;height:40%;}
+#efff1{width:10%;height:40%;}
+
+#tips {color:#7ca9bd;font-size:100%;}
+
+i.tabbar-demo-icon-1{width:30px;height:30px;background-image:url("../img/iphone/account_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-1{background-image:url("../img/iphone/account_orange.png");}
+i.tabbar-demo-icon-2{width:30px;height:30px;background-image:url("../img/iphone/login_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-2{background-image:url("../img/iphone/login_orange.png");}
+i.tabbar-demo-icon-3{width:30px;height:30px;background-image:url("../img/iphone/back_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-3{background-image:url("../img/iphone/back_orange.png");}
+i.tabbar-demo-icon-4{width:30px;height:30px;background-image:url("../img/iphone/home_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-4{background-image:url("../img/iphone/home_orange.png");}
+i.tabbar-demo-icon-5{width:30px;height:30px;background-image:url("../img/iphone/trends_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-5{background-image:url("../img/iphone/trends_orange.png");}
+i.tabbar-demo-icon-6{width:30px;height:30px;background-image:url("../img/iphone/compare_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-6{background-image:url("../img/iphone/compare_orange.png");}
+i.tabbar-demo-icon-7{width:30px;height:30px;background-image:url("../img/iphone/settings_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-7{background-image:url("../img/iphone/settings_orange.png");}
+i.tabbar-demo-icon-8{width:30px;height:30px;background-image:url("../img/iphone/submit_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-8{background-image:url("../img/iphone/submit_orange.png");}
+i.tabbar-demo-icon-9{width:30px;height:30px;background-image:url("../img/iphone/connect_dark.png");background-repeat:no-repeat;}
+.active i.tabbar-demo-icon-9{background-image:url("../img/iphone/connect_orange.png");}
+
+
+}
+
+/*iphone 6plus*/
+@media only screen
+and (min-device-width : 414px)
+and (max-device-width : 736px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation : portrait) {
+    .connect_image {
+        width:45%;
+        height:50%;
+        position:relative;
+        left:5%;
+        
+    }
+
+    .connect_screen {
+        display:block;
+        float:right;
+        color: #383838;
+        font-size:65%;
+        width:50%;
+        height:50%;
+        
+    }
+    .settings_screen{
+        position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
+        
+    }
+    .settings_screen_images{
+        width:70%;height:60%;
+    }
+    .about { font-size:80%; }
+    .apptexts {
+        color: #383838
+        font-size : 18;
+        position:fixed;
+        top:30%;
+        left:7%;
+        width:40%;
+        height:60%;
+        display:block;
+        
+    }
+    
+    .page-content{position:fixed;top:9.5%;width:100%;height:74%;}
+    
+    #welcomePage {
+        background: url("../img/iphone/Home750x1334.jpg");
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    #login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall{
+        background: url("../img/iphone/Gen750x1334.jpg");
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    #toAccount,#toInstall,#toAbout {
+        color: #7ca9bd;
+    }
+    
+    #trendList p{font-size:70%;border-color:#7ca9bd;color:#7ca9bd;}
+    #trendList .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+    
+    #compareList p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
+    #compareList .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+    
+    #updateBtns p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
+    #updateBtns .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+    
+    #efff{width:40%;height:40%;}
+    #efff1{width:10%;height:40%;}
+    
+    #tips {color:#7ca9bd;font-size:100%;}
+    
+    i.tabbar-demo-icon-1{width:30px;height:30px;background-image:url("../img/iphone/account_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-1{background-image:url("../img/iphone/account_orange.png");}
+    i.tabbar-demo-icon-2{width:30px;height:30px;background-image:url("../img/iphone/login_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-2{background-image:url("../img/iphone/login_orange.png");}
+    i.tabbar-demo-icon-3{width:30px;height:30px;background-image:url("../img/iphone/back_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-3{background-image:url("../img/iphone/back_orange.png");}
+    i.tabbar-demo-icon-4{width:30px;height:30px;background-image:url("../img/iphone/home_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-4{background-image:url("../img/iphone/home_orange.png");}
+    i.tabbar-demo-icon-5{width:30px;height:30px;background-image:url("../img/iphone/trends_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-5{background-image:url("../img/iphone/trends_orange.png");}
+    i.tabbar-demo-icon-6{width:30px;height:30px;background-image:url("../img/iphone/compare_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-6{background-image:url("../img/iphone/compare_orange.png");}
+    i.tabbar-demo-icon-7{width:30px;height:30px;background-image:url("../img/iphone/settings_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-7{background-image:url("../img/iphone/settings_orange.png");}
+    i.tabbar-demo-icon-8{width:30px;height:30px;background-image:url("../img/iphone/submit_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-8{background-image:url("../img/iphone/submit_orange.png");}
+    i.tabbar-demo-icon-9{width:30px;height:30px;background-image:url("../img/iphone/connect_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-9{background-image:url("../img/iphone/connect_orange.png");}
+    
+
+}
+
+/*iphone 5/5s*/
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 568px) {
+    
+    .connect_image {
+        width:42%;
+        height:47%;
+        position:relative;
+        left:5%;
+        
+    }
+    .settings_screen{
+        position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
+        
+    }
+    .settings_screen1{
+        position:fixed;top:40%;left:10%;display:block;width:80%;height:40%;text-align:center;
+        
+    }
+
+    .settings_screen_images{
+        width:70%;height:60%;
+    }
+
+    .connect_screen {
+        display:block;
+        float:right;
+        color: #383838;
+        font-size:65%;
+        width:50%;
+        height:50%;
+        
+    }
+
+    .apptexts {
+        color: #383838
+        font-size : 32;
+        position:fixed;
+        top:30%;
+        left:5%;
+        width:40%;
+        height:60%;
+        display:block;
+        
+    }
+    .about { font-size:80%; }
+    .page-content{position:fixed;top:8%;width:100%;height:78%;}
+    
+    #welcomePage {
+        background: url("../img/iphone/Home640x1136.jpg");
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    #login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall,#PairedAmphiro{
+        background: url("../img/iphone/Gen640x1136.jpg");
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    #toAccount,#toInstall,#toAbout {
+        color: #7ca9bd;
+    }
+    
+    #trendList p{font-size:70%;border-color:#7ca9bd;color:#7ca9bd;}
+    #trendList .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+    
+    #compareList p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
+    #compareList .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+    
+    #updateBtns p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
+    #updateBtns .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+
+    #efff{width:40%;height:40%;}
+    #efff1{width:10%;height:40%;}
+    
+    #tips {color:#7ca9bd;font-size:100%;}
+    
+    i.tabbar-demo-icon-1{width:30px;height:30px;background-image:url("../img/iphone/account_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-1{background-image:url("../img/iphone/account_orange.png");}
+    i.tabbar-demo-icon-2{width:30px;height:30px;background-image:url("../img/iphone/login_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-2{background-image:url("../img/iphone/login_orange.png");}
+    i.tabbar-demo-icon-3{width:30px;height:30px;background-image:url("../img/iphone/back_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-3{background-image:url("../img/iphone/back_orange.png");}
+    i.tabbar-demo-icon-4{width:30px;height:30px;background-image:url("../img/iphone/home_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-4{background-image:url("../img/iphone/home_orange.png");}
+    i.tabbar-demo-icon-5{width:30px;height:30px;background-image:url("../img/iphone/trends_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-5{background-image:url("../img/iphone/trends_orange.png");}
+    i.tabbar-demo-icon-6{width:30px;height:30px;background-image:url("../img/iphone/compare_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-6{background-image:url("../img/iphone/compare_orange.png");}
+    i.tabbar-demo-icon-7{width:30px;height:30px;background-image:url("../img/iphone/settings_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-7{background-image:url("../img/iphone/settings_orange.png");}
+    i.tabbar-demo-icon-8{width:30px;height:30px;background-image:url("../img/iphone/submit_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-8{background-image:url("../img/iphone/submit_orange.png");}
+    i.tabbar-demo-icon-9{width:30px;height:30px;background-image:url("../img/iphone/connect_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-9{background-image:url("../img/iphone/connect_orange.png");}
+    
+
+}
+
+.ui-input-text{border: none !important;box-shadow: none !important;}
+.ui-input-btn.custom-btn {
+    background:none;
+    border: none !important;
+    box-shadow: none !important;
+    color:blue;
+}
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (device-aspect-ratio: 2/3){
+    
+    .connect_image {
+        width:42%;
+        height:55%;
+        position:relative;
+        left:5%;
+        
+    }
+    .settings_screen{
+        position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
+        
+    }
+    .settings_screen1{
+        position:fixed;top:40%;left:10%;display:block;width:80%;height:40%;text-align:center;
+        
+    }
+    
+    .settings_screen_images{
+        width:70%;height:60%;
+    }
+    
+    .connect_screen {
+        display:block;
+        float:right;
+        color: #383838;
+        font-size:65%;
+        width:50%;
+        height:40%;
+        
+    }
+    
+    .apptexts {
+        color: #383838
+        font-size : 26;
+        position:fixed;
+        top:30%;
+        left:5%;
+        width:40%;
+        height:60%;
+        display:block;
+        
+    }
+    .about { font-size:80%; }
+    .page-content{position:fixed;top:8%;width:100%;height:78%;}
+    
+    #welcomePage {
+        background: url("../img/iphone/Home640x1136.jpg");
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    #login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall,#PairedAmphiro{
+        background: url("../img/iphone/Gen640x1136.jpg");
+        background-repeat:no-repeat;
+        background-size: 100% 100%;
+    }
+    #toAccount,#toInstall,#toAbout {
+        color: #7ca9bd;
+    }
+    
+    #trendList p{font-size:70%;border-color:#7ca9bd;color:#7ca9bd;}
+    #trendList .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+    
+    #compareList p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
+    #compareList .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+    
+    #updateBtns p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
+    #updateBtns .active {
+        border-color:#7ca9bd;
+        background-color:#7ca9bd;
+        color: white;
+    }
+    
+    #efff{width:40%;height:40%;}
+    #efff1{width:10%;height:40%;}
+    
+    #tips {color:#7ca9bd;font-size:100%;}
+    
+    i.tabbar-demo-icon-1{width:30px;height:30px;background-image:url("../img/iphone/account_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-1{background-image:url("../img/iphone/account_orange.png");}
+    i.tabbar-demo-icon-2{width:30px;height:30px;background-image:url("../img/iphone/login_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-2{background-image:url("../img/iphone/login_orange.png");}
+    i.tabbar-demo-icon-3{width:30px;height:30px;background-image:url("../img/iphone/back_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-3{background-image:url("../img/iphone/back_orange.png");}
+    i.tabbar-demo-icon-4{width:30px;height:30px;background-image:url("../img/iphone/home_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-4{background-image:url("../img/iphone/home_orange.png");}
+    i.tabbar-demo-icon-5{width:30px;height:30px;background-image:url("../img/iphone/trends_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-5{background-image:url("../img/iphone/trends_orange.png");}
+    i.tabbar-demo-icon-6{width:30px;height:30px;background-image:url("../img/iphone/compare_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-6{background-image:url("../img/iphone/compare_orange.png");}
+    i.tabbar-demo-icon-7{width:30px;height:30px;background-image:url("../img/iphone/settings_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-7{background-image:url("../img/iphone/settings_orange.png");}
+    i.tabbar-demo-icon-8{width:30px;height:30px;background-image:url("../img/iphone/submit_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-8{background-image:url("../img/iphone/submit_orange.png");}
+    i.tabbar-demo-icon-9{width:30px;height:30px;background-image:url("../img/iphone/connect_dark.png");background-repeat:no-repeat;}
+    .active i.tabbar-demo-icon-9{background-image:url("../img/iphone/connect_orange.png");}
+    
+    
+}
+
+.ui-input-text{border: none !important;box-shadow: none !important;}
+.ui-input-btn.custom-btn {
+    background:none;
+    border: none !important;
+    box-shadow: none !important;
+    color:blue;
+
+    
+}
 
