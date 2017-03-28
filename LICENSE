@@ -216,15 +216,15 @@ respective licenses.
 
 The DAIAD project bundles the following files under the MIT License:
 
-- Swiper 3.1.7 					                http://www.idangero.us/swiper/						          Copyright 2015, Vladimir Kharlampidi
-- CryptoJS					                    https://github.com/sytelus/CryptoJS					        Copyright (c) 2009-2013 Jeff Mott
-- Flot, version 0.8.3.				          https://github.com/flot/flot						            Copyright (c) 2007-2014 IOLA and Ole Laursen.
-- jQuery v1.11.1				                https://jquery.com							                    (c) 2005, 2014 jQuery Foundation, Inc.
-- jQuery Mobile 1.4.4				            http://jquerymobile.com						                  Copyright 2010, 2014 jQuery Foundation, Inc. 
-- jQuery Validation Plugin - v1.11.1 		https://github.com/jzaefferer/jquery-validation			Copyright (c) 2013 JΓΆrn Zaefferer
-- l20n						                      https://github.com/l20n/l20n.js					            Mozilla
-- nativepagetransitions	                https://github.com/Telerik-Verified-Plugins/NativePageTransitions	2014, Telerik
-- framework7					                  https://framework7.io/							                2016, Vladimir Kharlampidi
+- Swiper 3.1.7					http://www.idangero.us/swiper/ 					Copyright 2015, Vladimir Kharlampidi
+- CryptoJS					https://github.com/sytelus/CryptoJS					Copyright (c) 2009-2013 Jeff Mott
+- Flot, version 0.8.3.				https://github.com/flot/flot						Copyright (c) 2007-2014 IOLA and Ole Laursen.
+- jQuery v1.11.1				https://jquery.com							(c) 2005, 2014 jQuery Foundation, Inc.
+- jQuery Mobile 1.4.4				http://jquerymobile.com						Copyright 2010, 2014 jQuery Foundation, Inc. 
+- jQuery Validation Plugin - v1.11.1		https://github.com/jzaefferer/jquery-validation			Copyright (c) 2013 JΓΆrn Zaefferer
+- l20n						https://github.com/l20n/l20n.js					Mozilla
+- nativepagetransitions			https://github.com/Telerik-Verified-Plugins/NativePageTransitions	2014, Telerik
+- framework7					https://framework7.io/							2016, Vladimir Kharlampidi
 
 All rights reserved.
 
