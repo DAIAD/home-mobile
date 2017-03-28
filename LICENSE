@@ -254,7 +254,7 @@ The DAIAD project bundles the following files under Apache Version 2.0 license:
 
 - cordova-plugin-ble-central 1.1.1 "BLE" 				https://github.com/don/cordova-plugin-ble-central			(c) 2104-2016 Don Coleman           
 - cordova-plugin-camera 2.1.1 "Camera"				https://github.com/apache/cordova-plugin-camera			The Apache Software Foundation
-- cordova-plugin-device 1.0.1 "Device" 				https://github.com/apache/cordova-plugin-device			The Apache Software Foundation
+- cordova-plugin-device 1.0.1 "Device"				https://github.com/apache/cordova-plugin-device			The Apache Software Foundation
 - cordova-plugin-dialogs 1.2.0 "Notification"				https://github.com/apache/cordova-plugin-dialogs			The Apache Software Foundation
 - cordova-plugin-file 3.0.0 "File" 					https://github.com/apache/cordova-plugin-file				The Apache Software Foundation
 - cordova-plugin-geolocation 2.1.0 “Geolocation” 			https://github.com/apache/cordova-plugin-geolocation			The Apache Software Foundation
