@@ -2,7 +2,8 @@ DAIAD@home-mobile
 
 DAIAD@home-mobile is a cross-platform mobile application developed in iOS and Android platforms. We use the open source Apache Cordova development framework that allows us to use standard web technologies (JavaScript, HTML, CCS, etc.). 
 
-This repo contains important files ( www/ and config.xml) for the build process enabling the developer to create her own mobile application ignoring information about platforms based folders and plugins. All the necessary information(app preferences and plugins list) is in the config.xml file.
+This repo contains important files ( www/ and config.xml) for the build process enabling the developer to create her own mobile application ignoring information about platforms based folders and plugins. 
+All the necessary information(app preferences and plugins list) is in the config.xml file.
 
 Installing the Cordova
     >npm install -g cordova
@@ -29,13 +30,11 @@ Install pre-requisites for building
     Cordova tooling for iOS requires Apple OS X
     Error: Some of requirements check failed
 
-
 Build the App
     >cordova build ios
     >cordova build android
 
 Test the App
-    //virtual and real devices
     >cordova emulate android
     * In iOS platform for building in real devices a development account is necessary. ( Apple Developer Account )
     
