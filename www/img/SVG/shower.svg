@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.2, SVG Export Plug-In  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.1"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="26px" height="28px" viewBox="-0.484 -0.013 26 28"
+	 overflow="visible" enable-background="new -0.484 -0.013 26 28" xml:space="preserve">
+<defs>
+</defs>
+<path fill="#424242" d="M4.404,11.119l-2.479,3.078H25l-2.484-3.078h-6.84V6.953c0-5.029-4.141-6.913-6.951-6.953H0v4.078h8.691
+	C9.576,4.109,11.6,4.459,11.6,6.953v4.166H4.404z"/>
+<path fill="#424242" d="M4.209,26.688l-0.498-0.041l0.326-3.986l0.5,0.041L4.209,26.688z M4.863,18.715l-0.498-0.041l0.328-3.986
+	l0.498,0.041L4.863,18.715z"/>
+<path fill="#424242" d="M22.818,26.688l-0.33-3.986l0.498-0.041l0.33,3.986L22.818,26.688z M22.162,18.715l-0.33-3.986l0.498-0.041
+	l0.328,3.986L22.162,18.715z"/>
+<path fill="#424242" d="M13.76,26.709h-0.5v-4h0.5V26.709z M13.76,18.709h-0.5v-4h0.5V18.709z"/>
+<path fill="#424242" d="M17.988,26.711l-0.125-3.998l0.5-0.016l0.125,3.998L17.988,26.711z M17.736,18.715l-0.125-3.998l0.5-0.016
+	l0.125,3.998L17.736,18.715z"/>
+<path fill="#424242" d="M9.035,26.711l-0.5-0.016l0.125-3.998l0.5,0.016L9.035,26.711z M9.287,18.715l-0.5-0.016l0.125-3.998
+	l0.5,0.016L9.287,18.715z"/>
+<rect x="6.774" y="14.707" transform="matrix(0.998 0.0626 -0.0626 0.998 0.9974 -0.409)" fill="#424242" width="0.499" height="2"/>
+<rect x="6.442" y="19.552" transform="matrix(0.998 0.0626 -0.0626 0.998 1.3269 -0.3779)" fill="#424242" width="0.499" height="2.855"/>
+<rect x="6.109" y="25.251" transform="matrix(0.998 0.0626 -0.0626 0.998 1.6564 -0.3467)" fill="#424242" width="0.499" height="2"/>
+<rect x="10.988" y="14.709" fill="#424242" width="0.5" height="2"/>
+<rect x="10.988" y="19.555" fill="#424242" width="0.5" height="2.848"/>
+<rect x="10.988" y="25.249" fill="#424242" width="0.5" height="2"/>
+<rect x="15.537" y="14.709" fill="#424242" width="0.5" height="2"/>
+<rect x="15.537" y="19.555" fill="#424242" width="0.5" height="2.848"/>
+<rect x="15.537" y="25.249" fill="#424242" width="0.5" height="2"/>
+<rect x="19.003" y="15.458" transform="matrix(0.0625 0.998 -0.998 0.0625 34.4291 -5.2385)" fill="#424242" width="2" height="0.499"/>
+<rect x="18.907" y="20.73" transform="matrix(0.0629 0.998 -0.998 0.0629 39.9932 -0.6354)" fill="#424242" width="2.855" height="0.499"/>
+<rect x="19.667" y="26.001" transform="matrix(0.0625 0.998 -0.998 0.0625 45.575 3.9837)" fill="#424242" width="2" height="0.499"/>
+</svg>

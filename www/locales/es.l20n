@@ -1,0 +1,447 @@
+<swiper_1 "DAIAD te ayuda a ahorrar agua, dinero y energía en tu hogar">
+<swiper_2 "Controla tu consumo de agua y entiende dónde y por qué utilizas agua">
+<swiper_3 "Forma tus propias ideas para mejorar tu consumo de agua">
+<swiper_4 "DAIAD es un Proyecto de investigación financiado por la Unión Europea">
+<participants "Si participas en el piloto, por favor introduce tu email y crea una contraseña">
+<no_participants "Si no eres participante del piloto, también puedes seguir nuestros progresos">
+<no_connection "No hay conexión a internet">
+<no_location "No podemos determinar tu ubicación. DAIAD está en una versión beta en Europa. Por favor, selecciona tu ubicación">
+<select_location "Por favor, selecciona tu ubicación">
+<no_listed_location "Si no encuentras tu ubicación aquí, hay otra forma para unirte a nosotros">
+<other_locations "Otras ubicaciones">
+<other "Otras">
+<daiad_access "DAIAD requiere acceso a tus datos de telelectura. Puedes solicitarlos a tu compañía suministradora de agua, o generarlos tú mismo">
+<water_utility "Compañía de agua">
+<claim_consumption "Pide los registros de tu consumo de agua a tu compañía suministradora">
+<pwm "Monitoreo de agua personalizado">
+<purchase "Compra un dispositivo DAIAD compatible para conocer tu uso de agua">
+<open_hardware "Hardware abierto">
+<build_hardware "Pon cartas en el asunto y desarrolla tu propio contador de agua">
+<access_data "Quiero acceder a mis registros de consumo de agua">
+<voice_heard "Para que tu voz sea escuchada, te enviaremos un email cuando tu compañía suministradora de agua ceda tus datos">
+<customer "Soy tu cliente y quiero utilizar el dispositivo DAIAD para ahorrar agua y energía. Puedes ayudarme: ">
+<compatible_devices "Dispositivo compatible">
+<purchase_list "Puedes adquirir uno de estos dispositivos para monitorizar tu uso de agua utilizando DAIAD">
+<already_member "¿Ya eres miembro? ¡Inicia Sesión!">
+<already_device "Ya tengo un dispositivo compatible">
+<build_meter "Desarrolla tu propio contador de agua inteligente">
+<daiad_open "DAIAD proporciona hardware abierto para la monitorización del agua. Verifica este proyecto para construir tu propio contador">
+<flow_wifi "Contador (Wifi)">
+<flow_ble "Contador (Bluetooth)">
+<interest "Muchas gracias por seguir el Piloto DAIAD">
+<visit_daiad "Entra en daiad.eu/join para recibir más información acerca del piloto y descubre cómo unirte">
+<join_header "Únete">
+<join_daiad "Únete a DAIAD">
+<join "Visita www.daiad.eu para conocer más acerca del Proyecto DAIAD, el piloto y cómo puedes unirte">
+<how_to_join "¿Cómo unirse?">
+<howjoin "¿Cómo unirse?">
+<send "ENVIAR">
+<installation "Instalación">
+<dashboard "Panel de control">
+<dashboard_shortcuts "Panel de control - Atajos">
+
+<assign_elements "Asignar nuevos elementos">
+
+<stats "Histórico">
+<messages "Mensajes">
+<goals "Logros (Últimos 10 duchas)">
+<devices "Dispositivos">
+<timer "Tiempo">
+<about_daiad "Acerca de DAIAD">
+<male "Hombre">
+<female "Mujer">
+
+<login "Iniciar Sesión">
+<signup "Regístrate">
+<logout "Cerrar Sesión">
+<next "Siguiente">
+<back "Atrás">
+
+<today "Hoy">
+<day "Día">
+<week "Semana">
+<month "Mes">
+<year "Año">
+
+
+<flow "Caudal">
+<volume "Volumen">
+<energy "Energía">
+<showers "Duchas">
+<meter "Telelectura">
+<water "Agua">
+<duration "Duración">
+<temperature "Temperatura">
+<efficiency "Eficiencia">
+<cost "Coste">
+<co2 "CO2">
+<money "Dinero">
+<breakdown "Avería">
+
+<compare "Comparar">
+<events "Eventos">
+
+<similar_homes "Hogares similares">
+<city "Ciudad">
+<country "País">
+
+<name "Nombre">
+<account "Cuenta">
+<create_your_account "Crea tu cuenta">
+
+<amphiro_name "Amphiro b1">
+
+<install_amphiro "Instalar Amphiro">
+<network_meter "Red de contadores">
+<simulation "Simulación">
+<water_calculator "Calculadora">
+
+<install_later "Instalar más tarde">
+<settings "Opciones">
+<profile "Perfil">
+<your_smart_meters "Tus contadores inteligentes">
+<add_device "Añadir dispositivo">
+<add_member "Añadir miembro">
+<add_photo "Añadir foto">
+
+<member_name_pl placeholder:"Nombre">
+<member_age_pl placeholder:"Edad">
+
+
+<member_name "Nombre">
+<member_gender "Sexo">
+<member_age "Edad">
+<member_photo "Foto">
+
+<new_photo "Nueva Foto">
+<photo_from_album "Foto del álbum">
+
+<household "Hogar">
+<commons "Comunidad">
+<join_commons "Unirte a la comunidad">
+
+<shop_daiad "Tienda DAIAD">
+
+<cancel "Cancelar">
+<edit "Editar">
+<edit_profile "Editar Perfil">
+
+<registered "Registrado">
+<last_update "Última actualización">
+<last_connection "Última sincronizar">
+<last_shower "Última ducha">
+
+<device_name "Nombre del Dispositivo">
+<device "Dispositivo">
+
+<configure_dashboard "Configuración de pantalla">
+
+<alerts "Alertas">
+<tips "Consejos">
+<insights "Reflexiones">
+
+
+<welcome_msg1 "Bienvenido">
+<welcome_msg2 "Esta es la primera vez que utilizas DAIAD. Asegúrate de que todo está bien.">
+<welcome_msg3 "Simplemente sigue estos pasos">
+
+<smart_meter "Contador de agua inteligente">
+<smart_meter_msg1 "Tu consumo de agua lo facilita tu compañía de agua">
+<smart_meter_msg2 "Estamos comprobando que tu contador está conectado">
+<smart_meter_check "Comprobando...">
+<smart_meter_good "¡Todo en orden!">
+<smart_meter_fail "¡Algo extraño ha ocurrido! Lo intentaremos de nuevo más tarde">
+
+<bluetooth "Bluetooth">
+<bluetooth_msg1 "Utilizamos el Bluetooth para conocer tu uso de la ducha. El Bluetooth de tu Smartphone debes tenerlo encendido siempre.">
+<bluetooth_on "El Bluetooth está encendido">
+<bluetooth_off "El Bluetooth está apagado">
+<bluetooth_settings "Por favor, enciende el Bluetooth.">
+
+<amphiro_msg1 "El dispositivo Amphiro monitoriza tu consumo de agua en la ducha. Sigue las instrucciones que encontrarás en el paquete para instalar el dispositivo y enciende el agua">
+
+<amphiro_msg2 "Dúchese y no se preocupe por la conexión, cuando esté todo listo te avisaremos. ¡Estaremos esperando!">
+
+<amphiro_codes "Copia el código que aparece en la pantalla de tu Amphiro b1">
+
+<amphiro_codes_wait "Si los códigos desaparecen de la pantalla, por favor, espere pocos segundos para verlos de nuevo">
+
+<wait_device "Esperando a conectar...">
+
+<daiad_learning "DAIAD está conectando">
+<daiad_learning_msg1 "Necesitamos conocer y estudiar tu uso de agua durante algunas semanas">
+<daiad_learning_msg2 "La pantalla de tu sensor de ducha estará inactiva, pero no te preocupes, que está funcionando">
+<daiad_learning_msg3 "La aplicación móvil DAIAD también estará inactiva. No te asustes, ¡esto es normal!">
+<daiad_learning_msg4 "Cuando se active el sistema de DAIAD te avisaremos. A partir de entonces, podrás comenzar a usarlo todos los días">
+<daiad_learning_soon "¡Hasta pronto!">
+
+<forgot_password "¿Has olvidado tu contraseña?">
+
+<pair_device "Vincular dispositivos">
+
+<switch_esp "Switch to English">
+
+<login_to_account "Accede a tu cuenta">
+<login_username placeholder:"Email" >
+<login_password placeholder:"Contraseña" >
+
+<submit "MOSTRAR">
+<submit_email placeholder:"Email" >
+<submit_password placeholder: "Contraseña" >
+<verify_password placeholder:"Verificar contraseña" >
+<new_password placeholder:"Nueva contraseña">
+<change_password "Cambiar contraseña">
+
+<set_date_input placeholder:"Fecha">
+<new_device_name placeholder:"Nueva dispositivo nombre">
+
+<active "Activo">
+<inactive "Inactivo">
+
+<no_data "¡¡No hay registros!!">
+<limited "¡¡¡Conexión limitada!!!">
+<remember_msg1 "¡Recuerda tener el móvil en el baño la próxima vez que te duches y enciende el bluetooth!">
+<remember_msg2 "¡No sabemos cuándo te has duchado! ¿Quieres introducirlo manualmente? ¡Así seguirás mejor tu uso de la ducha!">
+<remember_msg3_date "Que nos ha proporcionado la fecha a continuación">
+<set_date "Introducir la fecha">
+<best_guess "Añadir miembros de su familia para realizar un seguimiento de sus duchas y comparar su eficiencia ducha!">
+<change "Cambiar">
+<this_shower "Ducha actual">
+<best_shower "Mejor ducha">
+<show_in_pictures "Mostrar mi foto">
+
+<last_five_showers "Últimas cinco duchas">
+<last "Últimos">
+<last_10 "Últimas 10">
+<last_20 "Últimas 20">
+<last_50 "Últimas 50">
+
+<success_msg "¡¡Conseguido!!">
+<done "Hecho">
+<success_msg1 "Si tienes más dispositivos Amphiro que instalar, puedes hacerlo desde Opciones">
+
+<statistics_for_shower "Estadísticas de la ducha">
+<statistics_for_year "Si todas tus duchas fueran como esta, ¿Cuánta agua gastarías en un año?(Valor estimado)">
+<statistics_for_city "Si todos los ciudadanos de la ciudad se hubieran duchado igual, ¿Cuánta agua se gastaría?(Valor estimado)">
+
+<water_text "Volumen total de agua utilizada en la última ducha">
+<energy_text "Estimación de energía consumida por el agua caliente">
+<temp_text "Temperatura media del agua.">
+<efficiency_text "Eficiencia de tu ducha. Mejórala gastando menos agua ">
+<cost_text "Estimación del coste de la ducha.">
+<co2_text "Estimación de emisiones de CO2 derivadas de tu ducha">
+
+<water_text_year "Volumen de agua anual">
+<energy_text_year "Energía anual asociada a consumo de agua caliente">
+<cost_text_year "Annual coste">
+<co2_text_year "Annual CO2 emisiones">
+
+<water_text_city "Volumen total de agua utilizada">
+<energy_text_city "Energía consumida por el agua caliente">
+<cost_text_city "Total coste">
+<co2_text_city "Emisiones de CO2">
+
+<go_to_dashboard "Página principal">
+<turn_water_off "Puedes cerrar el grifo">
+<dont_turn_water_off "Por favor no cierres el grifo">
+
+<water_unit "Litros">
+<temp_unit "ºC">
+<currency_unit "€" >
+
+<volume_unit "Litros">
+<temp_unit "ºC">
+
+<liter "Litros">
+
+<shower "Ducha">
+
+<whitelist_msg "No tiene permisos para acceder a DAIAD. Por favor contacta : proyecto.daiad@aguasdealicante.es">
+
+<active_goals "Activar Retos">
+<daily_goal "Diario logro">
+<energy_goal "Energía logro">
+<money_save "Ahorro monetario">
+<planet_save "Salva el planeta">
+<improve_ranking "Mejora el ranking">
+
+<dataUnit_msg "Unidad de mediciones">
+
+<metrics_unit "m3">
+<imperial_unit "gl">
+<device_settings "Opciones del Dispositivo">
+
+<metrics "m3 (Últimas 10 duchas)">
+<water_flow "Caudal de agua">
+<money_spent "Consumo económico">
+
+<amphiro_budget placeholder:"Nuevo presupuesto para la ducha">
+<meter_budget placeholder:"Nuevo presupuesto para el contador de telelectura">
+
+<trend "Tendencia (Últimas 10 duchas)">
+<consumption_timer "Cronómetro">
+<daily_budget "Presupuesto diario">
+<water_efficiency "Eficiencia Hídrica">
+<general "General (Últimas 10 duchas)">
+<general_meter "Telelectura">
+<city_ranking "Ranking de ciudades">
+
+<no_alert "No hay Alertas">
+<all_good "Todo bien!">
+
+<latest "Última ducha">
+<yesterday "Consumo de ayer">
+<daily "Consumo diario">
+<weekly "Consumo semanal">
+<monthly "Consumo mensual">
+<total "Consumo total">
+
+<water_calc_msg "Utilice la calculadora para ver la cantidad de agua que debe usar">
+<letsgo "Continuar">
+<num_of_members "¿Cuántas personas conviven en tu hogar?">
+<num_of_showers "Cuántas veces te duchas semanalmente?">
+<num_of_min "Cuál es la duración media de su ducha ?">
+<num_of_baths "Cuántas veces te das un baño al mes">
+<results "Resultados">
+<step "Paso">
+
+<missing_showers "¿Ducha no registrada? ¡La próxima vez recuerde colocar el dispositivo móvil cerca de la ducha!">
+<quick_shower "Ducha rápida">
+<quick_shower_label "Últimos ajustes">
+<single_shower "¿Cronometramos una Ducha?">
+<single_shower_label "Activa alarmas para que te avisen">
+<alarm_alert "Avisar si se alcanza la temperatura de...">
+<alarm_alert_temp "Alarma de temperatura">
+<lets_shower "A la ducha!">
+
+<counter "El cronómetro se iniciará automáticamente">
+<waiting "Cargando..">
+
+<counter_stop "El Cronómetro se detendrá automáticamente">
+<waiting_stop "O simplemente poner fin a la ducha manual">
+
+<previous_best "Mejor ducha">
+
+<end_timer "Detener cronómetro">
+<family_mode "Modo familia">
+<family_mode_label "¡Mójate y ayuda a que todos ahorremos agua!">
+
+<mode_mon_off_msg1 "Comencemos a utilizar DAIAD">
+<mode_mon_off_msg2 "Gracias por tu paciencia, el modo aprendizaje de DAIAD está completado">
+<mode_mon_off_msg3 "Tu dispositivo de la ducha está ahora activo">
+<mode_mon_off_msg4 "La aplicación presenta el uso de agua y la eficiencia">
+<mode_mon_off_msg5 "El dispositivo de tu ducha estará inactiva durante un par de semanas">
+<mode_mon_off_msg6 "Cuando te duches recuerda tener tu móvil cerca con el Bluetooth y el Wi-Fi encendidos.">
+<mode_mon_off_msg7 "¡Hasta pronto!">
+
+<mode_moff_msg1  "Comencemos a utilizar DAIAD">
+<mode_moff_msg2 "Gracias por tu paciencia, el modo aprendizaje de DAIAD está completado!">
+<mode_moff_msg3 "Tu dispositivo de la ducha está ahora activo">
+<mode_moff_msg4  "El amphiro b1 te muestra tu consumo de agua, su temperatura y la eficiencia de la ducha">
+<mode_moff_msg5 "La aplicación móvil DAIAD estará inactiva durante un par de semanas">
+<mode_moff_msg6 "Cuando te duches recuerda tener tu móvil cerca con el Bluetooth y el Wi-Fi encendidos.">
+<mode_moff_msg7 "¡Hasta pronto!">
+
+<mode_on_msg1 "Ahora tienes acceso completo al DAIAD ">
+<mode_on_msg2 "Gracias por su paciencia, ahora tienes acceso completo al sistema de DAIAD"{">
+<mode_on_msg3 "El dispositivo y la aplicación móvil están activados ">
+<mode_on_msg4  "Puedes utilizar ambos dispositivos para realizar un seguimiento de tu consumo de agua y comparar tu eficiencia con otros usuarios">
+<mode_on_msg5 "Cuando te duches, recuerda tener abierta la app DAIAD en el móvil o táblet así como tenerlo cerca de la ducha. El Bluetooth y el Wi-Fi también deben estar conectados ">
+<mode_on_msg6 "Por favor, disfrútalo!:">
+
+<yes "Sí">
+<no "No">
+<all "Todos">
+
+<amphiro_name "Por favor, ponle un nombre a tu amphiro b1">
+<amphiro_name_msg1 "Puedes elegir un nombre que te recuerde dónde has instalado el dispositivo amphiro b1. Por ejemplo: baño de los niños, baño de la habitación.">
+<amphiro_name_placeholder placeholder:"e.g. baño de los niños" >
+<amphiro_name_msg2 "El nombre debe tener al menos 8 caracteres">
+<install_another "Quieres instalar otro dispositivo amphiro b1?">
+<install_another_label "Si tienes otro dispositivo amphiro b1, ¡Instálalo también!">
+
+<your_water_utility placeholder:"Compañía de agua">
+<your_location placeholder:"Ubicación">
+<your_name placeholder:"Nombre">
+<your_email placeholder:"Email">
+
+<wc_q1 "¿De cuántos miembros se compone su unidad familiar?">
+<wc_q2 "¿Cuántas veces os ducháis en total por semana?">
+<wc_q3 "¿Cuántos minutos tardas en ducharte de media?">
+<wc_q4 "¿Cuántas veces al mes os bañais?">
+<wc_q5 "¿Cuántas veces tiráis de la cadena del baño al día?">
+<wc_q6 "¿Cuántas veces pones el lavadora a la semana?">
+<wc_q7 "¿Cuántas veces utilizas el lavavajillas a la semana?">
+<wc_q8 "¿Cuánto tiempo utilizas al día cuando friegas a mano?">
+<wc_q9 "¿Cuánto tiempo estás utilizando agua en actividades fuera de casa semanalmente?">
+
+<calculator_estimation "Esto es una estimación media del consumo de agua dentro de tu hogar">
+<washing_machine "Lavadora">
+<toilet "Baño">
+<end_shower "Finalizar ducha">
+<alarm_minutes "Alarma (Minutos)">
+<water_cost "Coste del agua">
+<heating_system "Sistema de calefacción">
+<energy_cost "Coste energético">
+<share_solar "Cuota de la energía solar">
+<cold_temp "Temperatura del agua fría">
+<reset_pwd_info "Por favor, introduce tu email">
+<pin_info "Por favor, introduce el PIN que recibió en su correo electrónico y crea una nueva contraseña">
+<password_info "Por favor, introduce una nueva contraseña">
+<reset_pwd "Reiniciar contraseña">
+<reset "Reiniciar">
+
+<you "Tú">
+<similar "Similares">
+<neighbors "Vecinos">
+
+<last_month "Último mes">
+<last_six_months "Últimos seis meses">
+
+<change_values "Cambiar la unidad de medida. Recuerda tener el móvil en el baño la próxima vez que te duches y enciende el bluetooth!">
+
+<electricity "Electricidad">
+<oil "Gasoil">
+<gas "Gas">
+
+<password_change_success "¡Su contraseña ha sido guardada con éxito!">
+
+
+<socials "Comunidad">
+<next_update_in "Siguiente actualización en">
+<monthly_water_use "Mes">
+
+<last_month "Último mes">
+<best_ever "Mejor">
+<average "Prom.">
+<water_iq "IQ de agua">
+<shower_average "Ducha promedio">
+<duration_average "Duración media">
+<temp_average "Temperatura media">
+<socialTableDescr "Esta es la cantidad total de agua que usaste este mes">
+<waterIQDescr "IQ de agua es una medida objetiva de la eficiencia del agua de su hogar">
+<days "días">
+<volume_total "Volumen total">
+<worst "PEOR">
+<best "MEJOR">
+<you "Tu">
+<progress "Progreso">
+
+<not_shower "Esto no es una ducha">
+
+<last_300 "Últimas 300 duchas">
+
+<published "Publicado">
+<payment_due "Fecha de pago">
+<view_bill "Ver factura">
+<amaem_bill "AMAEM CUENTA">
+<history_bill "Historia">
+<monthly_water_usage "Uso mensual del agua">
+<actual "Real">
+<forecasted "Previsión">
+<Until "Hasta">
+
+<active_pin "Pin activo">
+<use_active_pin "Úsalo">
+
+<delete "Borrar">

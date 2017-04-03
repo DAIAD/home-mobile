@@ -1,0 +1,467 @@
+<swiper_1 "DAIAD helps you save water, energy and money in your home">
+<swiper_2 "Monitor your water use and understand where and why you use water">
+<swiper_3 "Get personalized insights for improving your water use">
+<swiper_4 "DAIAD is a research project funded by the European Union">
+
+<participants "Pilot participants please fill in your email and select a password">
+
+<no_participants "Not a participant, but i want to join the pilot">
+
+<no_location "We were unable to determine your location. DAIAD is currently in closed beta in Europe. ">
+
+<select_location "Please select your location">
+
+<no_listed_location "If you don't see your location here, there is still a way for you to join us">
+
+<other_locations "Other locations">
+<other "Other">
+<daiad_access "DAIAD requires access to your water consumption data. You can ask this data from your water utility, or create  it yourself">
+
+<water_utility "Water Utility">
+<claim_consumption "Claim your water consumption data from your water utility">
+<pwm "Personal Water Monitoring">
+<purchase "Purchase a DAIAD compatible device to monitor your water use">
+<open_hardware "Open Hardware">
+<build_hardware "Take matter into your own hands and build your own water meter">
+<access_data "I want access to my water consumption data">
+<voice_heard "Make your voice heard. We will email you when your water utility opens your data">
+
+<customer "I am your customer and I want to use DAIAD for saving water and energy. Here is how you can help me: ">
+
+<compatible_devices "Compatible Devices">
+<purchase_list "You can purchase one of these devices to monitor your water use through DAIAD">
+<already_member "Already a member? Sign in!">
+<already_device "I already have a compatible device">
+<build_meter "Buld your own open smart water meter">
+<daiad_open "DAIAD supports open hardware for water monitoring. Check the following projects for building your own meter">
+<flow_wifi "Flow Meter (WiFi)">
+<flow_ble "Flow Meter (Bluetooth)">
+
+<interest "Thank you for your interest in joining the DAIAD pilot">
+
+<visit_daiad "Please visit daiad.eu/join to receive more information about the pilot and learn how you can join">
+
+<join_header "Join">
+
+<join_daiad "Join DAIAD">
+
+<join "Please visit www.daiad.eu to learn more about the DAIAD project, the pilot and how you can join it">
+
+<how_to_join "How to join">
+
+<howjoin "How to join?">
+
+<send "SEND">
+<installation "Installation">
+
+<dashboard "Dashboard">
+<dashboard_shortcuts "Dashboard shortcuts">
+<assign_elements "Assign new elements">
+<stats "Stats">
+<messages "Messages">
+<goals "Goals (Last 10 showers)">
+<devices "Devices">
+<timer "Time">
+<about_daiad "About DAIAD">
+
+<male "Male">
+<female "Female">
+
+<login "Login">
+<signup "Sign up">
+<logout "Logout">
+<next "Next">
+<back "Back">
+
+<today "Today">
+<day "Day">
+<week "Week">
+<month "Month">
+<year "Year">
+
+<liter "Liters">
+<flow "Flow">
+<volume "Volume">
+<energy "Energy">
+<shower "Showers">
+<meter "Meter">
+<water "Water">
+<duration "Duration">
+<temperature "Temperature">
+<efficiency "Efficiency">
+<cost "Cost">
+<co2 "CO2">
+<money "Cost">
+<breakdown "Breakdown">
+
+<compare "Compare">
+<events "Events">
+
+<similar_homes "Similar homes">
+<city "City">
+<country "Country">
+
+<name "Name">
+<account "Account">
+<create_your_account "Create your account">
+
+<amphiro_name "Amphiro b1">
+
+<install_amphiro "Install Amphiro">
+<network_meter "Network meters">
+<simulation "Simulation">
+<water_calculator "Water calculator">
+
+<install_later "Install later">
+<settings "Settings">
+<profile "Profile">
+<your_smart_meters "Your smart meters">
+<add_device "Add a new device">
+<add_member "Add a new member">
+
+<member_name_pl placeholder:"Member name">
+<member_age_pl placeholder:"Member age">
+
+
+<member_name "Name">
+<member_gender "Gender">
+<member_age "Age">
+<member_photo "Photo">
+
+<new_photo "Take photo">
+<photo_from_album "Photo from album">
+
+<household "Household">
+<commons "Commons">
+<join_commons "Join a Commons">
+
+<shop_daiad "Shop DAIAD">
+
+<cancel "Cancel">
+<edit "Edit">
+<edit_profile "Edit Profile">
+
+<registered "Registered on">
+<last_update "Last Update">
+<last_connection "Last Sync">
+<last_shower "Last shower">
+
+<device_name "DEVICE NAME">
+<device "Device">
+
+<configure_dashboard "Configure Dashboard">
+
+<alerts "Alerts">
+<tips "Tips">
+<insights "Insights">
+
+
+<welcome_msg1 "Welcome">
+<welcome_msg2 "This is the first time you use DAIAD. Let's make sure everything is in order.">
+<welcome_msg3 "Just follow these simple steps">
+
+<smart_meter "Smart Water Meter">
+<smart_meter_msg1 "Your water consumption is provided from your water utility">
+<smart_meter_msg2 "We are checking if your smart water meter is ready">
+<smart_meter_check "Checking...">
+<smart_meter_good "All good!">
+<smart_meter_fail "Something happened! We will try again later">
+
+<bluetooth "Bluetooth">
+<bluetooth_msg1 "We use Bluetooth to monitor your shower use. Bluetooth in your device should always be on">
+<bluetooth_on "Bluetooth is ON">
+<bluetooth_off "Bluetooth is OFF">
+<bluetooth_settings "Please turn on Bluetooth in Settings">
+
+<amphiro_msg1 "amphiro b1 monitors your water use in the shower. Just follow the installation instructions you find in the package to install the b1 in your shower.">
+
+<amphiro_msg2 "When you are ready turn on the water. We will be waiting!">
+
+<amphiro_codes "Enter the codes displayed on your amphiro b1">
+
+<amphiro_codes_wait "If the codes disapear, please wait few seconds to see them again">
+
+<wait_device "Waiting for amphiro b1...">
+
+<daiad_learning "DAIAD is now learning">
+
+<daiad_learning_msg1 "We need to monitor and understand your water use for a few weeks">
+
+<daiad_learning_msg2 "The display of your shower sensor will be inactive, but don't worry, it is working">
+
+<daiad_learning_msg3 "The DAIAD mobile app will also be inactive. Once again, this is normal! ">
+
+<daiad_learning_msg4 "We will notify you when the DAIAD system will be activated. After that , you can start using it everyday">
+
+<daiad_learning_soon "See you soon!">
+
+<forgot_password "Forgot your password?">
+
+<pair_device "Pair">
+
+<switch_esp "Cambiar a Español">
+
+<no_connection "No Internet connectivity">
+
+<login_to_account "Login to your account">
+<login_username placeholder:"email" >
+<login_password placeholder:"password" >
+
+<submit "Submit">
+<submit_email placeholder:"email" >
+<submit_password placeholder:"password" >
+<verify_password placeholder:"verify password" >
+<new_password placeholder:"new password">
+<change_password "Change password">
+
+<showers "Showers">
+<shower "Shower">
+<no_data "No data!">
+<limited "Limited data only!">
+<remember_msg1 "Remember next time to have your mobile device close to the shower and have Bluetooth turned on!">
+<remember_msg2 "We do not know exactly when this shower took place! How about entering it manually? This way you track your showers better">
+<remember_msg3_date "You provided us the date below.  ">
+<set_date "Set the date">
+<best_guess "Add your household members to keep track of your showers and compare your shower efficiency!">
+<change "Change">
+<this_shower "This shower">
+<best_shower "Best shower">
+<show_in_pictures "Show me in pictures">
+
+<last_five_showers "Last five showers">
+<last_10 "Last 10">
+<last_20 "Last 20">
+<last_50 "Last 50">
+<success_msg "Success!">
+<done "Done">
+<success_msg1 "If you have more amphiro devices to install, you can do it later (visit Settings)">
+
+<water_text "Total water used for this shower">
+<energy_text "Estimate of energy used for hot water">
+<temp_text "Average water temperature">
+<efficiency_text "Efficiency of your shower. Improve it by using less water">
+<cost_text "Estimate of how much this shower costs">
+<co2_text "Estimate of CO2 emissions from your shower">
+
+<water_text_year "Annual water used">
+<energy_text_year "Annual energy used for hot water">
+<cost_text_year "Annual cost">
+<co2_text_year "Annual CO2 emmissions">
+
+<water_text_city "Total water used">
+<energy_text_city "Total energy used">
+<cost_text_city "Total cost">
+<co2_text_city "Total C02 emmissions">
+
+<statistics_for_shower "Statistics for this shower">
+<statistics_for_year "If every shower you take is like this one, how much water would they spend in a year?">
+<statistics_for_city "If every one in your city took similar showers, how much water would they spend?">
+
+<add_photo "Add photo">
+
+<go_to_dashboard "Go to Dashboard">
+<turn_water_off "You can turn off the water">
+<dont_turn_water_off "Please do not turn the water off..">
+<water_unit "gl">
+<temp_unit "F">
+<currency_unit "£" >
+
+<volume_unit "Liters">
+
+<whitelist_msg "You are not authorized to access DAIAD. Please contact : contact@daiad.eu ">
+<internal_error "Oops!We are currently having a problem. Please try again later">
+
+<active "Active">
+<inactive "Inactive">
+
+<active_goals "Active Goals">
+<daily_goal "Daily goal">
+<energy_goal "Energy goal">
+<money_save "Save money">
+<planet_save "Save planet">
+<improve_ranking "Improve ranking">
+
+<metrics_unit "Metrics">
+<imperial_unit "Imperial">
+
+<metrics "Metrics (Last 10 showers)">
+<water_flow "Water flow">
+<money_spent "Money spent">
+
+<trend "Trend (Last 10 showers)">
+<consumption_timer "Shower Timer">
+<daily_budget "Daily budget">
+<water_efficiency "Water Efficiency">
+<general "General (Last 10 showers)">
+<general_meter "General SWM">
+<city_ranking "City ranking">
+
+<dataUnit_msg "SYSTEM UNIT">
+<device_settings "DEVICE SETTINGS">
+
+<no_alert "No Alerts">
+<all_good "All good!">
+
+<latest "Latest event">
+<yesterday "Yesterday's consumption">
+<daily "Daily consumption">
+<weekly "Weekly consumption">
+<monthly "Monthly consumption">
+<total "Total consumption">
+
+<water_calc_msg "Use the water calculator to understand your water consumption habits">
+<letsgo "Let's go!">
+<num_of_members "How many members are there in your household">
+<num_of_showers "How many showers do you take in your household weekly">
+<num_of_min "How many minutes on average do you spend for each shower?">
+<num_of_baths "How many baths do you take each month">
+<results "Results">
+<step "step">
+
+<set_date_input placeholder:"Set date">
+<new_device_name placeholder:"New device name">
+
+<missing_showers "Missing showers?Remember to have your mobile device near the shower next time!">
+<quick_shower "Quick shower">
+<quick_shower_label "Last settings">
+<single_shower "Custom shower">
+<single_shower_label "Set any alarm you want and save water">
+<alarm_alert "Notify me when temperature reaches ">
+<alarm_alert_temp "Temperature alarm">
+<lets_shower "Let’s shower!">
+
+<counter "The counter will start automatically">
+<waiting "Waiting..">
+
+<counter_stop "The counter will stop automatically">
+<waiting_stop "Or just End the shower manually">
+
+<previous_best "Previous best ">
+<family_mode "Family mode">
+<family_mode_label "Split the water and make sure everyone saves!">
+
+<mode_mon_off_msg1 "Let’s start using DAIAD">
+<mode_mon_off_msg2 "Thank you for your patience, DAIAD’s learning mode is complete">
+<mode_mon_off_msg3 "DAIAD’s mobile app is now active">
+<mode_mon_off_msg4 "The application presents your water use and efficiency">
+<mode_mon_off_msg5 "The shower monitor display will remain inactive for a few more weeks.">
+<mode_mon_off_msg6 "When you take a shower please remember to have your mobile device near. Bluetooth and Wi-Fi should be on.">
+<mode_mon_off_msg7 "See you soon!">
+
+<mode_moff_msg1 "Let’s start using DAIAD">
+<mode_moff_msg2 "Thank you for your patience, DAIAD’s learning mode is complete!">
+<mode_moff_msg3 "Your shower monitor is now active">
+<mode_moff_msg4 "The amphiro b1 presents your water use, temperature, and shower efficiency">
+<mode_moff_msg5 "DAIAD’s mobile app will remain inactive for a few more weeks">
+<mode_moff_msg6 "When you take a shower please remember to open DAIAD's mobile app and have your mobile device near the shower. Bluetooth and Wi-Fi should be turned on.">
+<mode_moff_msg7 "See you soon!">
+
+<mode_on_msg1 "You now have full access to DAIAD">
+<mode_on_msg2 "Thank you for your patience, you now have access to the complete DAIAD system">
+<mode_on_msg3 "DAIAD’s shower monitor and mobile app are active">
+<mode_on_msg4 "You can use both of them to track your water use and compare your efficiency with others.">
+<mode_on_msg5 "When you take a shower please remember to have your mobile device near. Bluetooth and Wi-Fi should be on.">
+<mode_on_msg6 "Please enjoy!">
+
+<yes "Yes">
+<no "No">
+<all "All">
+
+<amphiro_budget placeholder:"Enter a new shower budget">
+<meter_budget placeholder:"Enter a new meter budget">
+<amphiro_name "Please give a name to your amphiro b1">
+<amphiro_name_msg1 "You can select a name to remind you where you installed the amphiro b1. For example, Bathroom, Guest.">
+<amphiro_name_placeholder placeholder:"e.g. Master Bath" >
+<amphiro_name_msg2 "The name must be at most 8 characters">
+<install_another "Do you want to install another amphiro b1?">
+<install_another_label "Please do so, if you have been given another amphiro b1!">
+
+<your_water_utility placeholder:"Your water utility">
+<your_location placeholder:"Your location">
+<your_name placeholder:"Your name">
+<your_email placeholder:"Your email">
+
+<wc_q1 "How many members are there in your household?">
+<wc_q2 "Number of showers taken in your household per week?">
+<wc_q3 "On average, how many minutes is the water running per shower?">
+<wc_q4 "Number of baths taken in your household per month?">
+<wc_q5 "Toilet flushes in your household per day?">
+<wc_q6 "How many times is the washing machine used per week?">
+<wc_q7 "How many times is the dishwasher used per week?">
+<wc_q8 "How many minutes is water running for washing the dishes by hand per day?">
+<wc_q9 "How many minutes is water running for outdoor activities per week (e.g. irrigation)?">
+
+<calculator_estimation "This is an estimated breakdown of your water consumption for your household ">
+
+<washing_machine "Washing machine">
+<toilet "Toilet">
+
+<end_shower "End shower">
+
+
+<alarm_minutes "Alarm (Minutes)">
+<water_cost "Water cost">
+<heating_system "Heating system">
+<energy_cost "Energy cost">
+<share_solar "Share of solar">
+<cold_temp "Cold water temperature">
+
+<reset_pwd_info "Please fill in your email">
+<pin_info "Please fill in the PIN you received in your email and then enter a new password">
+<password_info "Please fill in a new password">
+<reset_pwd "Reset Password">
+<reset "Reset">
+
+<you "You">
+<similar "Similar">
+<neighbors "Neighbors">
+
+<last_month "Last month">
+<last_six_months "Last six months">
+
+<change_values "If you want to change your shower monitor display, enable the field below and remember next time to have your mobile device close to the shower and have Bluetooth turned on! ">
+
+<electricity "Electricity">
+<oil "Oil">
+<gas "Gas">
+
+<password_change_success "Your password has been succesfully changed!">
+
+<socials "Comparison">
+<next_update_in "Next update in ">
+<monthly_water_use "Monthly water use">
+<last_month "Last month">
+<best_ever "Best ever">
+<average "avg">
+<water_iq "Water IQ">
+<shower_average "Shower average">
+<duration_average "Average Duration">
+<temp_average "Average Temp">
+<socialTableDescr "This is the total amount of water you used this month">
+<waterIQDescr "WaterIQ is an objective measure of your household s water efficiency">
+<days "days">
+<worst "WORST">
+<best "BEST">
+<you "You">
+<progress "Progress">
+
+<not_shower "This is not a shower">
+
+<last_300 "Last 300 showers">
+
+<published "Published">
+<payment_due "Payment due">
+
+<view_bill "View Bill">
+<amaem_bill "AMAEM bill">
+<history_bill "History">
+
+<actual "Actual">
+<forecasted "Forecasting">
+<Until "Until">
+
+<active_pin "Active PIN.">
+
+<use_active_pin "Use it!">
+
+<volume_total "Volume total">

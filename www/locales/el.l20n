@@ -1,0 +1,83 @@
+<swiper_1 "DAIAD σε βοηθαει να σωσεις νερακι">
+<swiper_2 "Παρακολουθουμε το νερο">
+<swiper_3 "Προσωπικα τιπς για το πως να σωσεις νερο">
+<swiper_4 "DAIAD ειναι ενα ερευνητικο εργο χρηματοδοτουμενο απο την Ευρωπαικη ενωση">
+
+<login "Σύνδεση">
+<signup "Εγγραφή">
+<logout "Αποσύνδεση">
+<next "Επόμενο">
+<back "Πίσω">
+
+<today "Σήμερα">
+<day "Μέρα">
+<week "Εβδομάδα">
+<month "Μήνας">
+<year "Χρόνος">
+
+<shower "Ντουζ">
+<water "Νερό">
+<duration "Διάρκεια">
+<temperature "θερμοκρασία">
+
+<compare "Σύγκριση">
+<events "Γεγονότα">
+
+<similar_homes "ίδια σπίτια">
+<city "Πόλη">
+<country "Χώρα">
+
+<account "Λογαριασμός">
+<install_amphiro "Εγκατάσταση Amphiro">
+<network_meter "Μετρητές δικτύου">
+<simulation "Προσομοίωση">
+<water_calculator "Υπλογογιστής Νερού">
+
+<install_later "Αργότερα">
+<settings "Εργαλεία">
+<profile "Προφίλ">
+<your_smart_meters "Οι μετρητές σου">
+<add_device "Πρόσθεσε συσκευή">
+<add_member "Πρόσθεσε μέλος">
+
+<member_name "Όνομα μέλους">
+<member_gender "Φύλο μέλους">
+<member_age "Ηλικία μέλους">
+<member_photo "Φωτογραφία μέλους">
+
+<new_photo "Νέα φωτογραφία">
+<photo_from_album "Φωτογραφία άλμπουμ">
+
+<household "Νοικοκυριό">
+<commons "Κοινότητα">
+<join_commons "Γίνε μέλος κοινότητας">
+
+<shop_daiad "Αγορά DAIAD">
+
+<edit_profile "επεξεργασία προφίλ">
+
+<welcome_msg1 "Γεία σου">
+<welcome_msg2 "Είναι η  πρώτη φορά που χρησιμοποίεις την εφαρμογή DAIAD.Ας προχωρήσουμε για να δούμε οτι όλα είναι εντάξει">
+<welcome_msg3 "Απλά ακολούθησε τα παρακάτω βήματα">
+
+<bluetooth "Bluetooth">
+<bluetooth_msg1 "Το Bluetooth στη συσκευή σου πρέπει να είναι ανοιχτό.">
+<bluetooth_msg2 "Η μεταφόρα των δεδομένων στη συσκευή σου γίνεται με Bluetooth">
+
+<bluetooth_on "Το Bluetooth είναι ανοιχτό">
+<bluetooth_off "Το Bluetooth είναι κελιστό">
+<bluetooth_settings "Ενεργοποίησετε το Bluetooth στις ρυθμίσεις της συσκευής">
+
+<amphiro_msg1 "Το Amphiro παρακολούθει τη κατανάλωσή σου στο μπάνιο">
+<amphiro_instructions "Παρακάλω εγκαταστήστε το Amphiro ακολουθώντας τις οδηγίες και ανοίξτε το νερό">
+<amphiro_codes "Αυτή τη στίγμη η οθόνη του Amphiro δείχνει τους κωδικούς για τη σύνδεση του με τη συσκευή σου.Συμπλήρωσε τα παρακάτω πεδία.">
+<wait_device "Αναμονή συσκευής..">
+
+<pair_device "Σύνδεση">
+
+<login_email placeholder:"Email" >
+<login_password placeholder:"Password" >
+
+<submit_email placeholder:"Email" >
+<submit_password placeholder:"Password" >
+

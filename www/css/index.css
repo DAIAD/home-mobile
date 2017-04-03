@@ -1,612 +1,2347 @@
 @font-face {
-    font-family: 'CusFont';
-    src: url('../css/OfficinaSansStd-Book.otf'),
-        url('../css/OfficinaSansStd-BoldItalic.otf'),
-        url('../css/OfficinaSansStd-Bold.otf'),
-        url('../css/OfficinaSansStd-BookItalic.otf');
+    font-family: 'simplifica';
+    src:
+    url('../css/fonts/Source_Sans_Pro/SIMPLIFICA-Typeface.ttf');
 }
 
-html *
-{
-    font-family : 'CusFont';
+@font-face {
+    font-family: 'regular';
+    src:
+    url('../css/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf');
 }
 
-.tabbar {
-    
-    position:fixed;
-    bottom:1%;
-    width:100%;
-    height:10%;
-    background:transparent;
+@font-face {
+    font-family: 'opensans-bold';
+    src:
+    url('../css/fonts/OpenSans-CondBold.ttf');
+}
+
+@font-face {
+    font-family: 'opensans-light';
+    src:
+    url('../css/fonts/OpenSans-CondLight.ttf');
+}
+
+@font-face {
+    font-family: 'opensans-italic';
+    src:
+    url('../css/fonts/OpenSans-CondLightItalic.ttf');
+}
+
+@font-face {
+    font-family: 'digital';
+    src:
+    url('../css/fonts/digital-7.ttf');
+}
+
+
+body {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+    -o-user-select:none;
+}
+
+h1 {
+    display:inline;
+    font-size:5vw;
+}
+
+h2,h3,p {
+    text-align:center;
+    color:#2D3580;
+}
+
+.ui-select{
     display:none;
+}
+
+
+#dashboardMainTextValue {
+    font-family:'simplifica';
+    font-size:25vw;
+    color:#424242;
+    margin-left:5%;
+}
+
+#dashboardMainTextLabel {
+    position:relative;
+    font-family:'opensans-light';
+    font-size:7vw;
+    color:#424242;
+}
+
+#dashboardMidTextValue {
+    font-family:'regular';
+    font-size:7vw;
+    color:#424242;
+}
+
+#dashboardMidTextLabel {
+    position:relative;
+    font-family:'opensans-light';
+    font-size:6vw;
+    color:#424242;
+}
+
+#dashboardLowTextValue {
+    font-family:'regular';
+    font-size:6vw;
+    color:#424242;
+}
+
+#dashboardLowTextLabel {
+    position:relative;
+    font-family:'opensans-light';
+    font-size:4vw;
+    color:#424242;
+}
+
+
+
+.error_forms_text {
+    color:red;
+    font-size:3.5vw;
+    font-family:'opensans-light';
+}
+
+.error_input_form {
+    border-color:red;
+    border-width:1px;
+}
+
+.success_input_form {
+    border-color:red;
+    border-width:1px;
+}
+
+.selectTabs{
+    position: relative;
+    height: 35%;
+}
+
+.comparison_labels{
+    margin-bottom:4px;
+    margin-left:3%;
+    text-align:left;
+    font-family: 'opensans-bold';
+    color:gray;
+    font-size:6vw;
+}
+
+.comparison_labels_center{
+    margin-bottom:8px;
+    margin-top:4px;
+    text-align:center;
+    font-family: 'opensans-bold';
+    color:gray;
+    font-size:7vw;
+}
+
+.split_line{
+    background-color:#ddd;
+    text-align:center;
+    height:3px;
+    width: 94%;
+    margin-left:3%;
+    margin-top:6px;
+    margin-bottom:6px;
+}
+
+.socialTables table,.socialTablesRank table{
+    background-color:white;
+}
+
+#social_calendar_control{
+    height: 100%;
+    text-align: center;
+    display:block;
+    position:absolute;
+    width:50%;
+    margin-left:25%;
+}
+
+#social_month{
+    font-family: 'opensans-light';
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 4vh;
+    color:#424242;
+}
+
+#social_month_timestamp{
+    display:none;
+}
+
+#nextupdate,#social_days_span{
+    font-family: 'opensans-light';
+    font-size: 3vw;
+    margin:0;
+    color:#424242;
+}
+
+#daysleft{
+    font-family: 'opensans-light';
+    font-size: 5vw;
+    color:#424242;
+}
+
+.user_rank {
+    width:98%;
+    height:30%;
+    margin-bottom:20px;
+    /* border: 1px solid black; */
+}
+
+.user_stats {
+    margin-bottom:3px;
+    table-layout:fixed;
+    width: 100%;
+    height: 20%;
+}
+
+.user_stats tr td:first-child{
+    font-family: 'opensans-bold';
+    letter-spacing: 0.1px;
+    color: #424242;
+    font-size: 5vw;
+    width: 40%;
+    color: gray;
+    text-align: center;
+}
+
+.user_stats tr td:first-child span:nth-child(2){
+    font-family: 'opensans-bold';
+    color: #424242;
+    font-size: 4vw;
+}
+.user_stats tr td:first-child span:nth-child(3){
+    font-family: 'opensans-light';
+    color: #424242;
+    font-size: 4vw;
+}
+.user_stats tr td:first-child span:nth-child(4){
+    font-family: 'opensans-bold';
+    color: #424242;
+    font-size: 4vw;
+}
+.user_stats tr td:first-child span:nth-child(5){
+    font-family: 'opensans-light';
+    color: #424242;
+    font-size: 4vw;
+}
+.user_stats tr td:first-child span:nth-child(6){
+    font-family: 'opensans-light';
+    color: #424242;
+    font-size: 5vw;
+}
+
+.user_stats tr td:nth-child(2) {
+    width: 30%;
+    letter-spacing: 0.1px;
+    font-size: 6vw;
+    font-family: 'opensans-bold';
+    text-align: center;
+    color: #424242;
+}
+
+.user_stats tr td:nth-child(3) {
+    width: 22%;
+    letter-spacing: 0.1px;
+    font-size: 7vw;
+    font-family: 'opensans-bold';
+    text-align: right;
+    color: #424242;
+}
+
+.user_stats tr td:nth-child(3) span:first-child{
+    font-family: 'opensans-bold';
+    color: #424242;
+    font-size: 6vw;
+}
+
+.user_stats tr td:nth-child(3) span:nth-child(2){
+    font-family: 'opensans-light';
+    color: gray;
+    font-size: 5vw;
+}
+
+.user_stats tr td:nth-child(4) {
+    letter-spacing: 0.1px;
+    font-size: 4vw;
+    font-family: 'opensans-light';
+    /*text-align: right;*/
+}
+.user_stats tr td:nth-child(5) {
+}
+
+.rankdetails {
+    display:none;
+}
+
+.user_rank{
+    margin-bottom:3px;
+    table-layout:fixed;
+    width: 100%;
+}
+
+.user_rank tr td:first-child {
+    width:45%;
+    font-size:5vw;
+    color:#424242;
+    letter-spacing: 0.1px;
+    font-family:'opensans-bold';
+    text-align:center;
+    word-wrap: break-word;
+}
+
+.user_rank tr td:first-child span:nth-child(2){
+    font-family: 'opensans-bold';
+    color: gray;
+    font-size: 8vw;
+    color:#424242;
+}
+.user_rank tr td:first-child span:nth-child(3){
+    font-family: 'opensans-light';
+    color: gray;
+    font-size: 6vw;
+}
+
+.user_rank tr td:nth-child(2) {
+    width: 30%;
+    letter-spacing: 0.1px;
+    font-size: 6vw;
+    font-family: 'opensans-light';
+    text-align: center;
+    color: gray;
+}
+
+.user_rank tr td:nth-child(3) {
+    width: 17%;
+    letter-spacing: 0.1px;
+    font-size: 5vw;
+    font-family: 'opensans-bold';
+    text-align: left;
+    color: #424242;
+}
+
+.user_rank tr td:nth-child(4) {
+    letter-spacing: 0.1px;
+    font-size: 5vw;
+    font-family: 'opensans-light';
+    text-align: left;
+    color: gray;
+}
+
+#rankingTables .user_rank tr td:nth-child(2), .mem_tb .user_rank tr td:nth-child(2){
+    letter-spacing: 0.1px;
+    font-size: 4vw;
+    font-family: 'opensans-light';
+    text-align: center;
+    color: gray;
+}
+
+.wateriq_comp{
+    position:relative;
+    height:15%;
+    font-family:'opensans-bold';
+}
+
+.wateriq_comp div{
+    display: block;
+    width: 33.3%;
+    float: left;
+    text-align:center;
+    font-family:'opensans-bold';
+}
+
+.wateriq_comp div p{
+    text-align:center;
+    font-family:'opensans-bold';
+    color: #424242;
+    letter-spacing: 0.1px;
+    font-size: 8vw;
+    margin-top:0;
+    margin-bottom:0;
+}
+
+#member_filter span {
+    display: block;
+    float: left;
+    text-align:center;
+}
+
+.mem_legend{
+    position:relative;
+    height:15%;
+}
+.legend_lines {
+    position:relative;
+    height:5%;
+    width:50%;
+    margin-left:25%;
+}
+.legend_lines_price {
+    position:relative;
+    margin-top:5%;
+    margin-bottom:4%;
+    height:5%;
+}
+.legend_lines_price div{
+    display: block;
+    width: 33.3%;
+    float: left;
+    text-align:center;
+}
+.legend_lines div{
+    display: block;
+    width: 50%;
+    float: left;
+    text-align:center;
+}
+.mem_legend div{
+    display: block;
+    width: 25%;
+    float: left;
+    text-align:center;
+}
+
+#membersLegend{
+    height:10%;
+}
+
+#membersLegend div{
+    display: block;
+    float: left;
+    text-align:center;
+}
+
+.mem_legend p{
+    margin-bottom:0;
+    margin-top:0;
+}
+
+.mem_legend_p1{
+    letter-spacing: 0.1px;
+    font-size: 5vw;
+    font-family: 'opensans-light';
+    color: #424242;
+    margin-bottom:0;
+    text-align:center;
+}
+
+.mem_legend_p2{
+    text-align: center;
+    height:7px;
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom:0;
+    margin-top:0;
+    border-radius: 10px;
+    text-align:center;
+}
+
+.legend_line1{
+    letter-spacing: 0.1px;
+    font-size: 4vw;
+    font-family: 'opensans-light';
+    color: #424242;
+    margin-bottom:0;
+    margin-top:2px;
+    text-align:center;
+}
+
+.legend_line2{
+    text-align: center;
+    height:6px;
+    width: 40%;
+    margin-left: 30%;
+    margin-bottom:0;
+    margin-top:0;
+    border-radius: 10px;
+    text-align:center;
+}
+
+.legend_actual{
+    background-color:#2D3580;
+}
+.legend_forecasting{
+    background-color:#aaa;
+}
+.legend_you_color{
+    background-color:#42f465;
+}
+
+.legend_similar_color{
+    background-color:red;
+}
+
+.legend_neighbors_color{
+    background-color:blue;
+}
+
+.legend_city_color{
+    background-color:#2D3580;
+}
+
+.box_c div{
+    display: block;
+    float: left;
+    width: 49.5%;
+    height:100%;
+    text-align: center;
+}
+
+.box_left p{
+    display: block;
+    float: left;
+    width: 100%;
+    height:33%;
+    text-align: center;
+    margin:0px 0px;
+    text-align: center;
+}
+
+.box_right p{
+    display: block;
+    float: left;
+    width: 100%;
+    height:25%;
+    text-align: center;
+    margin:0px 0px;
+    text-align: center;
+}
+
+.box_right p span{
+    display: block;
+    float: left;
+    width: 45%;
+    height:100%;
+    text-align: center;
+}
+
+.title_ex{
+    color:gray;
+    letter-spacing: 0.1px;
+    font-family:'opensans-bold';
+    text-align:center;
+    word-wrap: break-word;
+}
+
+.num_ex{
+    letter-spacing: 0.1px;
+    font-family:'opensans-bold';
+    text-align:center;
+    color:#424242;
+}
+
+.label_ex{
+    letter-spacing: 0.1px;
+    font-family:'opensans-light';
+    text-align:center;
+    color:gray;
+}
+
+#calculatorListResults .item-after{
+    margin-right:15px;
+}
+
+#calculatorListResults{
+    font-size:4.8vh;
+}
+
+.showerValues #totalValues {
+    font-family : 'opensans-bold';
+    font-size:4vh;
+    color:#424242;
+}
+
+.showerValues .type {
+    font-family : 'opensans-light';
+    font-size:3vh;
+    color:#424242;
+}
+
+.par14ex {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family:'opensans-light';
+    text-align:center;
+    font-size:7vw;
+    color:#424242;
+}
+
+.par16ex {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family:'opensans-light';
+    text-align:center;
+    font-size:4.3vw;
+    color:#424242;
+}
+
+.par18px {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family : 'opensans-bold';
+    text-align:center;
+    font-size:4.8vh;
+    color:#424242;
+    word-wrap: break-word;
+}
+
+.par18pxQuestions {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family : 'opensans-light';
+    text-align:center;
+    font-size:4.8vh;
+    color:#424242;
+    word-wrap: break-word;
+}
+
+.par16px {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family:'opensans-light';
+    text-align:center;
+    font-size:3.2vh;
+    color:#424242;
+    word-wrap: break-word;
+}
+
+.par14px {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family:'opensans-light';
+    text-align:center;
+    font-size:3.3vh;
+    color:#424242;
+}
+
+.par12px {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family:'opensans-light';
+    text-align:center;
+    font-size:2.4vh;
+    color:#424242;
+    margin-left:40px;
+    margin-right:40px;
+}
+.par17 {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family:'opensans-light';
+    color:#424242;
+    font-size:2.4vh;
+}
+
+.par17ital {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    font-family:'opensans-italic';
+    color:#424242;
+    font-size:2.4vh;
+}
+
+.par24 {
+    font-family:'semibold';
+    text-align: center;
+    font-size:3.2vh;
+    color:#424242;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+.par24px {
+    font-family:'semibold';
+    text-align:center;
+    font-size:4.8vh;
+    color:#424242;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+.par24ct {
+    font-family:'semibold';
+    text-align:center;
+    font-size:4.8vh;
+    color:#424242;
+}
+
+.par16ct {
+    font-family:'semibold';
+    text-align:center;
+    font-size:16pt;
+    color:#424242;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+.par12px {
+    font-family:'semibold';
+    text-align:center;
+    font-size:2.4vh;
+    color:#424242;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+.par11px {
+    font-family:'semibold';
+    text-align:center;
+    font-size:2.2vh;
+    color:#424242;
+    margin-left:40px;
+    margin-right:40px;
+}
+
+
+
+.typos {
+    font-family:'opensans-light';
+    text-align:center;
+    font-size:3vh;
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    text-align: center;
+    color: #2D3580;
+}
+
+.p14 {
+    font-family : 'semibold';
+    color:#2D3580;
+    font-size:14pt;
+    position:relative;
+    width:90%;
+    left:5%;
+}
+
+.p18circle{
+    font-family : 'regular';
+    text-align:center;
+    color:#424242;
+    font-size:18pt;
+    position:relative;
+}
+
+.p38circle{
+    font-family : 'regular';
+    text-align:center;
+    color:#424242;
+    font-size:78pt;
+    position:relative;
+}
+
+.p17 {
+    font-family : 'semibold';
+    color:#424242;
+    font-size:17pt;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+.p11 {
+    font-family : 'semibold';
+    color:#424242;
+    font-size:14pt;
+    position:relative;
+    width:90%;
+    left:5%;
+}
+
+.p18 {
+    font-family : 'semibold';
+    color:#424242;
+    font-size:16pt;
+}
+
+.p24{
+    font-family : 'semibold';
+    color:#424242;
+    font-size:24pt;
+    position:relative;
+    width:90%;
+    left:5%;
+}
+
+.p14circle{
+    width : 50%;
+    margin-left:25%;
+    font-family:'opensans-light';
+    text-align:center;
+    color:#424242;
+    font-size:3.4vh;
+    position:relative;
+    top:20%;
+}
+
+.complicationValue {
+    font-family:'opensans-bold';
+    text-align:center;
+    color:#424242;
+}
+
+.complicationTitle {
+    font-family:'opensans-light';
+    text-align:center;
+    color:#424242;
+}
+
+.navbar .NumberOfDevices{
+    position: absolute;
+    right: 20px;
+    margin-top: -10px;
+}
+
+.navbar .right img{
+    position: absolute;
+    right:0px;
+    margin-top: -10px;
+}
+
+.navbarHeaders {
+    letter-spacing: 0.1px;
+    text-align: center;
+    font-family : 'opensans-bold';
+    font-size:3.2vh;
+    color:#2D3580;
+}
+
+.navbar .right,.navbar .left{
+    display:block;
+    width:20%;
+}
+
+.navbar .center{
+    display:block;
+    width:60%;
+}
+
+.navbar {
+    background-color:#A4D5F5;
+    border-color: #EDF7FD ;
+}
+
+.HomeToolbar a{
+    display:block;
+    float:left;
+    text-align:center;
+    width:17%;
+    padding: 4%;
+}
+
+.page-content {
+    position:fixed;
+    width:100%;
+    height:90%;
+    background-color:#EDF7FD;
+}
+
+.list-block {
+    font-size:4vh;
+    font-family:'opensans-light';
+    word-wrap: break-word;
+}
+
+.list-block input{
+    border: 1px solid #2D3580;
+    text-align:center;
+}
+
+.listblockTitles {
+    letter-spacing: 0.1px;
+    line-height: 1.8em;
+    text-align: left;
+    font-family : 'opensans-bold';
+    font-size:3vh;
+    color:#424242;
+    margin-left:14px;
+}
+
+.listBlockItems {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    text-align: left;
+    font-family : 'opensans-light';
+    font-size:5vh;
+    color:#424242;
+}
+
+.listblockTitles1 {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    text-align: left;
+    font-family : 'opensans-bold';
+    font-size:3vh;
+    color:#424242;
+    margin-left:14px;
+}
+
+.listBlockItems1 {
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    text-align: left;
+    font-family : 'opensans-light';
+    font-size:4vh;
+    color:#424242;
+}
+
+.configurables .item-title{
+    font-family : 'opensans-bold';
+    color:#424242;
+    font-size:3.5vh;
+}
+
+.consumptionEvent .item-title,#configurelist .item-title{
+    font-family : 'opensans-light';
+    font-size:4vh;
+}
+
+.label-switch input[id=tempSwitcher]:checked+.checkbox{
+    background: #A4D5F5;
+}
+
+#pairForm input{
+    font-family:'digital';
+}
+
+.inputFields {
+    margin-bottom:-2%;
+}
+
+#show_password{
+    font-family:'opensans-light';
+    font-size:4.5vw;
+    color:#424242;
+}
+
+.inputFields input {
+    font-family : 'regular';
+    border: 1px solid #2D3580;
+    font-size: 3.9vh;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: #7F7F83;
+}
+
+.inputFields .myforms input {
+    font-family : 'regular';
+    border: 1px solid #2D3580;
+    font-size: 3.9vh;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: #7F7F83;
+}
+
+#alarm{
+    font-family : 'regular';
+    font-size: 10vh;
+    letter-spacing: 0.1px;
+    text-align: center;
+    color: #7F7F83;
+}
+
+#timerForm .timerDivs{
+    display: block;
+    float: left;
+    font-family:'opensans-light';
+    font-size:3.5vh;
+    height:100%;
+    text-align: center;
+}
+
+#timerForm {
+    width:100%;
+    height:30%;
+    margin-top:50px;
+}
+
+.rotateImgs {
+    position:relative;
+    text-align:center;
+    left:-8%;
+}
+
+#showerDate::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:white;
+}
+
+.evtActive{
+    background: #2D3580;
+}
+
+.msgActive {
+    color: white;
+}
+
+.evtmsgActive{/* color: white; */}
+
+.timeActive {
+    background : #2D3580;
+}
+
+.timeActive p{
+    color : #2D3580;
+}
+
+.tabActive {
+    background : #2D3580;
+}
+
+.memberRefActive{
+    background : #EDF7FD;
+}
+
+.memberSpanActive {
+    color: #2D3580;
+}
+
+
+.evtActive{
+    background: #2D3580;
+}
+
+
+.typeActive,.meterActive {
+    background : #EDF7FD;
+}
+
+.barActive {
+    background:#EDF7FD;
+}
+
+.buttons-row a{
+    color: #2D3580;
+}
+
+.devtab {
+    height:50px;
+}
+
+.devtab label{
+    display:block;
+    float:left;
+    text-align:center;
+    margin-top:5%;
+}
+
+.devtab label .item-title{
+    font-family:'opensans-light';
+    font-size:2.4vh;
+    color:#808285;
+}
+
+.devtab_2 {
+    height:50px;
+}
+
+.devtab_2 label{
+    display:block;
+    float:left;
+    text-align:center;
+    margin-top:5%;
+}
+.devtab_2 label .item-title{
+    font-family:'opensans-light';
+    font-size:2.4vh;
+    color:#808285;
+}
+
+.no_data {
+    display:none;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 0.1px;
+    font-family: 'opensans-light';
+    text-align: center;
+    font-size: 4.5vh;
+    color: #424242;
+    margin-top:-10px;
+}
+
+.TimeTab a{
+    color: #2D3580;
+    display: block;
+    float: left;
+    font-family:'opensans-light';
+    font-size:3.5vh;
+    width: 20%;
+    line-height: 50px;
+    text-align: center;
+}
+
+.fullScreenShowerTab a,.fullScreenTimeTab a{
+    color: #2D3580;
+    display: block;
+    float: left;
+    font-family:'opensans-light';
+    font-size:2.5vw;
+    width: 25%;
+    line-height: 50px;
+    text-align: center;
+}
+
+.ShowerTab a{
+    color: #2D3580;
+    display: block;
+    float: left;
+    font-family:'opensans-light';
+    font-size:3.5vh;
+    width: 25%;
+    line-height: 50px;
+    text-align: center;
+}
+
+.TypeTab a{
+    display:block;
+    float:left;
+    text-align:center;
+    width:25%;
+    height:100%;
+}
+
+.TypeTab img {
+    /*margin-top:14.5%; td:first-child span:nth-child(2)*/
+    width: 20%;
+    height: 100%;
+}
+
+.MeterTypeTab img {
+    /*margin-top:12%;*/
+    width: 15%;
+    height: 100%;
+}
+
+.MeterTypeTab a{
+    display:block;
+    float:left;
+    text-align:center;
+    width:33.3%;
+    height:100%;
+}
+
+.eventChoices a,.mymetrics a,.tabTimer a,.calculatorTabs a,#showmemessage .messagebar a{
+    display:block;
+    float:left;
+    width:33.3%;
+    line-height:50px;
+    text-align:center;
+    font-family: 'opensans-light';
+    font-size:3vh;
+    color: #2D3580;
+}
+
+#waterCalculatorValue{
+    font-family: 'simplifica';
+    font-size:8vh;
+}
+
+#totalVolume {
+    font-family: 'opensans-bold';
+    font-size:4vh;
+}
+
+.calendar {
+    height:10%;
+}
+
+.calendar p{
+    text-align:center;
+    margin:0px 0px;
+    color:#424242;
+    font-family: 'opensans-light';
+    font-size:3vh;
+}
+
+.calendar span {
+    font-family: 'opensans-light';
+   
+}
+.tabs-menu {
+    background-color:#EDF7FD;
+
+}
+.tabs-menu a {
+    position: relative;
+    display:block;
+    font-family: 'opensans-light';
+    float:left;
+    text-align:center;
+    width:33.3%;
+    height:100%;
+    line-height: 60px;
+    font-size:3.3vh;
+    color:#2D3580;
+   
+}
+
+.menu-tabs2 a,.pic-choices a {
+    font-family: 'opensans-light';
+    font-size:5vw;
+    color:#2D3580;
+    height: 40px;
+    line-height: 40px;
+}
+
+.menu-tabs a { color: #2D3580;
+    display: block;
+    float: left;
+    font-family:'opensans-light';
+    font-size:3vh;
+    width: 33.3%;
+    line-height: 50px;
+    text-align: center;
+}
+
+#allevents .item-title-row ,#realTimerResult .item-title-row{
+    font-family : 'opensans-bold';
+    font-size:4vh;
+}
+
+#allevents .item-text ,#realTimerResult .item-text {
+    font-family : 'opensans-light';
+    font-size:3vh;
+}
+
+#allevents .item-subtitle ,#realTimerResult .item-subtitle {
+    width:100%;
+}
+
+#allevents .item-inner:after ,#realTimerResult .item-inner:after{
+    content:'';
+    background-color:#8e8e93;
+    position:absolute;left:0;bottom:0;
+    right:auto;top:auto;height:1px;width:100%;
+    display:block;
+    z-index:15;
+    -webkit-transform-origin:50% 100%;
+    transform-origin:50% 100%
+}
+
+#amphiro_events .item-subtitle  span {
+    display: table-cell;
+    width:32%;
+    font-size:4.8vw;
+    font-family : 'opensans-light';
+}
+
+#meter_events .item-subtitle  span {
+    display: table-cell;
+    width:32%;
+    font-size:4.8vw;
+    font-family : 'opensans-light';
+}
+
+.TheData .item-title {
+    font-family : 'opensans-bold';
+    font-size:5vh;
+}
+
+.TheData .item-text {
+    font-family : 'opensans-light';
+    font-size:4vh;
+}
+.TheData .item-after {
+    font-family : 'opensans-bold';
+    font-size:4vh;
+    padding-right: 15px;
+}
+
+#GoalsList li {
+    font-family : 'opensans-bold';
+}
+
+#GoalsList img {
+    margin-right: 10px;
+}
+
+.openme {
+    margin-right:20px;
+}
+
+#SettingsPage .item-inner:after {
+    background:#c8c7cc;
+}
+
+#loginForm input, #form_change_pass input, #form_reset input, #form1 input,#pairForm input, #form_reset_pin input{
+    height : 50px;
+    background:white;
+}
+
+.MyDashboard{
+    position: relative;
+    top:2%;
+    height:55%;
+    width:94%;
+    left:3%;
+}
+
+.dashboard-vals{
+    width:25%;
+    height:15%;
+    text-align:center;
+    position: absolute;
+ 
+}
+
+.dashboard-vals p{
+    font-size: 3vw;
+    font-family:'opensans-light';
+    color:#424242;
+    margin:0;
+}
+
+.dashboard-vals span{
+    font-size:3.5vh;
+    font-family : 'opensans-bold';
+}
+
+.dashboard-vals img{
+    width:100%;
+}
+
+#HomeVolume{
+    position:relative;
+    top:20%;
+    text-align:center;
+}
+
+#HomeGenerala{
+    position:relative;
+    top:12%;
+    text-align:center;
+}
+
+#HomeGeneralb{
+    position:relative;
+    top:13%;
+    text-align:center;
+}
+
+#budgetCircle {
+    position:absolute;
+}
+
+.circle1 {
+    border-radius: 50%;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    top:1px;
+    margin-left:0%;
+}
+
+#myStat20,#budgetCircle{
+    height:auto;
+    position:relative;
+    top:-3px;
+}
+
+#myStat4{
+    font-family: 'simplifica';
+    left:15%;
+    margin-top:5px;
+    color:white;
+}
+
+#myStat2{
+    font-family: 'simplifica';
+}
+
+.circliful {
+    position: relative;
+}
+
+.circle-text, .circle-info, .circle-text-half, .circle-info-half {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    display: inline-block;
+}
+
+.circle-info, .circle-info-half {
+    color: #999;
+}
+
+.circliful .fa {
+    margin: -10px 3px 0 3px;
+    position: relative;
+    bottom: 4px;
+}
+
+.item-title,.item-inner{
+    color:#424242;
+}
+
+
+h2.instr,h3.instr,p.instr {
+    text-align:center;
+    color:#424242;
+}
+
+.href_txt {
+    
+    font-family:'opensans-bold';
+    text-align:center;
+    letter-spacing: 0.1px;
+    line-height: 1.2em;
+    text-align: center;
+    color: #424242;
+
+}
+
+.hrefs {
+    color:#2D3580;
+    text-align:center;
+}
+
+.nameButton{
+    margin-top:0;font-family : 'opensans-light';
+    background-color:#2D3580;
+    color:white;
+    font-size:4vh;
+    text-align:central;
+    height:50px;
+    letter-spacing: 0.1px;
+    line-height: 50px;
+}
+
+.custom_btn {
+    position:relative;
+    font-family : 'semibold';
+    background-color:#2D3580;
+    color:white;
+    font-size:20pt;
+    text-align:center;
+    width:64%;
+    padding:3%;
+    height:auto;
+}
+
+.custom_bt_c {
+    font-family : 'opensans-light';
+    background-color:#2D3580;
+    color:white;
+    font-size:4vh;
+    text-align:central;
+    height:50px;
+    letter-spacing: 0.1px;
+    line-height: 50px;
+}
+
+.custom_bt {
+    font-family : 'opensans-light';
+    background-color:#2D3580;
+    color:white;
+    font-size:4vh;
+    text-align:central;
+    height:50px;
+    letter-spacing: 0.1px;
+    line-height: 50px;
+}
+
+.custom_bt_1 {
+    font-family : 'semibold';
+    background-color:#2D3580;
+    color:white;
+    font-size:16pt;
+    text-align:central;
+    width:220px;
+    height:50px;
+    line-height: 50px;
+    margin-top:-4%;
+}
+
+.btn_txt{
+    text-align:center;
+    color:white;
+}
+
+.dataImg{
+    width:65px;
+    height:65px;
+}
+
+.simple_link {
+    font-size:14pt;
+    color:#2D3580;
+}
+
+.back1 {
+    color:#2D3580;
+    font-size:2.8vh;
+    font-family : 'opensans-bold';
+}
+
+.progress_bar {
+    width: 100%;
+    background-color: white;
+}
+
+#bar{
+    height:8px;
+    background-color: #2D3580;
+}
+
+.wateriq_status_bar{
+    width: 100%;
+    background-color: #424242;
+}
+
+#status_bar{
+    height:15px;
+    background-color: #2D3580;
+    width: 20%;
+    margin-left:20%;
+
+}
+
+
+.connectivity img {
+    vertical-align: middle;
+}
+
+.connectivity p{
+    font-size: 2.4vh;
+    vertical-align: middle;
+    display: table-cell;
+    font-family: 'opensans-bold';
+    color: #424242;
+}
+
+.connectivity_status{
+    /*position:absolute;
+     z-index:1; */
+    display:none;
+    width: 100%;
+    height:25px;
+    background-color: #2D3580;
+}
+
+.connectivity_status p {
+    color:white;
+    text-align:center;
+    margin:0;
+    line-height:25px;
+    font-family:'opensans-light';
+}
+
+.font_bold{
+    font-family : 'bold';
+}
+.font_semibold{
+    font-family : 'semibold';
+}
+.font_italic{
+    font-family : 'italic';
+}
+.font_regular{
+    font-family : 'regular';
+}
+.font_light{
+    font-family : 'light';
+}
+
+p.error {
+    background:url("../img/SVG/warning.svg") no-repeat 0px 0px;
+}
+
+.swiper {
+    position:relative;
+    top:0;
+    height:40%;
+    text-align:center;
+}
+
+.swiper1 {
+    position:relative;
+    height:20%;
+    width:90%;
+    margin-top:10%;
+    margin-left:5%;
+    margin-right:5%;
+    text-align:center;
+}
+
+.swiper1 .swiper-slide span{
+    vertical-align: middle;
+    display: table-cell;
+    font-family: 'opensans-light';
+    color: #424242;
+    font-size: 6vw;
+}
+
+.swiper-text {
+    display:table;
+    position: relative;
+    color: #424242;
+    width: 70%;
+}
+
+.swiper .swiper-slide span {
+    vertical-align: middle;
+    display: table-cell;
+    font-size: 6vh;
+    font-family: 'opensans-light';
+    color: #424242;
+}
+
+.swiper-text img {
+    vertical-align: middle;
+    display: table-cell;
+    width: 35px;
+    height: 35px;
+}
+
+.swiper-pagination-bullet {
+    width: 20px;
+    height: 20px;
+    background: #2D3580;
+    border-radius: 0 0 0 0;
+    opacity:1;
+    cursor: pointer;
+}
+
+.swiper-pagination-bullet-active {
+    background: #007aff;
+    border-color: #007aff;
+}
+
+.swiper-text p {
+    margin-top:-5%;
+    font-family: 'opensans-bold';
+    font-size: 3.6vh;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 100%;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.swiper-container{
+    height:100%;
+}
+
+.install_button {
+    position:relative;
+    bottom:0;
+}
+
+#mypanel ,#mypanel ul{
+    background:#2D3580;
+}
+
+#mypanel a {
+    font-family:'opensans-bold';
+    font-size:3.6vh;
+    color: #A4D5F5;
+}
+
+#panel-spinner{
+    display:none;position:fixed;z-index:1000;top:0;left:0;height:100%;width:100%;
+    background: rgba( 164, 213, 245 ,0.8 ) no-repeat;
+    /*(45,53,128)*/
+}
+
+#spinner,#spinner1,#spinner_loading{
+    display:none;
+    position:fixed;
+    z-index:1000;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    background: rgba( 255, 255, 255, .8 )url('../img/ajax-loader.gif') 50% 50%
+    no-repeat;
+}
+
+#myphoto,#myphoto1 {
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+}
+
+.daiadlogo_Initialize {
+    position:relative;
+    left:20%;
+    width:60%;
+    height:20%;
+}
+
+.new_msg{
+    position: absolute;
+    margin-left: -15px;
+    top:25px;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: red;
     
 }
-.tabbar a{
+
+.new_msg_list{
+    margin: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    background: #8e8e93;
+}
+
+.message_seen {
+    font-family:'opensans-light';
+}
+
+.notification-counter {
+    font-family:'opensans-bold';
+    position: absolute;
+    top: 1%;
+    right:20%;
+    color: #CD4D3E;
+    font-size: 12pt;
+}
+
+.notification-counter-inside{
+    font-family:'opensans-light';
+    position: absolute;
+    margin-top: -12px;
+    right: 1%;
+    color: #CD4D3E;
+    font-size: 12px;
+}
+
+.openme {
+    display:none;
+}
+
+.install_later{
+    display:none;
+}
+
+.yAxis .tickLabel ,.xAxis {
+    padding: 0px 0px 0px 0px;
+    font-size:3.2vw;
+}
+
+.plot-real {
+    position:relative;
+    height:100%;
+    /*background-color:white;*/
+    font-family:'opensans-light'
+}
+
+.plot-real-2 {
+    position:relative;
+    width:100%;
+    height:80%;
+    background-color:white;
+}
+
+.tab-content,.tab-content1 {
+    display: none;
+}
+
+#tab-1,#tab-similar {
+    display: block;
+}
+
+a.button_add {
+    height: auto;
+    margin-left: 0;
+    background: url("../img/SVG/add_widget.svg");
+    background-repeat: no-repeat;
+}
+
+a.button_shop {
+    height: auto;
+    margin-left: 0;
+    background: url("../img/SVG/energy.svg");
+    background-repeat: no-repeat;
+}
+
+a.button_calc {
+    height: auto;
+    margin-left: 0;
+    background: url("../img/SVG/warning.svg");
+    background-repeat: no-repeat;
+}
+
+#prevQuestion {
+    position: relative;
+    width:40%;
+    margin-left:5%;
+    margin-right:2%;
+    height: 50px;
+    line-height: 50px;
+    float: left;
+    background:green;
+    border: 1px solid;
+    color: white;
+    font-family: 'opensans-light';
+    font-size: 4vh;
+}
+
+#nextQuestion,.questsamebutton{
+    position: relative;
+    width:40%;
+    height: 50px;
+    line-height: 50px;
+    margin-left:2%;
+    margin-right:5%;
+    float: left;
+    border: 1px solid ;
+    color: white;
+    font-size: 4vh;
+    font-family: 'opensans-light';
+    background: #2D3580 ;
+}
+
+
+/*body {
+ background-color: #E7F4FC;
+ font-family: "OpenSansCond", sans-serif;
+ }*/
+
+.chart {
+    position: relative;
+    height:100%;
+    /* keep a ratio of 2.5 : 1 */
+    /*width: 580px;
+     height: 230px;
+     border: solid 1px silver;*/
+}
+
+.yAxis .tickLabel {
+    padding: 0px 3px 0px 0px;
+}
+
+.chart .value-label.value .unit {
+    padding: 0px 3px;
+    font-size: 1em;
+    color: #777;
+    vertical-align: baseline;
+    font-family:'opensans-light';
+}
+
+.chart .value-label {
+    display: block;
+    position: absolute;
+}
+
+.chart .value-label.value {
+    font-size:1.2em;
+    font-family:'opensans-bold';
+}
+
+.chart .value-label.label {
+    font-size:1.2em;
+    font-weight: normal;
+}
+
+.chart .value-marker {
+    position: absolute;
+    display: block;
+    font-size: 1em;
+    font-weight: bold;
+    border: solid 0px;
+    text-align: center;
+    height: 1.85em;
+    width: 2.40em;
+    border-radius: 1px;
+}
+
+.chart .value-marker:after {
+    content: '';
+    display: block;
+    position: absolute;
+    height: 0.60em;
+    width: 0.60em;
+    top: 1.50em;
+    border-style: solid;
+    background-color: inherit;
+    border-width: 0px 0px 1px 1px;
+    border-color: inherit;
+    transform: rotate(-45deg);
+    left: 0.90em;
+    z-index: -10;
+}
+
+.chart td.legendLabel {
+    color: #222;
+    font-size: 1.1em;
+    padding: 0px 8px 0px 2px;
+}
+
+.chart .legend-centered {
+    color: #222;
+    position: absolute;
+    /*background-color: rgba(200, 200, 200, 0.5);*/
+    font-size: 1.1em;
+    padding: 10px;
+    width: 16.0em;
+    height: 1.5em;
+}
+
+.chart .legend-centered .color-box {
+    padding: 4px 6px;
+    min-width: 48%;
+    float: left;
+    margin:0px 2px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.imgRot1{
+    position:absolute;
+    -webkit-animation:spin 3s linear infinite;
+    -moz-animation:spin 3s linear infinite;
+    animation:spin 3s linear infinite;
+}
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+.imgRot2{
+    position:absolute;
+    -webkit-animation:spin1 3s linear infinite;
+    -moz-animation:spin1 3s linear infinite;
+    animation:spin1 3s linear infinite;
+}
+
+@-moz-keyframes spin1 { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin1 { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin1 { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+
+#gear1{
+    position:absolute;
+    -webkit-animation:spin3 3s linear infinite;
+    -moz-animation:spin3 3s linear infinite;
+    animation:spin3 3s linear infinite;
+}
+
+@-moz-keyframes spin3 { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin3 { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin3 { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+#gear2{
+    position:absolute;
+    -webkit-animation:spin4 3s linear infinite;
+    -moz-animation:spin4 3s linear infinite;
+    animation:spin4 3s linear infinite;
+}
+
+@-moz-keyframes spin4 { 100% { -moz-transform: rotate(-360deg); } }
+@-webkit-keyframes spin4 { 100% { -webkit-transform: rotate(-360deg); } }
+@keyframes spin4 { 100% { -webkit-transform: rotate(-360deg); transform:rotate(-360deg); } }
+
+
+#gear3{
+    position:absolute;
+    -webkit-animation:spin5 3s linear infinite;
+    -moz-animation:spin5 3s linear infinite;
+    animation:spin5 3s linear infinite;
+}
+
+@-moz-keyframes spin5 { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin5 { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin5 { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.toolbar {
+    height:60px;
+}
+
+i.demo-icon-1{width:30px;height:30px;background-image:url("../img/SVG/dashboard-off.svg");background-repeat:no-repeat;}
+.barActive i.demo-icon-1{width:30px;height:30px;background-image:url("../img/SVG/dashboard-on.svg");}
+
+i.demo-icon-2{width:30px;height:30px;background-image:url("../img/SVG/stats-off.svg");background-repeat:no-repeat;}
+.barActive i.demo-icon-2{width:30px;height:30px;background-image:url("../img/SVG/stats.svg");}
+
+i.demo-icon-3{width:25px;height:25px;background-image:url("../img/SVG/recommendations-off.svg");background-repeat:no-repeat;}
+.barActive i.demo-icon-3{width:25px;height:25px;background-image:url("../img/SVG/recommendations-on.svg");}
+
+i.demo-icon-4{width:30px;height:30px;background-image:url("../img/SVG/settings-off.svg");background-repeat:no-repeat;}
+.barActive i.demo-icon-4{width:30px;height:30px;background-image:url("../img/SVG/settings-on.svg");}
+
+i.demo-icon-5{width:25px;height:25px;background-image:url("../img/SVG/challenge-badge-off.svg");background-repeat:no-repeat;}
+.barActive i.demo-icon-5{width:25px;height:25px;background-image:url("../img/SVG/challenge-badge.svg");}
+
+/*nexus tablet*/
+@media only screen and (min-width : 600px) and (max-width : 603px) and (orientation: portrait) {
     
-    color:#383838;
-    margin:5%;
+    h1 {
+        display:inline;
+        font-size:2vw;
+    }
+    
+    .MyDashboard{
+        position: relative;
+        top:2%;
+        height:70%;
+        width:94%;
+        left:3%;
+    }
+    
+    .p14circle {
+        width: 50%;
+        margin-left: 25%;
+        font-family: 'opensans-light';
+        text-align: center;
+        color: #424242;
+        font-size: 3.8vh;
+        position: relative;
+        top: 15%;
+    }
+
+    .connectivity_status{
+        /*  position:absolute;
+         z-index:1; */
+        display:none;
+        width: 100%;
+        height:25px;
+        background-color: #2D3580;
+    }
+
+    .connectivity_status p {
+        color:white;
+        text-align:center;
+        margin:0;
+        line-height:25px;
+        font-family:'opensans-light';
+    }
+
+
+    .selectTabsTemp{
+        margin-top:100px;
+    }
+
+    .notification-counter {
+        font-family:'opensans-bold';
+        position: absolute;
+        top: 5%;
+        margin-left: 70px;
+        color: #CD4D3E;
+        font-size: 12pt;
+    }
+
+    .navbar, .toolbar {
+        height:70px;
+    }
+
+    .circle1 {
+        border-radius: 50%;
+        display: inline-block;
+        width: 100%;
+        height:100%;
+        position:absolute;
+        top:4%;
+        margin-left:0%;
+    }
+
+    #HomeVolume{
+        position:relative;
+        top:14%;
+        text-align:center;
+    }
+    
+    #HomeGenerala{
+        position:relative;
+        top:5%;
+        text-align:center;
+    }
+    
+    #HomeGeneralb{
+        position:relative;top:5%;text-align:center;
+    }
+
+    .back1 {
+        color:#2D3580;
+        font-size:2.8vh;
+        font-family : 'opensans-bold';
+        margin-left: 15px;
+    }
+
+    .calendar{
+        height:10%;
+        margin-top:30px;
+    }
+
+    .rotateImgs {
+        position:relative;
+        text-align:center;
+        left:-5%;
+    }
+
+    .dataImg{
+        width:120px;
+        height:120px;
+    }
+
 }
 
+/*GOOGLE NEXUS 10 -- 800 X 1280 */
+@media only screen and (min-device-width : 800px) and (max-device-height : 1280px) and (-webkit-min-device-pixel-ratio: 2)
+and (orientation : portrait) {
+    
+    .connectivity_status{
+        /*  position:absolute;
+         z-index:1; */
+        display:none;
+        width: 100%;
+        height:25px;
+        background-color: #2D3580;
+    }
+   
+    h1 {
+        display:inline;
+        font-size:2vw;
+    }
 
+    .connectivity_status p {
+        color:white;
+        text-align:center;
+        margin:0;
+        line-height:25px;
+        font-family:'opensans-light';
+    }
 
-#instructions{
-    color: #383838;
-}
+    .selectTabsTemp{
+        margin-top:100px;
+    }
+    
+    .notification-counter {
+        font-family:'opensans-bold';
+        position: absolute;
+        top: 5%;
+        margin-left: 40px;
+        color: #CD4D3E;
+        font-size: 12pt;
+    }
 
-#decivename,#unitname {
-    text-align:right;
-}
-select, option {
-    text-align:right;
+    .navbar, .toolbar {
+        height:70px;
+    }
+    
+    .circle1 {
+        border-radius: 50%;
+        display: inline-block;
+        width: 100%;
+        height:100%;
+        position:absolute;
+        top:4%;
+        margin-left:0%;
+    }
+    
+    #HomeVolume{
+        position:relative;
+        top:10%;
+        text-align:center;
+    }
+    
+    #HomeGenerala{
+        position:relative;
+        top:5%;
+        text-align:center;
+    }
+    
+    #HomeGeneralb{
+        position:relative;
+        top:5%;
+        text-align:center;
+    }
+    
+    .calendar{
+        height:10%;
+        margin-top:40px;
+    }
+    
+    .rotateImgs {
+        position:relative;
+        text-align:center;
+        left:-3%;
+    }
+
+    .dataImg{
+        width:120px;
+        height:120px;
+    }
+
+    .back1 {
+        color:#2D3580;
+        font-size:2.8vh;
+        font-family : 'opensans-bold';
+        margin-left: 15px;
+    }
+
 }
 
 
 /*GENERIC IPAD*/
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : portrait) {
-
-#trendList p{font-size:120%;border-color:#7ca9bd;color:#7ca9bd;}
-#trendList .active {
-    border-color:#7ca9bd;
-    background-color:#7ca9bd;
-    color: white;
-}
-
-#compareList p{font-size:120%;border-color:#7ca9bd;color:#7ca9bd;}
-#compareList .active {
-    border-color:#7ca9bd;
-    background-color:#7ca9bd;
-    color: white;
-}
-
-#updateBtns p{font-size:120%;border-color:#7ca9bd;color:#7ca9bd;}
-#updateBtns .active {
-border-color:#7ca9bd;
-background-color:#7ca9bd;
-color: white;
-}
-
-.settings_screen{
-    position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
-
-}
-.settings_screen_images{
-    width:70%;height:60%;
-}
-
-.connect_image {
-    width:40%;
-    height:55%;
-    position:relative;
-    left:7%;
+@media only screen and (min-device-width : 768px) and (max-device-height : 1024px) and (orientation : portrait) {
     
-}
+    h1 {
+        display:inline;
+        font-size:2vw;
+    }
+    .selectTabsTemp{
+        margin-top:100px;
+    }
+  
+    .notification-counter {
+        font-family:'opensans-bold';
+        position: absolute;
+        top: 5%;
+        margin-left: 40px;
+        color: #CD4D3E;
+        font-size: 12pt;
+    }
 
-.connect_screen {
-    display:block;
-    float:right;
-    right:40%;
-    color: #383838;
-    font-size:150%;
-    width:50%;
-    height:50%;
-
-}
-
-.apptexts {
+    #addme {
+        margin-top:200px;
+    }
     
-    font-size : 32;
-    position:fixed;
-    top:25%;
-    left:7%;
-    width:40%;
-    height:60%;
-    display:block;
+    .back1 {
+        color:#2D3580;
+        font-size:2.8vh;
+        font-family : 'opensans-bold';
+        margin-left: 15px;
+    }
+    
+    .dataImg{
+        width:120px;
+        height:120px;
+    }
 
-}
-.about { font-size:150%; }
-.page-content{position:fixed;top:9.5%;width:100%;height:74%;}
-
-#toAccount,#toInstall,#toAbout {
-    color: #7ca9bd;
-}
-
-#welcomePage {
-    background: url("../img/ipad/Home768x1024.jpg");
-    background-repeat:no-repeat;
-    background-size: 100% 100%;
-}
-
-#login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall,#PairedAmphiro{
-   background: url("../img/ipad/Gen768x1024.jpg");
-   background-repeat:no-repeat;
-   background-size: 100% 100%;
-}
-
-
-
-#efff1{width:10%;height:42%;}
- #tips {color:#7ca9bd;font-size:180%;}
-
-i.tabbar-demo-icon-1{width:80px;height:80px;background-image:url("../img/ipad/account_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-1{width:80px;height:80px;background-image:url("../img/ipad/account_orange.png");}
-i.tabbar-demo-icon-2{width:80px;height:80px;background-image:url("../img/ipad/login_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-2{background-image:url("../img/ipad/login_orange.png");}
-i.tabbar-demo-icon-3{width:80px;height:80px;background-image:url("../img/ipad/back_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-3{width:80px;height:80px;background-image:url("../img/ipad/back_orange.png");}
-i.tabbar-demo-icon-4{width:80px;height:80px;background-image:url("../img/ipad/home_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-4{width:80px;height:80px;background-image:url("../img/ipad/home_orange.png");}
-i.tabbar-demo-icon-5{width:80px;height:80px;background-image:url("../img/ipad/trends_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-5{width:80px;height:80px;background-image:url("../img/ipad/trends_orange.png");}
-i.tabbar-demo-icon-6{width:80px;height:80px;background-image:url("../img/ipad/compare_dark1.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-6{background-image:url("../img/ipad/compare_orange1.png");}
-i.tabbar-demo-icon-7{width:80px;height:80px;background-image:url("../img/ipad/settings_dark1.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-7{width:80px;height:80px;background-image:url("../img/ipad/settings_orange1.png");}
-i.tabbar-demo-icon-8{width:80px;height:80px;background-image:url("../img/ipad/submit_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-8{width:80px;height:80px;background-image:url("../img/ipad/submit_orange.png");}
-i.tabbar-demo-icon-9{width:80px;height:80px;background-image:url("../img/ipad/connect_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-9{width:80px;height:80px;background-image:url("../img/ipad/connect_orange.png");}
-
+    .swiper1 {
+        position:relative;
+        height:30%;
+        width:90%;
+        margin-top:-40px;
+        margin-left:5%;
+        margin-right:5%;
+        text-align:center;
+    }
+    
+    .toolbar {
+        height:90px;
+        
+    }
+    
+    .p14circle {
+        width: 50%;
+        margin-left: 25%;
+        font-family: 'opensans-light';
+        text-align: center;
+        color: #424242;
+        font-size: 3.8vh;
+        position: relative;
+    }
+    
+    #HomeVolume{
+        position:relative;
+        text-align:center;
+    }
+    
+    #HomeGenerala{
+        position:relative;
+        text-align:center;
+    }
+    
+    #HomeGeneralb{
+        position:relative;
+        text-align:center;
+    }
+    
+    .MyDashboard{
+        position: relative;
+        top:1px;
+        height:70%;
+        width:94%;
+        left:3%;
+    }
+    
+    .circle1 {
+        width: 86%;
+        height:100%;
+        position:absolute;
+        margin-left:7%;
+        margin-right:7%;
+    }
+    
+    #budgetCircle {
+        position:absolute;
+    }
+    
+    .calendar{
+        height:10%;
+        margin-top:40px;
+    }
+    
+    .rotateImgs {
+        position:relative;
+        text-align:center;
+        left:-3%;
+    }
+    
+    i.demo-icon-1{width:40px;height:40px;background-image:url("../img/SVG/dashboard-off.svg");background-repeat:no-repeat;}
+    .barActive i.demo-icon-1{width:40px;height:40px;background-image:url("../img/SVG/dashboard-on.svg");}
+    
+    i.demo-icon-2{width:40px;height:40px;background-image:url("../img/SVG/stats-off.svg");background-repeat:no-repeat;}
+    .barActive i.demo-icon-2{width:40px;height:40px;background-image:url("../img/SVG/stats.svg");}
+    
+    i.demo-icon-3{width:35px;height:40px;background-image:url("../img/SVG/recommendations-off.svg");background-repeat:no-repeat;}
+    .barActive i.demo-icon-3{width:35px;height:40px;background-image:url("../img/SVG/recommendations-on.svg");}
+    
+    i.demo-icon-4{width:40px;height:40px;background-image:url("../img/SVG/settings-off.svg");background-repeat:no-repeat;}
+    .barActive i.demo-icon-4{width:40px;height:40px;background-image:url("../img/SVG/settings-on.svg");}
+    
+    i.demo-icon-5{width:35px;height:40px;background-image:url("../img/SVG/challenge-badge-off.svg");background-repeat:no-repeat;}
+    .barActive i.demo-icon-5{width:35px;height:40px;background-image:url("../img/SVG/challenge-badge.svg");}
+    
 }
 /*iphone 6 */
 @media only screen
 and (min-device-width : 375px)
 and (max-device-width : 667px)
 and (-webkit-min-device-pixel-ratio: 2)
-and (orientation : portrait) {
-    
-    
-    .connect_image {
-        width:35%;
-        height:40%;
-        position:relative;
-        left:5%;
-        
-    }
-
-    .connect_screen {
-        display:block;
-        float:right;
-        color: #383838;
-        font-size:32;
-        width:50%;
-        height:100%;
-        
-    }
-    .settings_screen{
-        position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
-        
-    }
-    .settings_screen_images{
-        width:70%;height:60%;
-    }
-.about { font-size:80%; }
-.apptexts {
-    color: #383838
-    font-size : 18;
-    position:fixed;
-    top:30%;
-    left:7%;
-    width:40%;
-    height:60%;
-    display:block;
-    
-}
-
-.page-content{position:fixed;top:9.5%;width:100%;height:74%;}
-
-#welcomePage {
-    background: url("../img/iphone/Home750x1334.jpg");
-    background-repeat:no-repeat;
-    background-size: 100% 100%;
-}
-
-#login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall{
-    background: url("../img/iphone/Gen750x1334.jpg");
-    background-repeat:no-repeat;
-    background-size: 100% 100%;
-}
-#toAccount,#toInstall,#toAbout {
-    color: #7ca9bd;
-}
-
-#trendList p{font-size:70%;border-color:#7ca9bd;color:#7ca9bd;}
-#trendList .active {
-    border-color:#7ca9bd;
-    background-color:#7ca9bd;
-    color: white;
-}
-
-#compareList p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
-#compareList .active {
-    border-color:#7ca9bd;
-    background-color:#7ca9bd;
-    color: white;
-}
-
-#updateBtns p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
-#updateBtns .active {
-    border-color:#7ca9bd;
-    background-color:#7ca9bd;
-    color: white;
-}
-
-#efff{width:40%;height:40%;}
-#efff1{width:10%;height:40%;}
-
-#tips {color:#7ca9bd;font-size:100%;}
-
-i.tabbar-demo-icon-1{width:30px;height:30px;background-image:url("../img/iphone/account_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-1{background-image:url("../img/iphone/account_orange.png");}
-i.tabbar-demo-icon-2{width:30px;height:30px;background-image:url("../img/iphone/login_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-2{background-image:url("../img/iphone/login_orange.png");}
-i.tabbar-demo-icon-3{width:30px;height:30px;background-image:url("../img/iphone/back_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-3{background-image:url("../img/iphone/back_orange.png");}
-i.tabbar-demo-icon-4{width:30px;height:30px;background-image:url("../img/iphone/home_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-4{background-image:url("../img/iphone/home_orange.png");}
-i.tabbar-demo-icon-5{width:30px;height:30px;background-image:url("../img/iphone/trends_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-5{background-image:url("../img/iphone/trends_orange.png");}
-i.tabbar-demo-icon-6{width:30px;height:30px;background-image:url("../img/iphone/compare_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-6{background-image:url("../img/iphone/compare_orange.png");}
-i.tabbar-demo-icon-7{width:30px;height:30px;background-image:url("../img/iphone/settings_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-7{background-image:url("../img/iphone/settings_orange.png");}
-i.tabbar-demo-icon-8{width:30px;height:30px;background-image:url("../img/iphone/submit_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-8{background-image:url("../img/iphone/submit_orange.png");}
-i.tabbar-demo-icon-9{width:30px;height:30px;background-image:url("../img/iphone/connect_dark.png");background-repeat:no-repeat;}
-.active i.tabbar-demo-icon-9{background-image:url("../img/iphone/connect_orange.png");}
-
-
-}
+and (orientation : portrait) {}
 
 /*iphone 6plus*/
 @media only screen
 and (min-device-width : 414px)
 and (max-device-width : 736px)
 and (-webkit-min-device-pixel-ratio: 3)
-and (orientation : portrait) {
-    .connect_image {
-        width:45%;
-        height:50%;
-        position:relative;
-        left:5%;
-        
-    }
-
-    .connect_screen {
-        display:block;
-        float:right;
-        color: #383838;
-        font-size:65%;
-        width:50%;
-        height:50%;
-        
-    }
-    .settings_screen{
-        position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
-        
-    }
-    .settings_screen_images{
-        width:70%;height:60%;
-    }
-    .about { font-size:80%; }
-    .apptexts {
-        color: #383838
-        font-size : 18;
-        position:fixed;
-        top:30%;
-        left:7%;
-        width:40%;
-        height:60%;
-        display:block;
-        
-    }
-    
-    .page-content{position:fixed;top:9.5%;width:100%;height:74%;}
-    
-    #welcomePage {
-        background: url("../img/iphone/Home750x1334.jpg");
-        background-repeat:no-repeat;
-        background-size: 100% 100%;
-    }
-    
-    #login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall{
-        background: url("../img/iphone/Gen750x1334.jpg");
-        background-repeat:no-repeat;
-        background-size: 100% 100%;
-    }
-    #toAccount,#toInstall,#toAbout {
-        color: #7ca9bd;
-    }
-    
-    #trendList p{font-size:70%;border-color:#7ca9bd;color:#7ca9bd;}
-    #trendList .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-    
-    #compareList p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
-    #compareList .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-    
-    #updateBtns p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
-    #updateBtns .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-    
-    #efff{width:40%;height:40%;}
-    #efff1{width:10%;height:40%;}
-    
-    #tips {color:#7ca9bd;font-size:100%;}
-    
-    i.tabbar-demo-icon-1{width:30px;height:30px;background-image:url("../img/iphone/account_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-1{background-image:url("../img/iphone/account_orange.png");}
-    i.tabbar-demo-icon-2{width:30px;height:30px;background-image:url("../img/iphone/login_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-2{background-image:url("../img/iphone/login_orange.png");}
-    i.tabbar-demo-icon-3{width:30px;height:30px;background-image:url("../img/iphone/back_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-3{background-image:url("../img/iphone/back_orange.png");}
-    i.tabbar-demo-icon-4{width:30px;height:30px;background-image:url("../img/iphone/home_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-4{background-image:url("../img/iphone/home_orange.png");}
-    i.tabbar-demo-icon-5{width:30px;height:30px;background-image:url("../img/iphone/trends_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-5{background-image:url("../img/iphone/trends_orange.png");}
-    i.tabbar-demo-icon-6{width:30px;height:30px;background-image:url("../img/iphone/compare_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-6{background-image:url("../img/iphone/compare_orange.png");}
-    i.tabbar-demo-icon-7{width:30px;height:30px;background-image:url("../img/iphone/settings_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-7{background-image:url("../img/iphone/settings_orange.png");}
-    i.tabbar-demo-icon-8{width:30px;height:30px;background-image:url("../img/iphone/submit_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-8{background-image:url("../img/iphone/submit_orange.png");}
-    i.tabbar-demo-icon-9{width:30px;height:30px;background-image:url("../img/iphone/connect_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-9{background-image:url("../img/iphone/connect_orange.png");}
-    
-
-}
+and (orientation : portrait) {}
 
 /*iphone 5/5s*/
 @media only screen
 and (min-device-width : 320px)
-and (max-device-width : 568px) {
-    
-    .connect_image {
-        width:42%;
-        height:47%;
-        position:relative;
-        left:5%;
-        
-    }
-    .settings_screen{
-        position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
-        
-    }
-    .settings_screen1{
-        position:fixed;top:40%;left:10%;display:block;width:80%;height:40%;text-align:center;
-        
-    }
+and (max-device-width : 568px) {}
 
-    .settings_screen_images{
-        width:70%;height:60%;
-    }
-
-    .connect_screen {
-        display:block;
-        float:right;
-        color: #383838;
-        font-size:65%;
-        width:50%;
-        height:50%;
-        
-    }
-
-    .apptexts {
-        color: #383838
-        font-size : 32;
-        position:fixed;
-        top:30%;
-        left:5%;
-        width:40%;
-        height:60%;
-        display:block;
-        
-    }
-    .about { font-size:80%; }
-    .page-content{position:fixed;top:8%;width:100%;height:78%;}
-    
-    #welcomePage {
-        background: url("../img/iphone/Home640x1136.jpg");
-        background-repeat:no-repeat;
-        background-size: 100% 100%;
-    }
-    
-    #login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall,#PairedAmphiro{
-        background: url("../img/iphone/Gen640x1136.jpg");
-        background-repeat:no-repeat;
-        background-size: 100% 100%;
-    }
-    #toAccount,#toInstall,#toAbout {
-        color: #7ca9bd;
-    }
-    
-    #trendList p{font-size:70%;border-color:#7ca9bd;color:#7ca9bd;}
-    #trendList .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-    
-    #compareList p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
-    #compareList .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-    
-    #updateBtns p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
-    #updateBtns .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-
-    #efff{width:40%;height:40%;}
-    #efff1{width:10%;height:40%;}
-    
-    #tips {color:#7ca9bd;font-size:100%;}
-    
-    i.tabbar-demo-icon-1{width:30px;height:30px;background-image:url("../img/iphone/account_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-1{background-image:url("../img/iphone/account_orange.png");}
-    i.tabbar-demo-icon-2{width:30px;height:30px;background-image:url("../img/iphone/login_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-2{background-image:url("../img/iphone/login_orange.png");}
-    i.tabbar-demo-icon-3{width:30px;height:30px;background-image:url("../img/iphone/back_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-3{background-image:url("../img/iphone/back_orange.png");}
-    i.tabbar-demo-icon-4{width:30px;height:30px;background-image:url("../img/iphone/home_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-4{background-image:url("../img/iphone/home_orange.png");}
-    i.tabbar-demo-icon-5{width:30px;height:30px;background-image:url("../img/iphone/trends_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-5{background-image:url("../img/iphone/trends_orange.png");}
-    i.tabbar-demo-icon-6{width:30px;height:30px;background-image:url("../img/iphone/compare_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-6{background-image:url("../img/iphone/compare_orange.png");}
-    i.tabbar-demo-icon-7{width:30px;height:30px;background-image:url("../img/iphone/settings_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-7{background-image:url("../img/iphone/settings_orange.png");}
-    i.tabbar-demo-icon-8{width:30px;height:30px;background-image:url("../img/iphone/submit_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-8{background-image:url("../img/iphone/submit_orange.png");}
-    i.tabbar-demo-icon-9{width:30px;height:30px;background-image:url("../img/iphone/connect_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-9{background-image:url("../img/iphone/connect_orange.png");}
-    
-
-}
-
-.ui-input-text{border: none !important;box-shadow: none !important;}
-.ui-input-btn.custom-btn {
-    background:none;
-    border: none !important;
-    box-shadow: none !important;
-    color:blue;
-}
 
 @media only screen
 and (min-device-width: 320px)
 and (max-device-width: 480px)
-and (device-aspect-ratio: 2/3){
-    
-    .connect_image {
-        width:42%;
-        height:55%;
-        position:relative;
-        left:5%;
-        
-    }
-    .settings_screen{
-        position:fixed;top:10%;left:10%;display:block;width:80%;height:40%;text-align:center;
-        
-    }
-    .settings_screen1{
-        position:fixed;top:40%;left:10%;display:block;width:80%;height:40%;text-align:center;
-        
-    }
-    
-    .settings_screen_images{
-        width:70%;height:60%;
-    }
-    
-    .connect_screen {
-        display:block;
-        float:right;
-        color: #383838;
-        font-size:65%;
-        width:50%;
-        height:40%;
-        
-    }
-    
-    .apptexts {
-        color: #383838
-        font-size : 26;
-        position:fixed;
-        top:30%;
-        left:5%;
-        width:40%;
-        height:60%;
-        display:block;
-        
-    }
-    .about { font-size:80%; }
-    .page-content{position:fixed;top:8%;width:100%;height:78%;}
-    
-    #welcomePage {
-        background: url("../img/iphone/Home640x1136.jpg");
-        background-repeat:no-repeat;
-        background-size: 100% 100%;
-    }
-    
-    #login,#trend,#compare,#settings,#Account,#AmphiroUpdate,#CustomizeAmphiroInstall,#SetAccount,#AmphiroInstall,#PairedAmphiro{
-        background: url("../img/iphone/Gen640x1136.jpg");
-        background-repeat:no-repeat;
-        background-size: 100% 100%;
-    }
-    #toAccount,#toInstall,#toAbout {
-        color: #7ca9bd;
-    }
-    
-    #trendList p{font-size:70%;border-color:#7ca9bd;color:#7ca9bd;}
-    #trendList .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-    
-    #compareList p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
-    #compareList .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-    
-    #updateBtns p{font-size:100%;border-color:#7ca9bd;color:#7ca9bd;}
-    #updateBtns .active {
-        border-color:#7ca9bd;
-        background-color:#7ca9bd;
-        color: white;
-    }
-    
-    #efff{width:40%;height:40%;}
-    #efff1{width:10%;height:40%;}
-    
-    #tips {color:#7ca9bd;font-size:100%;}
-    
-    i.tabbar-demo-icon-1{width:30px;height:30px;background-image:url("../img/iphone/account_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-1{background-image:url("../img/iphone/account_orange.png");}
-    i.tabbar-demo-icon-2{width:30px;height:30px;background-image:url("../img/iphone/login_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-2{background-image:url("../img/iphone/login_orange.png");}
-    i.tabbar-demo-icon-3{width:30px;height:30px;background-image:url("../img/iphone/back_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-3{background-image:url("../img/iphone/back_orange.png");}
-    i.tabbar-demo-icon-4{width:30px;height:30px;background-image:url("../img/iphone/home_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-4{background-image:url("../img/iphone/home_orange.png");}
-    i.tabbar-demo-icon-5{width:30px;height:30px;background-image:url("../img/iphone/trends_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-5{background-image:url("../img/iphone/trends_orange.png");}
-    i.tabbar-demo-icon-6{width:30px;height:30px;background-image:url("../img/iphone/compare_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-6{background-image:url("../img/iphone/compare_orange.png");}
-    i.tabbar-demo-icon-7{width:30px;height:30px;background-image:url("../img/iphone/settings_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-7{background-image:url("../img/iphone/settings_orange.png");}
-    i.tabbar-demo-icon-8{width:30px;height:30px;background-image:url("../img/iphone/submit_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-8{background-image:url("../img/iphone/submit_orange.png");}
-    i.tabbar-demo-icon-9{width:30px;height:30px;background-image:url("../img/iphone/connect_dark.png");background-repeat:no-repeat;}
-    .active i.tabbar-demo-icon-9{background-image:url("../img/iphone/connect_orange.png");}
-    
-    
-}
+and (device-aspect-ratio: 2/3){}
 
-.ui-input-text{border: none !important;box-shadow: none !important;}
-.ui-input-btn.custom-btn {
-    background:none;
-    border: none !important;
-    box-shadow: none !important;
-    color:blue;
-
-    
-}
 
