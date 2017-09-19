@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="13122.19" systemVersion="16F73" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+    <device id="watch42" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.16"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="13034"/>
+    </dependencies>
+    <scenes>
+        <!--page1-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller identifier="page1" contentMode="top" id="AgC-eL-Hgc" customClass="InterfaceController">
+                    <items>
+                        <label alignment="center" verticalAlignment="center" hidden="YES" text="Please wait.." textAlignment="center" id="fFQ-Xy-f4A"/>
+                        <button alignment="center" verticalAlignment="center" title="Enter username" id="jiB-HB-uk9">
+                            <connections>
+                                <action selector="tapUsername" destination="AgC-eL-Hgc" id="u1J-Z3-ofA"/>
+                            </connections>
+                        </button>
+                        <button alignment="center" verticalAlignment="center" hidden="YES" title="Enter Password" id="42q-r8-ddn">
+                            <connections>
+                                <action selector="tapPass" destination="AgC-eL-Hgc" id="GTD-va-0Oj"/>
+                            </connections>
+                        </button>
+                        <button width="100" alignment="center" hidden="YES" title="Logout" id="Ppu-Z9-wcH">
+                            <connections>
+                                <action selector="tapLogout" destination="AgC-eL-Hgc" id="cvx-yk-fb0"/>
+                            </connections>
+                        </button>
+                        <button width="100" alignment="center" verticalAlignment="center" hidden="YES" title=" Back " id="dGU-Mw-swl">
+                            <connections>
+                                <action selector="tapBackLogout" destination="AgC-eL-Hgc" id="0fV-DA-fMu"/>
+                            </connections>
+                        </button>
+                        <label alignment="center" hidden="YES" text="Last 5 showers" textAlignment="center" id="HWp-ey-cpd">
+                            <fontDescription key="font" type="system" pointSize="15"/>
+                        </label>
+                        <group width="1" height="1" alignment="center" hidden="YES" layout="overlap" id="FSE-Xg-CxA">
+                            <items>
+                                <button width="60" height="30" alignment="center" title="Time" id="8uw-ov-Cj5">
+                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                    <connections>
+                                        <action selector="timerButton" destination="AgC-eL-Hgc" id="PKA-ua-Deg"/>
+                                    </connections>
+                                </button>
+                                <button width="60" height="30" alignment="center" hidden="YES" title="Volume" id="1Jx-kC-6KR">
+                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                    <connections>
+                                        <action selector="volButton" destination="AgC-eL-Hgc" id="nDY-lT-pBy"/>
+                                    </connections>
+                                </button>
+                                <group width="1" height="0.59999999999999998" alignment="left" verticalAlignment="center" layout="overlap" id="nr2-pb-fKy">
+                                    <items>
+                                        <picker height="1" alignment="left" id="tO7-DI-kG4">
+                                            <connections>
+                                                <action selector="thePickerVolume:" destination="AgC-eL-Hgc" id="StN-Sn-NbG"/>
+                                            </connections>
+                                        </picker>
+                                        <picker alignment="center" hidden="YES" id="hkX-V7-Ma0">
+                                            <connections>
+                                                <action selector="thePicker:" destination="AgC-eL-Hgc" id="tQD-c7-mbe"/>
+                                            </connections>
+                                        </picker>
+                                    </items>
+                                </group>
+                                <group width="135" height="34" alignment="center" verticalAlignment="bottom" id="Yh0-R4-K4B">
+                                    <items>
+                                        <button width="65" height="37" alignment="left" verticalAlignment="center" title="Back" id="6tb-bj-Skt">
+                                            <fontDescription key="font" type="system" pointSize="11"/>
+                                            <connections>
+                                                <action selector="pickerBackButton" destination="AgC-eL-Hgc" id="TIK-hc-H60"/>
+                                            </connections>
+                                        </button>
+                                        <button width="65" height="37" alignment="right" verticalAlignment="center" title="OK" id="YzI-ml-cDs">
+                                            <fontDescription key="font" type="system" pointSize="11"/>
+                                            <connections>
+                                                <action selector="setPickerTime" destination="AgC-eL-Hgc" id="8Kl-Df-yEy"/>
+                                            </connections>
+                                        </button>
+                                    </items>
+                                </group>
+                            </items>
+                        </group>
+                        <group height="1" alignment="center" hidden="YES" layout="overlap" id="LVd-7s-qGQ">
+                            <items>
+                                <group width="136" alignment="right" id="hke-Nu-IBb">
+                                    <items>
+                                        <group alignment="left" id="tID-Gv-f4V">
+                                            <items>
+                                                <label alignment="left" text="0:00" textAlignment="left" id="3x4-R8-K4N">
+                                                    <color key="textColor" red="0.10196078431372549" green="0.70196078431372544" blue="0.023529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="16"/>
+                                                </label>
+                                                <label height="1" alignment="center" textAlignment="center" id="8fv-nV-GV3">
+                                                    <color key="textColor" red="0.10196078431372549" green="0.70196078431372544" blue="0.023529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="23"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <label width="0.20000000000000001" alignment="right" verticalAlignment="center" text="A" textAlignment="center" id="AjX-1d-dPX">
+                                            <color key="textColor" red="0.10196078431372549" green="0.70196078431372544" blue="0.023529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <fontDescription key="font" type="system" pointSize="23"/>
+                                        </label>
+                                    </items>
+                                </group>
+                                <group height="1" alignment="center" layout="overlap" id="TdG-Ja-my1">
+                                    <items>
+                                        <imageView width="136" height="134" alignment="center" verticalAlignment="center" image="steps-0" id="Wht-vm-WIo"/>
+                                        <group width="136" height="134" alignment="center" verticalAlignment="center" id="Pic-12-dbe">
+                                            <items>
+                                                <label alignment="center" verticalAlignment="center" text="0.0" textAlignment="center" baselineAdjustment="alignCenters" id="EOm-QQ-qmQ">
+                                                    <color key="textColor" red="0.20000000000000001" green="0.57647058823529407" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="30"/>
+                                                </label>
+                                                <label height="0.90000000000000002" heightAdjustment="4" alignment="center" verticalAlignment="bottom" text="lt" textAlignment="right" id="1aF-gR-RWv">
+                                                    <color key="textColor" red="0.20000000000000001" green="0.57647058823529407" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="13"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                                <group width="136" alignment="center" verticalAlignment="bottom" id="O33-4U-u9M">
+                                    <items>
+                                        <group height="28" alignment="right" verticalAlignment="center" id="73O-Tm-Vca">
+                                            <items>
+                                                <label height="28" alignment="right" verticalAlignment="bottom" text="0" textAlignment="right" id="roX-93-Yx5">
+                                                    <color key="textColor" red="0.12941176470588234" green="1" blue="0.043137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="23"/>
+                                                </label>
+                                                <label height="0.69999999999999996" alignment="right" verticalAlignment="bottom" text="ºC" textAlignment="left" id="t5C-2e-L4u">
+                                                    <color key="textColor" red="0.12941176470588234" green="1" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                        <group height="28" alignment="left" verticalAlignment="bottom" id="bK6-g7-EPr">
+                                            <items>
+                                                <label height="28" alignment="left" verticalAlignment="bottom" text="0" textAlignment="right" id="yjG-bw-yc6">
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="23"/>
+                                                </label>
+                                                <label height="0.69999999999999996" alignment="center" verticalAlignment="bottom" text="watt" textAlignment="left" id="nWk-Nh-p2w">
+                                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="font" type="system" pointSize="11"/>
+                                                </label>
+                                            </items>
+                                        </group>
+                                    </items>
+                                </group>
+                            </items>
+                            <gestureRecognizers>
+                                <swipeGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" direction="4" id="cRq-Pj-uEi">
+                                    <connections>
+                                        <action selector="swipeUp:" destination="AgC-eL-Hgc" id="36X-IN-rEu"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" id="Zdf-Jx-70d">
+                                    <connections>
+                                        <action selector="swipeRight:" destination="AgC-eL-Hgc" id="WFD-Jx-qe6"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" direction="2" id="SKF-n3-IRU">
+                                    <connections>
+                                        <action selector="swipeLeft:" destination="AgC-eL-Hgc" id="mxv-Yd-ths"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <swipeGestureRecognizer cancelsTouchesInView="NO" delaysTouchesEnded="NO" direction="8" id="gCn-cm-ZsM">
+                                    <connections>
+                                        <action selector="swipeDown:" destination="AgC-eL-Hgc" id="fcB-ZX-lqL"/>
+                                    </connections>
+                                </swipeGestureRecognizer>
+                                <tapGestureRecognizer id="8T4-0w-dPi">
+                                    <connections>
+                                        <action selector="volHandler:" destination="AgC-eL-Hgc" id="Sqz-6v-7Om"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                                <tapGestureRecognizer id="u1I-xA-abM">
+                                    <connections>
+                                        <action selector="tapHandler:" destination="AgC-eL-Hgc" id="46O-12-hEW"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </group>
+                        <table alignment="left" hidden="YES" id="8qa-HJ-kof">
+                            <items>
+                                <tableRow identifier="tableRow" id="abg-mT-hkv" customClass="tableRow">
+                                    <group key="rootItem" width="1" alignment="left" id="jTi-8h-rek">
+                                        <items>
+                                            <label alignment="left" verticalAlignment="center" textAlignment="center" id="3sN-09-tiU">
+                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                            </label>
+                                            <label alignment="center" verticalAlignment="center" textAlignment="center" id="Ger-lT-ti0">
+                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                            </label>
+                                            <label alignment="right" verticalAlignment="center" textAlignment="center" id="tTf-lx-kFJ">
+                                                <fontDescription key="font" type="system" pointSize="12"/>
+                                            </label>
+                                        </items>
+                                    </group>
+                                    <connections>
+                                        <outlet property="rowLabel1" destination="tTf-lx-kFJ" id="M6q-Hh-mDt"/>
+                                        <outlet property="rowLabel2" destination="Ger-lT-ti0" id="Vqh-JI-GwY"/>
+                                        <outlet property="rowlabel" destination="3sN-09-tiU" id="9Zn-2R-Yle"/>
+                                    </connections>
+                                </tableRow>
+                            </items>
+                            <gestureRecognizers>
+                                <tapGestureRecognizer id="iye-1v-cq2">
+                                    <connections>
+                                        <action selector="tapHandlerTable:" destination="AgC-eL-Hgc" id="1d9-jn-qTe"/>
+                                    </connections>
+                                </tapGestureRecognizer>
+                            </gestureRecognizers>
+                        </table>
+                    </items>
+                    <connections>
+                        <outlet property="btnBackLogout" destination="dGU-Mw-swl" id="VLk-tx-8TP"/>
+                        <outlet property="btnLogout" destination="Ppu-Z9-wcH" id="sid-jH-kud"/>
+                        <outlet property="btnPass" destination="42q-r8-ddn" id="2yl-7f-O4f"/>
+                        <outlet property="btnUsername" destination="jiB-HB-uk9" id="kr5-K8-32c"/>
+                        <outlet property="durationValue" destination="3x4-R8-K4N" id="wMt-wx-riI"/>
+                        <outlet property="efficiency" destination="AjX-1d-dPX" id="dbC-8f-lOY"/>
+                        <outlet property="energy" destination="yjG-bw-yc6" id="0m4-h0-ocH"/>
+                        <outlet property="energyGroup" destination="bK6-g7-EPr" id="9qU-bz-hhd"/>
+                        <outlet property="energyLabel" destination="nWk-Nh-p2w" id="2p2-hi-cX5"/>
+                        <outlet property="firstgesture" destination="u1I-xA-abM" id="eVI-lL-2CF"/>
+                        <outlet property="groupMain" destination="LVd-7s-qGQ" id="e4t-0k-WqL"/>
+                        <outlet property="image" destination="Wht-vm-WIo" id="2BT-eq-W6p"/>
+                        <outlet property="lastFiveShowers" destination="HWp-ey-cpd" id="xud-tH-nOA"/>
+                        <outlet property="myPicker" destination="hkX-V7-Ma0" id="eUD-g2-OcQ"/>
+                        <outlet property="pickerButton" destination="YzI-ml-cDs" id="Qcq-OI-4zp"/>
+                        <outlet property="pickerGroup" destination="FSE-Xg-CxA" id="kOm-YZ-Asg"/>
+                        <outlet property="pickerVolume" destination="tO7-DI-kG4" id="W2t-QB-TcN"/>
+                        <outlet property="pleaseWait" destination="fFQ-Xy-f4A" id="CRB-GD-HTG"/>
+                        <outlet property="secondgesture" destination="8T4-0w-dPi" id="sVN-Lm-1Rj"/>
+                        <outlet property="table" destination="8qa-HJ-kof" id="cHL-cW-Erw"/>
+                        <outlet property="tempGroup" destination="73O-Tm-Vca" id="D3B-xe-HgU"/>
+                        <outlet property="tempLabel" destination="t5C-2e-L4u" id="mOo-6C-Gg8"/>
+                        <outlet property="temperature" destination="roX-93-Yx5" id="F0c-in-MK1"/>
+                        <outlet property="timerButtonText" destination="8uw-ov-Cj5" id="baX-bM-otP"/>
+                        <outlet property="volume" destination="EOm-QQ-qmQ" id="1RG-Qs-pwE"/>
+                        <outlet property="volumeButtonText" destination="1Jx-kC-6KR" id="5yp-4s-yX5"/>
+                        <outlet property="volumeLabel" destination="1aF-gR-RWv" id="OFH-Cq-ea4"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="108" y="308"/>
+        </scene>
+        <!--Static Notification Interface Controller-->
+        <scene sceneID="AEw-b0-oYE">
+            <objects>
+                <notificationController id="YCC-NB-fut">
+                    <items>
+                        <label alignment="left" text="Alert Label" id="IdU-wH-bcW"/>
+                    </items>
+                    <notificationCategory key="notificationCategory" identifier="myCategory" id="JfB-70-Muf"/>
+                    <connections>
+                        <outlet property="notificationAlertLabel" destination="IdU-wH-bcW" id="JKC-fr-R95"/>
+                        <segue destination="4sK-HA-Art" kind="relationship" relationship="dynamicNotificationInterface" id="kXh-Jw-8B1"/>
+                    </connections>
+                </notificationController>
+            </objects>
+            <point key="canvasLocation" x="220" y="643"/>
+        </scene>
+        <!--Notification Controller-->
+        <scene sceneID="ZPc-GJ-vnh">
+            <objects>
+                <controller id="4sK-HA-Art" customClass="NotificationController"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+    </scenes>
+</document>
