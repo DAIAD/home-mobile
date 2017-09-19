@@ -566,7 +566,7 @@ var app = {
             consumption = parseInt(app.user.settings.consumptionChoice,10),
             switchaki = $('#configureSwitcher'),
             showdata;
-        
+         
         if(numberOfAmphiros > 0 && numberOfMeters > 0) {
             
             if(switchaki.is(':checked')) {
